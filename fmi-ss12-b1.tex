@@ -5,6 +5,7 @@
 \usepackage{enumerate}
 \usepackage{xspace}
 \usepackage{algorithm}
+%\usepackage{algorithmicx}
 \usepackage{algpseudocode}
 \usepackage{listings}
 
@@ -108,12 +109,12 @@ Block 1: Computability and Complexity }
 
 \newcommand{\true}{{\it true}}
 \newcommand{\false}{{\it false}}
-
-
 %\newcommand{\samplesolution}[1]{\noindent {\bf Sample solution.}  #1}
 \newcommand{\solution}[1]{\noindent {\bf Solution.}  #1}
 
-
+\floatname{algorithm}{Procedure}
+%\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+%\renewcommand{\algorithmicensure}{\textbf{Output:}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -158,21 +159,26 @@ $\Pi'$ halts on I $<==>(\Pi, I, k)$ is a positive instance of NEG-ASSIGNMENT.
 
 \bigskip
 
-Let $(\Pi', I') $ be an arbitrary instance of HALTING.  Set $I = I'$, let be k an arbitrary integer occuring in $\Pi$ and  construct $(\Pi, I, k) $ in the following way: 
+Let $(\Pi', I') $ be an arbitrary instance of HALTING.  Set $I = I' = S $, let be k an arbitrary integer occuring in $\Pi$ and  construct $(\Pi, I, k) $ in the following way: 
 
 \smallskip
 
 
-\begin{lstlisting}[frame=single]                % Start your code-block
+\begin{algorithm}
+\caption{NEG-ASSIGNMENT Procedure}
+\label{<your label for references later in your document>}
+\begin{algorithmic}
 
-bool $\Pi(I)$
-{
-   I = I';
-   call $\Pi'(I')$;
-   k = -1;
-}
+\Function{$\Pi$}{String $S$}
+ \State int $k = 0$
+ %\State I' = I;
+ \State call $\Pi^\prime(S)$
+ \State k = -1;
+ \State return TRUE;
+\EndFunction
 
-\end{lstlisting}
+\end{algorithmic}
+\end{algorithm}
 
 \bigskip
 
@@ -189,7 +195,7 @@ $"<="$
 
 \bigskip
 
-Assume that $(\Pi, I)$ is a positive instance of NEG-ASSIGNMENT, so it returns TRUE which means that k gets negative and the program terminates. But the only time when k gets set to a negative value is directly after the call of $(\Pi', I')$, where $I=I'$, so $\Pi$ halts on $I$, so $(\Pi', I')$ is a positive instance of HALTING. 
+Assume that $(\Pi, I, k)$ is a positive instance of NEG-ASSIGNMENT, so it returns TRUE which means that k gets negative and the program terminates. But the only time when k gets set to a negative value is directly after the call of $(\Pi', I')$, where $I=I'$, so $\Pi$ halts on $I$, so $(\Pi', I')$ is a positive instance of HALTING. 
 
 \bigskip
 
@@ -198,9 +204,46 @@ Assume that $(\Pi, I)$ is a positive instance of NEG-ASSIGNMENT, so it returns T
 To this end, provide a semi-decision procedure and justify your solution. Additionally,  show that the co-problem of \textbf{NEG-ASSIGNMENT} is not semi-decidable.
 \end{exercise}
 
+\solution i)
 
-%\solution{ Your solution here.}
+Consider the following interpreter for NEG-ASSIGNMENT. For semi-decidability, the program must return TRUE for all positive instances $(\Pi, I, k)$. The behaviour for negative instances $(\Pi, I, k)$ is such that $\Pi$ return FALSE or loops forever.
+So we have to distinguish the following cases:
 
+\begin{itemize}
+\item POSITIVE INSTANCE $(\Pi', I')$
+\begin{itemize}
+\item When $(\Pi', I')$ halts on input $I$, $(\Pi', I')$ is a POSITIVE instance for our halting program, so the variable k gets assigned a negative value and therefore $(\Pi, I, k)$ is a positive assignment of NEG-ASSIGNMENT and returns TRUE
+\end{itemize}
+\item NEGATIVE INSTANCE $(\Pi', I')$
+\begin{itemize}
+\item  When $(\Pi', I')$ is a  NEGATIVE instance for our halting program and halts, the variable is NOT touched by our interpreter and remains positive, so $(\Pi, I, k)$ is a NEGATIVE instance on $I$ and returns FALSE
+\item When $(\Pi', I')$ is a  NEGATIVE instance for our halting program but does not halt, the variable k cannot be NOT touched by our interpreter and remains positive, so $(\Pi, I, k)$ is a NEGATIVE instance on $I$ and loops forever, which is OK for a semi-decision procedure.
+\end{itemize}
+\end{itemize}
+
+
+\begin{algorithm}
+\caption{Interpreter for NEG-ASSIGNMENT }
+\label{intNEG}
+\begin{algorithmic}
+
+\Function{$\Pi$}{String $S$}
+ \State int $k = 0$
+ \State rc = call $\Pi^\prime(S)$
+ \If{$rc = TRUE$}
+ \State k = -1;
+  \State return TRUE;
+ \Else
+ \State return FALSE;
+ \EndIf
+\EndFunction
+
+\end{algorithmic}
+\end{algorithm}
+
+\solution ii)
+
+The opposite of NEG-ASSIGNMENT(k gets negative at least one time) is CO-NEG-ASSIGNMENT, which means that k is ALWAYS positive(FIXME!!!!! stimmt das so???)
 
 \begin{exercise}
   Give a formal proof that \textbf{SUBSET SUM} is in $\NP$, i.e.\, define a
@@ -329,7 +372,22 @@ for( every level of the tree )
   \label{ex:turing}
 
   Design a Turing machine that increments by one a value represented by a string of 0s and 1s.
-
+  
+\bigskip  
+  
+\begin{tabular}{|c|c|}
+\hline \\
+\ hline\\ p $\in $ K &  \\ 
+\hline  \\ 
+ S  $\triangleright$ & \\ 
+\hline  S  $0$ & \\ 
+\hline  &  \\ 
+\hline  &  \\ 
+\hline  &  \\ 
+\hline  &  \\ 
+\hline  &  \\ 
+\hline 
+\end{tabular} 
 \end{exercise}
 
 
