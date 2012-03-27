@@ -4,6 +4,10 @@
 \usepackage{epsfig} 
 \usepackage{enumerate}
 \usepackage{xspace}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+
 
    \textwidth      15cm
    \textheight     23cm
@@ -16,6 +20,16 @@
 
    \pagestyle{plain}
    \bibliographystyle{plain}
+
+
+\newenvironment{mylisting}
+{\begin{list}{}{\setlength{\leftmargin}{1em}}\item\scriptsize\bfseries}
+{\end{list}}
+
+\newenvironment{mytinylisting}
+{\begin{list}{}{\setlength{\leftmargin}{1em}}\item\tiny\bfseries}
+{\end{list}}
+
 
 
 \title{Formale Methoden der Informatik \\
@@ -134,8 +148,50 @@ Block 1: Computability and Complexity }
 \end{exercise}
 
 
-%\solution{ Your solution here}
+\solution
 
+To prove the reduction, we have to show that 
+
+\bigskip
+
+$\Pi'$ halts on I $<==>(\Pi, I, k)$ is a positive instance of NEG-ASSIGNMENT.
+
+\bigskip
+
+Let $(\Pi', I') $ be an arbitrary instance of HALTING.  Set $I = I'$, let be k an arbitrary integer occuring in $\Pi$ and  construct $(\Pi, I, k) $ in the following way: 
+
+\smallskip
+
+
+\begin{lstlisting}[frame=single]                % Start your code-block
+
+bool $\Pi(I)$
+{
+   I = I';
+   call $\Pi'(I')$;
+   k = -1;
+}
+
+\end{lstlisting}
+
+\bigskip
+
+
+$"=>"$
+
+\bigskip
+
+Assume that ($\Pi', I'$ ) is a positive instance of halting, so $\Pi'$ halts on $I$ because we set $I = I'$. Directly after the termination of $\Pi'$, we set $k=-1$, so $(\Pi, I, k)$ is a positive instance of NEG-ASSIGNMENT. 
+
+\bigskip
+
+$"<="$
+
+\bigskip
+
+Assume that $(\Pi, I)$ is a positive instance of NEG-ASSIGNMENT, so it returns TRUE which means that k gets negative and the program terminates. But the only time when k gets set to a negative value is directly after the call of $(\Pi', I')$, where $I=I'$, so $\Pi$ halts on $I$, so $(\Pi', I')$ is a positive instance of HALTING. 
+
+\bigskip
 
 \begin{exercise}
   Prove that the problem \textbf{NEG-ASSIGNMENT} from Exercise 1 is semi-decidable. 
@@ -208,8 +264,28 @@ To this end, provide a semi-decision procedure and justify your solution. Additi
 \end{exercise}
 
 
-%\solution{ Your solution here.}
+\solution
 
+By definition, a tree MUST NOT contain any cycles. By modifying DEPTH or BREADTH FIRST SEARCH, we get an algorithm for k-colorability that works in polynominally time. Consider a tree with n - nodes, where every parent-node has x child nodes. One extreme example would be a tree where every node has exactly 1 child. The other extreme would be a tree with 1 parentnode and n-1 childnodes, directly attached to the parent.
+
+Our algorithm has to process every level of the tree, starting at the root-node, coloring the node with one out of k colors. Afterwards, the next level has to be processed. If we take again the extreme with only 2 levels(1 parent, n-1 childs), we have to color (n-1) nodes and the program has finished. Otherwise, if every node has one child, only 1 node has to be colored with another color. This step then must be repeated n times.
+
+Normaly, an average tree will be a mixture of the 2 extremes. This means that we have at most $n$ levels, with $(n-1)$ nodes at each level, which means that the algorithm is $O(n^2)$.  
+
+\begin{mylisting}
+\begin{verbatim}
+
+for( every level of the tree )
+{
+   for( every node in this level )
+   {
+      color(node, color);
+   }
+   increment color(color);
+}
+
+\end{verbatim}
+\end{mylisting}
 
 \begin{exercise}
   \label{ex:Nqueens}
