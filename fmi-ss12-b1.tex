@@ -289,7 +289,9 @@ Finally R is decidable in polynomial time because, for a given subset of $S$ we 
 \end{exercise}
 
 
-%\solution{ Your solution here.}
+\solution
+
+
 
 
 \begin{exercise}
@@ -303,10 +305,25 @@ Finally R is decidable in polynomial time because, for a given subset of $S$ we 
             
 \end{exercise}
 
+\solution{ 5}
 
+The FREQUENCY ASSIGNMENT problem can be mapped to the K-COLORABILITY GRAPH problem in the following way: every edge of the graph G(V, E) corresponds to a sending terminal, where each of this terminals can use one of the k frequencies that are available. The edges of G(V, E) show what terminals would interfere with each other(are in transmission range) - so 2 transmitters which are connected by  an edge MUST NOT use the same frequency, in other words MUST NOT have the same color on the 2 vertices, connected by the edge.
 
-%\solution{ Your solution here.}
+First, we have to show that FREQ-ASSIGNMENT is in NP. Therefore, we guess a frequency assignment and check whether two adjacent vertices have the same color. This can be done in polynomial time by looping through all transmitting stations and comparing its color with the color of all neighbour-stations.
 
+\medskip
+
+ $G(V, E)$ is a positive instance of k-Colorability $\Leftrightarrow$ positive instance of FREQ-ASSIGNMENT
+
+$ "\Rightarrow" $
+
+Suppose G(V, E) is a positive instance of k-colorability, then the color of the edge, name it $i$, is mapped to the frequency $i$. Finally, we get a correct frequency assignment because we started with a correct k-coloring.
+
+\medskip
+
+$ "\Leftarrow" $
+
+In the other direction it is possible to argue in the same way: the FREQ-ASSIGNMENT for the k transmitter-frequencies {1,...,k} is mapped to the k-coloring by using color $i$ for the corresponding edge.
 
 \begin{exercise}
   \label{ex:CO-NP}
@@ -476,17 +493,41 @@ So we can see that the procedure needs only logarithmic space to be represented.
   
 \bigskip  
   
-\begin{tabular}{|c|c|}
-\hline \\
-\ hline\\ p $\in $ K &  \\ 
-\hline  \\ 
- S  $\triangleright$ & \\ 
-\hline  S  $0$ & \\ 
-\hline  &  \\ 
-\hline  &  \\ 
-\hline  &  \\ 
-\hline  &  \\ 
-\hline  &  \\ 
+\solution{10}
+
+Consider the turing machine M for adding a single $1$ to a string of $0$s and $1$s
+
+\medskip
+
+$M=(K, \sigma, \delta, s)$ with $K = \{START, RIGHT, LEFT, CARRY, OVERFLOW, ZERO, END\}$, $\sigma=\{0, 1, \sqcup, \triangleright\}$ and the transition function $\delta$
+
+\bigskip
+  
+\begin{tabular}{|l|c||r|}
+\hline p $\in $ K   & $\sigma \in \Sigma $  & $\delta(p, \sigma)$ \\ 
+\hline
+\hline  $START$  & $\triangleright$ & ($NO, \sqcup,\--$ ) \\ 
+\hline  $START$ & $0$  & $(RIGHT, 0, \rightarrow)$\\ 
+\hline  $START$ & $1$  & $(RIGHT, 1, \rightarrow)$ \\ 
+
+\hline  $RIGHT$ & $0$  & $(RIGHT, 0, \rightarrow)$ \\ 
+\hline  $RIGHT$ & $1$  & $(RIGHT, 1, \rightarrow)$ \\ 
+\hline  $RIGHT$ & $\sqcup$  & $(LEFT, \sqcup, \leftarrow)$ \\ 
+
+\hline  $LEFT$ & $0$  & $(YES, 1, \--)$ \\ 
+\hline  $LEFT$ & $1$  & $(CARRY, 0, \leftarrow)$\\ 
+
+\hline  $CARRY$ & $0$  &$(YES, 1, \--)$\\ 
+\hline  $CARRY$ & $1$  & $(CARRY, 0, \leftarrow)$\\ 
+\hline  $CARRY$  & $\triangleright$ & $(OVERFLOW, \triangleright, \rightarrow)$ \\ 
+
+\hline  $OVERFLOW$ & $1$  & $(ZERO, 1, \rightarrow)$ \\ 
+
+\hline  $ZERO$ & $1$  & $(ZERO, 0, \rightarrow)$ \\ 
+\hline  $ZERO$ & $\sqcup$  & $(END, 0, \rightarrow)$ \\ 
+
+\hline  $END$ & $\sqcup$  & $(YES, \sqcup, \--)$ \\ 
+
 \hline 
 \end{tabular} 
 \end{exercise}
