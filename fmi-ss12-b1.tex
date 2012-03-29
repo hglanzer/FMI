@@ -257,7 +257,24 @@ The opposite of NEG-ASSIGNMENT(k gets negative at least one time) is CO-NEG-ASSI
 \end{exercise}
 
 
-%\solution{ Your solution here.}
+\solution{ 3}
+   \smallskip
+First we have to define a certificate relation with an arbitrary t:
+
+\bigskip
+
+$R = \{ [(S,t),S']|  S' \subseteq S $ with $ \sum(S') = t \} $ 
+
+\bigskip
+We argue that R is a certificate relation for SUBSET-SUM. $(S,t)$ is a positive instance of SUBSET-SUM $ \Leftrightarrow $ there exist a $S'$ which sum is equal to $t$.   
+
+\bigskip
+
+R is polynomially balanced because any subset of $S$ can be represented in space that is linear in the size in $S$.
+
+\bigskip
+
+Finally R is decidable in polynomial time because, for a given subset of $S$ we can easily check that a the sum is equal to $t$. This needs at most n computational steps. So it can be done in polynomial time.
 
 
 \begin{exercise}
@@ -330,6 +347,21 @@ for( every level of the tree )
 \end{verbatim}
 \end{mylisting}
 
+\begin{algorithmic}
+\Function{DFS}{$a$}
+\For {each vertex $u \in V[G]$}
+% \If {$i\geq maxval$}
+    \State $i\gets 0$
+% \Else
+    color[u] $\gets$ k
+    \If {$i+k\leq maxval$}
+        \State $i\gets i+k$
+    \EndIf
+\EndFor
+\EndFunction
+\end{algorithmic}
+
+
 \begin{exercise}
   \label{ex:Nqueens}
   Provide a reduction of \textbf{N-Queens} problem to \textbf{SAT}. Give a proof sketch of the correctness of your reduction. Does this implies that the \textbf{N-Queens} is an $\NP$-complete problem? Argue your answer.  
@@ -365,7 +397,37 @@ for( every level of the tree )
 \end{exercise}
 
 
-%\solution{ Your solution here.}
+\solution{ 9}
+To show that problem is solvable in logarithmic space we have to take a look on the elements we need to solve the problem. We only need one pointer to an element in the list and a counter. Both require only logarithmic space. The pseudo algorithm  for
+N-SORTED-ELEMENTS works as follows:
+
+\begin{algorithm}
+\caption{Boolean N-SORTED-ELEMENTS }
+\label{Bsort}
+\begin{algorithmic}
+
+\Function{Boolean N-SORTED-ELEMENTS}{List $L$, Integer $k$}
+ \State int $i$ ;
+ \State int $counter = 0$;
+  \For{ i from 2 to length $L$} 
+  \If{$L[i] > L[(i-1)]$ then $counter = counter +1$}
+   \If{ $ counter  \geq  k$}  return $TRUE$
+   \EndIf
+   \Else{ $counter = 0$;}
+  \EndIf
+ \EndFor
+ \State return $FALSE$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\medskip
+The procedure (see procedure 3) uses 2 variables i  and a  counter. For a list $ L = (e1; : : : ; en) $,
+the variable i need log n bits to be represented. The
+variable counter also only needs logarithmic space. Such a value max needs only
+$ log 2^64 x n) = log 2^64 + log n = 64 + log n$ when we assume that the integers are 64-bit integer.
+So we can see that the procedure needs only logarithmic space to be represented.
+
 
 
 \begin{exercise}
