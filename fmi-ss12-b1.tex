@@ -374,10 +374,49 @@ for( every level of the tree )
 \end{exercise}
 
 
-%\solution{ Your solution here.}
+\solution{ 8}
+For the  N-queens problem we consider  a generalized chess board, which squares divided into $n x n$  squares. The problem is to place N-queens on it in such way that o queen attacks any other (for further information use google).  To reduce the N-queen problem to a SAT instance we have to construct a clause for each rule of the n-queens problem. Then the formula $ \phi$ is defined as follows:
+
+ \begin{center}
+ \begin{itemize}
+\item $ \alpha_1 = \bigwedge _{i=1} ^{n}   \bigwedge _{j=1} ^{n}   \bigwedge _{k=j+1} ^{n} (\neg s_{ij} \vee \neg s_{ik} ) $
+\item $ \alpha_2 = \bigwedge _{i=1} ^{n}   \bigwedge _{j=1} ^{n}   \bigwedge _{k=j+1} ^{n} (\neg s_{ji} \vee \neg s_{ki} ) $
+\item $ \alpha_3 = \bigwedge _{d=0} ^{n-2}   \bigwedge _{j=1} ^{n-d}   \bigwedge _{k=j+1} ^{n-} (\neg s_{((d+j),j)} \vee \neg s_{((d+k),k} )) $
+\item $ \alpha_4 = \bigwedge _{d=-(n-2)} ^{-1}   \bigwedge _{j=1} ^{n+d}   \bigwedge _{k=j+1} ^{n+d} (\neg s_{(j,(j-d))} \vee \neg s_{(k,(k-d)} )) $
+\item $ \alpha_5 = \bigwedge _{d=3} ^{n+1}   \bigwedge _{j=1} ^{d-1}   \bigwedge _{k=j+1} ^{d-1} (\neg s_{(j,(d-j))} \vee \neg s_{(k,(k-d)} )) $
+\item $ \alpha_6 = \bigwedge _{d=n+2} ^{2n-1}   \bigwedge _{j=d-n} ^{n}   \bigwedge _{k=j+1} ^{d-1} (\neg s_{(j,(d-j))} \vee \neg s_{(k,(k-d)} )) $
+\item $ \alpha_7 = \bigwedge _{i=1} ^{n}   \bigvee _{j=1} ^{n} (s_{ij}) $
+
+  \bigskip
+\item $\phi =  \alpha_1 \vee \alpha_2 \vee \alpha_3 \vee \alpha_4 \vee \alpha_5 \vee \alpha_6 \vee \alpha_7$ 
+
+ \end{itemize}
+\end{center}
+
+The formula $\phi$ ensures that all restrictions from the N-Queens Problem are fulfilled.
+
+\bigskip
+Prove the proof both direction of the correctness of the reduction ,
+i.e. prove the following statement: if $\phi$ is satisfiable, then the placement of the N-Queens is valid for the N-QUEENS problem. We only preform a proof sketch of the whole problem.
+
+ \begin{itemize}
+\item Direction "$\Leftarrow$" 
+Suppose $\phi$ is satisfiable , i.e. there is a truth assignment T under
+which all subformulae  $ \alpha_i, 1 \leq i \leq 7$ , evaluate to true. We have to show
+that there exist a valid placement of the N-Queens . We let $C$ be the set of all squares. The variable $T_{i,j}$ is set to be TRUE if  the the row $i$ and the column $j$ contains a queen. We have to define a truth assignment such that each variable $v$  which is true in the formula of SAT there has to have a corresponding variable $w$ which will be set also to true in the N-QUEENS instance. If the formula is satisfiable in SAT then the formula is also satisfiable in N-Queens with the corresponding variables.
+
+\item Direction "$\Rightarrow$" 
+Suppose we have a valid instance of the N-Queens problem , i.e. there is a truth assignment T under
+which all constrains of the problems are fulfilled ,and the problem instance evaluate to true. We have to show
+that there exist a valid assignment of each Clause that the SAT instance is ture. We have to define a truth assignment such that each variable $w$  which contains a queen has to have a corresponding variable $v$ which will set the SAT clause to true. So if we have a valid instance of the N-Queens problem there must also be a valid formula $\phi$ with the corresponding variable.
+
+ \end{itemize}
 
 
-\begin{exercise}
+
+ 
+ 
+ \begin{exercise}
   Consider the following problem:
   \begin{center}
     \fbox{
