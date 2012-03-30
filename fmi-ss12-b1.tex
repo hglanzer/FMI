@@ -410,7 +410,14 @@ For the  N-queens problem we consider  a generalized chess board, which squares 
  \end{itemize}
 \end{center}
 
-The formula $\phi$ ensures that all restrictions from the N-Queens Problem are fulfilled.
+The formula $\phi$ ensures that all restrictions from the N-Queens Problem are fulfilled. In detail:
+ \begin{itemize}
+\item  $ \alpha_1 $ ensures that each column contains AT MOST one queen
+\item  $ \alpha_2 $ ensures that each row contains AT MOST one queen
+\item  $ \alpha_3 $ ensures that one queen must occur AT MOST for the postiv values of $d=i-J$ in the bottom left to upper right diagonal line. (We split the diagonals in to parts, bottom left to upper right and upper left to bottom right )
+\item  $ \alpha_4 $ ensures that one queen must occur AT MOST for the negativ values of $d=i-J$ in the upper left to bottom right  diagonal line.
+
+ \end{itemize}
 
 \bigskip
 Prove the proof both direction of the correctness of the reduction ,
