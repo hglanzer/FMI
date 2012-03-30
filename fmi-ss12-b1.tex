@@ -307,9 +307,9 @@ Finally R is decidable in polynomial time because, for a given subset of $S$ we 
 
 \solution{ 5}
 
-The FREQUENCY ASSIGNMENT problem can be mapped to the K-COLORABILITY GRAPH problem in the following way: every edge of the graph G(V, E) corresponds to a sending terminal, where each of this terminals can use one of the k frequencies that are available. The edges of G(V, E) show what terminals would interfere with each other(are in transmission range) - so 2 transmitters which are connected by  an edge MUST NOT use the same frequency, in other words MUST NOT have the same color on the 2 vertices, connected by the edge.
+The FREQUENCY ASSIGNMENT problem can be mapped to the K-COLORABILITY GRAPH problem in the following way: every vertex of the graph G(V, E) corresponds to a sending terminal, where each of this terminals can use one of the k frequencies that are available. The edges of G(V, E) show what terminals would interfere with each other(are in transmission range) - so 2 transmitters which are connected by  an edge MUST NOT use the same frequency, in other words MUST NOT have the same color on the 2 vertices, connected by the edge.
 
-First, we have to show that FREQ-ASSIGNMENT is in NP. Therefore, we guess a frequency assignment and check whether two adjacent vertices have the same color. This can be done in polynomial time by looping through all transmitting stations and comparing its color with the color of all neighbour-stations.
+First, we have to show that FREQ-ASSIGNMENT is in NP, therefore we have to check if FREQ-ASSIGNMENT is polynomially balanced and decideable. So we guess a frequency assignment and check that there are no two adjacent vertices having the same color. This can be done in polynomial time by looping through all transmitting stations and comparing its color with the color of all neighbour-stations. FREQ-ASSIGNMENT is also polynominally balanced because any valid frequency assigment can be represented in space that is linear in the size of $k$.
 
 \medskip
 
@@ -317,13 +317,13 @@ First, we have to show that FREQ-ASSIGNMENT is in NP. Therefore, we guess a freq
 
 $ "\Rightarrow" $
 
-Suppose G(V, E) is a positive instance of k-colorability, then the color of the edge, name it $i$, is mapped to the frequency $i$. Finally, we get a correct frequency assignment because we started with a correct k-coloring.
+Suppose G(V, E) is a positive instance of k-colorability, then 2 vertices connected by a edge always have different colors. Because of the mapping defined earlier, the color of an vertex, name it $i$, is mapped to the frequency $i$ of a transmitter. This mapping has to be done for every vertex, so every color of a vertex is directly mapped to the allowed frequency for a transmitter.
 
 \medskip
 
 $ "\Leftarrow" $
 
-In the other direction it is possible to argue in the same way: the FREQ-ASSIGNMENT for the k transmitter-frequencies {1,...,k} is mapped to the k-coloring by using color $i$ for the corresponding edge.
+In the other direction it is possible to argue in the same way: the FREQ-ASSIGNMENT for the k transmitter-frequencies {1,...,k} is mapped to the k-coloring by mapping frequency $i$ of a transmitter to color $i$ of the corresponding vertex.
 
 \begin{exercise}
   \label{ex:CO-NP}
@@ -345,34 +345,25 @@ In the other direction it is possible to argue in the same way: the FREQ-ASSIGNM
 
 By definition, a tree MUST NOT contain any cycles. By modifying DEPTH or BREADTH FIRST SEARCH, we get an algorithm for k-colorability that works in polynominally time. Consider a tree with n - nodes, where every parent-node has x child nodes. One extreme example would be a tree where every node has exactly 1 child. The other extreme would be a tree with 1 parentnode and n-1 childnodes, directly attached to the parent.
 
-Our algorithm has to process every level of the tree, starting at the root-node, coloring the node with one out of k colors. Afterwards, the next level has to be processed. If we take again the extreme with only 2 levels(1 parent, n-1 childs), we have to color (n-1) nodes and the program has finished. Otherwise, if every node has one child, only 1 node has to be colored with another color. This step then must be repeated n times.
+Our algorithm has to process every level of the tree, starting at the root-node, coloring the node with the first out of k colors. Afterwards, the next level has to be processed: every node in the same level gets the same color. If we take again the extreme with only 2 levels(1 parent, n-1 childs), we have to color (n-1) nodes and the program has finished. Otherwise, if every node has one child, only 1 node has to be colored with another color. This step then must be repeated n times.
 
-Normaly, an average tree will be a mixture of the 2 extremes. This means that we have at most $n$ levels, with $(n-1)$ nodes at each level, which means that the algorithm is $O(n^2)$.  
+Normaly, an average tree will be a mixture of the 2 extremes. This means that we have at most $n$ levels, with at most $(n-1)$ nodes at each level, which means that the algorithm is $O(n^2)$. This can easy be concluded by looking at our TREE-k-COLORING algorithm that consists of 2 nested for-loops:
 
-\begin{mylisting}
-\begin{verbatim}
-
-for( every level of the tree )
-{
-   for( every node in this level )
-   {
-      color(node, color);
-   }
-   increment color(color);
-}
-
-\end{verbatim}
-\end{mylisting}
+\medskip
 
 \begin{algorithmic}
-\Function{DFS}{$a$}
-\For {each vertex $u \in V[G]$}
-% \If {$i\geq maxval$}
-    \State $i\gets 0$
-% \Else
-    color[u] $\gets$ k
-    \If {$i+k\leq maxval$}
-        \State $i\gets i+k$
+\Function{TREE-k-COLORING}{$k$}
+  \State $color\gets 0$
+\For {each level of the tree}
+\For {each node in this level}
+  
+   \State node $\gets$ $color$
+ 
+\EndFor
+   \If {$color < k$}
+        \State $color\gets color+1$
+    \Else
+            \State $color\gets 0$
     \EndIf
 \EndFor
 \EndFunction
