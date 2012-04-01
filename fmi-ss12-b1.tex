@@ -383,7 +383,7 @@ Normaly, an average tree will be a mixture of the 2 extremes. This means that we
 
 
 \solution{ 8}
-For the  N-queens problem we consider  a generalized chess board, which squares divided into $n x n$  squares. The problem is to place N-queens on it in such way that o queen attacks any other (for further information use google).  To reduce the N-queen problem to a SAT instance we have to construct a clause for each rule of the n-queens problem. Then the formula $ \phi$ is defined as follows:
+For the  N-queens problem we consider  a generalized chess board, which squares divided into $n x n$  squares. The problem is to place N-queens on it in such way that no queen attacks any other (for further information use google).To encoding the chess board we use the variable $s_{ij}$. It  is assigned to true iff a queen is assigned to the cell (i; j).  To reduce the N-queen problem to a SAT instance we have to construct a clause for each rule of the n-queens problem. Then the formula $ \phi$ is defined as follows:
 
  \begin{center}
  \begin{itemize}
@@ -405,13 +405,18 @@ The formula $\phi$ ensures that all restrictions from the N-Queens Problem are f
  \begin{itemize}
 \item  $ \alpha_1 $ ensures that each column contains AT MOST one queen
 \item  $ \alpha_2 $ ensures that each row contains AT MOST one queen
-\item  $ \alpha_3 $ ensures that one queen must occur AT MOST for the postiv values of $d=i-J$ in the bottom left to upper right diagonal line. (We split the diagonals in to parts, bottom left to upper right and upper left to bottom right )
-\item  $ \alpha_4 $ ensures that one queen must occur AT MOST for the negativ values of $d=i-J$ in the upper left to bottom right  diagonal line.
+
+\smallskip For the diagonal lines we have to check the bottom left to upper right diagonal $(= D_1)$ and the upper left to bottom right diagonal $(=D_2)$.
+\item  $ \alpha_3 $ ensures that one queen must occur AT MOST for the postiv values of $d=i-J$. To do so we split the digonals from the $D_1$ in the positive values $\{0, ... , n-2\}$ and in the negativ values $\{-(n-2),..., -1\}$. Therefor we compute for each cell of the corresponding diagonal with the formula $d=i-J$ .
+\item  $ \alpha_4 $ ensures that one queen must occur AT MOST for the negativ values of $d=i-J$ of $D_1$
+\item  $ \alpha_5 $ ensures that one queen must occur AT MOST for the postive values of $d=i-J$ of $D_2$
+\item  $ \alpha_6 $ ensures that one queen must occur AT MOST for the negativ values of $d=i-J$ of $D_2$
+\item  $ \alpha_7 $ ensures that there is AT LEAST one queen in each column. All the others conjunctions ensure only that ther is not more then one queen in each row, column and diagonal. The empty chees board would fulfill all this conjunctions so we need the last conjunct   $ \alpha_7 $ to ensure there is exactly one queen in each column.
 
  \end{itemize}
 
 \bigskip
-Prove the proof both direction of the correctness of the reduction ,
+ We have the look now at  both direction to ensure the correctness of the reduction ,
 i.e. prove the following statement: if $\phi$ is satisfiable, then the placement of the N-Queens is valid for the N-QUEENS problem. We only preform a proof sketch of the whole problem.
 
  \begin{itemize}
