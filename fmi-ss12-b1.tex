@@ -290,8 +290,56 @@ Finally R is decidable in polynomial time because, for a given subset of $S$ we 
 
 
 \solution
-
-
+To proove that \textbf{PARTITION} is $\NP$-complete, we have to show the membership (\textbf{PARTITION} is in $\NP$) 
+and show the hardness by reducing \textbf{SUBSET SUM} to \textbf{PARTITION}.\\
+\\
+Membership:\\
+To proove membership we have to define a certificate relation.\\
+\\
+$R = \{ [(S),S',S'']|  S' \subseteq S $ and $S'' = S - S'$ with $ \sum(S') = \sum(S'') \} $ \\
+\\
+We argue that R is a certificate relation for \textbf{PARTITION}. S is a positive instance of
+\textbf{PARTITION} $\Leftrightarrow$ there exists an $S'$ with the sum equal to $S''$.\\
+\\
+R is polynomially balanced, because any subset of the finite set S can be represented in space
+that is linear to S.\\
+\\
+Finally R is decidable in polynomial time, because for a given subset of S ($S'$), we can easily
+check if the sum is equal to $S''$ ($S'' = S - S'$). This needs at most n computational steps.\\
+\\ 
+\\
+For $\NP$-hardness we need proof that:\\
+$x \in \textbf{SUBSET SUM} \Leftrightarrow R(x) \in \textbf{PARTITION} $\\
+\\
+$\Rightarrow$:\\
+The \textbf{SUBSET SUM} problem is using a given finite set of non negative integers\\
+$<a_1, a_2,..., a_m, t>$ with m variables and t, which is the sum of the searched subset.\\
+If we can find a subset $S \subseteq \{1,..., m\}$ with the sum t, $\textbf{SUBSET SUM}$ is valid.\\
+\\
+$a = \sum_{1\leqslant i \leqslant m}a_i$ is the sum of all integers in the given set.\\
+\\
+For the reduction we have to consider 2 cases:\\
+1) $2t \geqslant a$:\\
+The reduction is a function $R(x) = < a_1, a_2, .. , a_m, a_{m+1} >$ where $a_{m+1} = 2t - a$.\\
+\\
+$\Rightarrow$:\\
+Let's assume \textbf{SUBSET SUM} has a found a subset $S \subseteq \{1,..., m\}$ with $\sum_{i\in S} a_i = t$,
+then letting $T = \{1,..., m\} - S$ be the complementary set with the not used non negative integer values.
+The sum of T is $\sum_{i\in T} a_i = a - t$. Now we want to add a new element, so that we have two sets with the
+sum equals t.\\
+We are looking for a value, which will be assigned to the new value $a_{m+1}$. We use this formula: $a - t + x = t$.
+$x = 2t - a$ and thus we have proven, that if we find a solution for \textbf{SUBSET SUM}, we can add a new value
+$a_{m+1} = 2t - a$ so we have two sets with the sum of t, and therefore \textbf{PARTITION} is valid either.\\
+\\
+$\Leftarrow$:\\
+If we find a solution for \textbf{PARTITION}, with $<a_1, a_2, .. , a_m, a_{m+1}>$, where the subset $S \subseteq \{1,..., m, m+1\}$
+and $T = \{1,..., m, m+1\} - S$ was found and the following holds: $\sum_{i\in S} a_i = \sum_{i\in T} a_i = (a + 2t - a)/2 = t$.
+This prooves we have found two sets with the sum of the t, by adding a new element $a_{m+1}$. If we assume that in 
+$\textbf{SUBSET SUM}$ the integer $a_{m+1}$ is an element of T, and thus not in S, we can find a $S \subseteq \{1,..., m\}$
+with $\sum_{i\in S} a_i = t$ and therefore $x \in \textbf{SUBSET SUM}$.\\
+\\
+2) $2t \leqslant a$:\\
+In the second case we are setting $a_{m+1} = a - 2t$ and can provide a proof equal to the one above.
 
 
 \begin{exercise}
