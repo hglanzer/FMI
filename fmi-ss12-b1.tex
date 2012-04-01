@@ -379,8 +379,29 @@ In the other direction it is possible to argue in the same way: the FREQ-ASSIGNM
 \end{exercise}
 
 
-%\solution{ Your solution here.}
-
+\solution
+To proove that entailment is $co-\NP$-complete, we have to show the membership (entailment is in $co-\NP$) 
+and show the hardness by reducing a known co-NP-complete problem to entailment.\\
+\\
+What we try to proof is:\\
+$\alpha \vDash \beta$ iff $\alpha \wedge \neg\beta$ is not satisfiable\\
+\\
+At first we try to show the membership with a reduction from entailment to Co-SAT (which is a $co-\NP$-complete problem).\\
+$\alpha \vDash \beta \Leftrightarrow \alpha \wedge \neg\beta$ is not satisfiable\\
+Lets proove $\Rightarrow$:\\
+In every assignment where the entailment is true, the reduction $\alpha \wedge \neg\beta$ is not satisfiable and so again true.
+If the entailment is false ($\alpha$ is true and $\beta$ is false), then $\alpha \wedge \neg\beta$ is satisfiable and so again false.\\
+\\
+For the other direction $\Leftarrow$ it is easy to show that if $\alpha \wedge \neg\beta$ is not satisfiable, the entailment is true.\\
+So if the formula is satisfiable ($\alpha$ is true and $\beta$ is false), the entailment is not valid either.\\
+\\
+Since we found a reduction from entailment to Co-SAT, entailment is in NP (membership).
+\\
+For the second part we construct a reduction from Co-SAT to entailment to proove NP-hardness.\\
+\\
+$\alpha \wedge \neg\beta$ is not satisfiable $\Leftrightarrow \alpha \vDash \beta$\\
+\\
+The proof was already given by the previous reduction. So we can conclude that entailment is also NP-hard and therefore NP-complete.
 
 
 \begin{exercise}
