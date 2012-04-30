@@ -130,6 +130,26 @@ positioning,fit,calc,decorations.text,shadows%
   first-UIP scheme, then $C_l$ is a consequence of $\mathcal{C}$.
 
   \solution{
+  
+  $C=\{C_1, C_2,... ,C_n\} = \bigwedge_{i=1}^{n} C_i$\\
+  \\
+  $\pi$ is a variable assignment.\\
+  $C \vDash C_l$ iff\\
+  $\forall \pi, \pi \vDash C \Rightarrow \pi \vDash C \wedge C_l$\\
+  $\forall \pi, \pi \vDash C \Rightarrow \pi \nvDash C \wedge \neg C_l$\\
+  \\
+  C is satisfiable iff $C \wedge \neg C_l$ is unsatisfiable.\\
+  \\
+  Proof:\\
+  If $C \vdash C_l$ then $C \vDash C_l$ then the deductive system is sound.\\
+  \\
+  Suppose that C is a countable set of logical formulas then $C \cup \{\neg C_l\}$ is iinconsistent.
+  $\Rightarrow C \nvdash C_l$ for some $C_l$.\\
+  \\
+  By the compactness theorem there $\exists$ a finite subset $C_0 \subseteq \{\neg C_l\}$ is inconsistent (it has no models).\\
+  \\
+  Then $C_0 \vDash C_l$. ($C_0$ are clauses of the conflict graph)
+  
   }
 \end{enumerate}
 
