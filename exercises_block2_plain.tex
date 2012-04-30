@@ -159,9 +159,179 @@ $E_{\neq} =\{x_1 \neq x_2, x_2 \neq x_4 , x_6 \neq x_5 \} $
 
 Now we construct the corresponding equality graph $G^{E} (\varphi^{E} )$ :
 
+ \begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+      \node(x1){$x_1$};
+      \node[below=of x1](x2){$x_2$};
+      \node[right=of x2](x3){$x_3$};
+      \node[below=of x2](x4){$x_4$};  
+      \node[below=of x4](x5){$x_5$};
+      \node[right=of x5](x6){$x_6$};
+      \node[below=of x3](x7){$x_7$};
+      \node[below=of x7](x6){$x_6$};
+      
+      
+      \draw[] (x1) -- (x2);
+      \draw[dashed] (x2) -- (x3);
+      \draw[dashed] (x3) -- (x4); 
+      \draw[dashed] (x3) -- (x7);
+      \draw[] (x2) -- (x4);
+      \draw[dashed] (x4) -- (x5);
+      \draw[] (x5) -- (x6);
+      \draw[dashed] (x6) -- (x7);
+ 
+    \end{tikzpicture}
+    \caption{$G^E(\varphi^E)$, dashed lines represent equality, solid lines disequality.}
+    \label{fig:sp1}
+  \end{figure}
 
   }
 
+Now we have to search for contradictory cycle. This are cycles which have exactly one dis-equality edge.
+Only the Edge $(x_1,x_2)$ are not part of a simple contradictory cycle, therefore we set those edges to $true$ in $\varphi^E$
+and obtain $\varphi^E_2$ as:
+
+ \begin{displaymath}
+    [ (true \lor  x_2 = x_3 ) \land \big[ (x_2 \neq x_4 \land x_3=x_4
+  \land x_4=x_5)
+  \lor (x_6 \neq x_5 \land x_6=x_7 \land x_7=x_3)\big]
+ \end{displaymath}
+
+  Propositional simplification of $\varphi^E_2$ leads to :
+ 
+ \begin{displaymath}
+   \big[ (x_2 \neq x_4 \land x_3=x_4
+  \land x_4=x_5)
+  \lor (x_6 \neq x_5 \land x_6=x_7 \land x_7=x_3)\big]
+ \end{displaymath}
+
+Now we construct the new corresponding equality graph $G^{E} (\varphi^{E_2} )$ :
+
+ \begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+      \node(x2){$x_2$};
+      \node[right=of x2](x3){$x_3$};
+      \node[below=of x2](x4){$x_4$};  
+      \node[below=of x4](x5){$x_5$};
+      \node[right=of x5](x6){$x_6$};
+      \node[below=of x3](x7){$x_7$};
+      \node[below=of x7](x6){$x_6$};
+      
+      
+      \draw[dashed] (x3) -- (x4); 
+      \draw[dashed] (x3) -- (x7);
+      \draw[] (x2) -- (x4);
+      \draw[dashed] (x4) -- (x5);
+      \draw[] (x5) -- (x6);
+      \draw[dashed] (x6) -- (x7);
+ 
+    \end{tikzpicture}
+    \caption{$G^E(\varphi^E_2)$, dashed lines represent equality, solid lines disequality.}
+    \label{fig:sp2}
+  \end{figure}
+
+\bigskip
+
+Now we have to search again for contradictory cycle.
+The Edge $(x_2)$ is not part of a simple contradictory cycle, therefore we set those edges to $true$ in $\varphi^E_2$
+and obtain $\varphi^E_3$ as:
+
+\begin{displaymath}
+   \big[ (TRUE \land x_3=x_4 \land x_4=x_5)
+  \lor (x_6 \neq x_5 \land x_6=x_7 \land x_7=x_3)\big]
+ \end{displaymath}
+ 
+
+  Propositional simplification of $\varphi^E_3$ leads to :
+ 
+ \begin{displaymath}
+   \big[ ( x_3=x_4
+  \land x_4=x_5)
+  \lor (x_6 \neq x_5 \land x_6=x_7 \land x_7=x_3)\big]
+ \end{displaymath}
+
+
+Now are no more nodes not part of a contradictory cycle. So we can build the e propositional skeleton $ e(\varphi^E_3) $ by
+  relabeling the equality literals with $e_{i,j}$.
+
+
+\begin{displaymath}
+   \big[ ( e_{3,7} \land e_{4,5} )
+  \lor ( \neg e_{6,5} \land e_{6,7} \land e_{7,3})\big]
+ \end{displaymath}
+
+The next step is to create a nonpolar version of the graph. To ensure that there are no hidden computational complexity we make the new graph chordal. To do so we have to add some edges at the corresponding nodes like $(x_7,x_5)$ and $(x_3,x_5)$. There are also others possibilities to make the graph chordal. If a graph is chordal then each cycles has the length 3. 
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+      \node(x3){$x_3$};
+      \node[left=of x3](x4){$x_4$};  
+      \node[below=of x4](x5){$x_5$};
+      \node[below=of x3](x7){$x_7$};
+      \node[below=of x7](x6){$x_6$};
+      
+      
+      \draw[] (x3) -- (x4); 
+      \draw[] (x3) -- (x7);
+      \draw[] (x2) -- (x4);
+      \draw[] (x4) -- (x5);
+      \draw[] (x5) -- (x6);
+      \draw[] (x6) -- (x7);
+ 
+    \end{tikzpicture}
+    \caption{Non-chordal graph}
+    \label{fig:sp3}
+  \end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+      \node(x3){$x_3$};
+      \node[left=of x3](x4){$x_4$};  
+      \node[below=of x4](x5){$x_5$};
+      \node[below=of x3](x7){$x_7$};
+      \node[below=of x7](x6){$x_6$};
+      
+      
+      \draw[] (x3) -- (x4);
+      \draw[] (x3) -- (x5);
+      \draw[] (x5) -- (x7);
+      \draw[] (x3) -- (x7);
+      \draw[] (x2) -- (x4);
+      \draw[] (x4) -- (x5);
+      \draw[] (x5) -- (x6);
+      \draw[] (x6) -- (x7);
+ 
+    \end{tikzpicture}
+    \caption{Chordal graph}
+    \label{fig:sp4}
+  \end{figure}
+
+At last we have to derive according transitivity constraints for each triangle to obtain $B_t$.
+  
+\begin{eqnarray*}
+    B_t:= &(e_{3,7} \land e_{3,5} \rightarrow e_{7,5}) \land
+   (e_{3,7} \land e_{7,5} \rightarrow e_{3,5}) \land
+    (e_{3,5} \land e_{5,7} \rightarrow e_{5,8}) \land & \quad \quad \text{for }\triangle
+    (x_3,x_5,x_7)\\
+    %
+    &(e_{3,4} \land e_{4,5} \rightarrow e_{3,5}) \land
+    (e_{4,5} \land e_{3,5} \rightarrow e_{3,4}) \land
+    (e_{3,4} \land e_{3,5} \rightarrow e_{4,5}) \land & \quad \quad \text{for
+    } \triangle (x_3,x_4,x_5)\\
+    %
+    &(e_{5,7} \land e_{5,6} \rightarrow e_{6,7}) \land
+    (e_{5,7} \land e_{6,7} \rightarrow e_{5,6}) \land
+    (e_{5,6} \land e_{6,7} \rightarrow e_{5,7}) &\quad \quad\text{for }  \triangle (x_7,x_5,x_8)
+  \end{eqnarray*}
+
+  The sparse Methode generates at the final form  $e(\varphi^E_3) \land B_t$.
+
+  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -176,6 +346,18 @@ an EU formula:
 
 
 \solution{
+  The first step of the ackermann´s reduction enummerate each variable from outside to inside and from left to right. 
+ 
+ \begin{displaymath}
+  f_4\left(f_1\left(g_1\left(a\right),b\right),a\right) = f_1(g_1(a),b) \rightarrow \big[ f_2(x,y) = g_2(f_1(g(a),b)) \land
+   g_3(f_3(a,y))=d \big]
+ \end{displaymath}
+
+After the enummeration ....
+
+  
+
+
 }
 
 
