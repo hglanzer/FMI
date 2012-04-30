@@ -12,7 +12,9 @@
 \usepackage{amsfonts}
 \usepackage[nounderscore]{syntax}
 \usepackage{enumitem}
+\usepackage{paralist
 \newcommand{\comment}[1]{\marginpar{\small{\bf Comment:} #1}}
+
 
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,backgrounds,%
@@ -373,10 +375,38 @@ an EU formula:
    g_3(f_3(a,y))=d \big]
  \end{displaymath}
 
-After the enummeration ....
+After the enummeration we can define the meanings of the $\cT$:
 
-  
+  \begin{align*}
+   \cT (f_1(g_1(a),b)) &= F_1  \\
+   \cT (f_2(x,y) &= F_2\\
+    \cT (f_3(a,y)) &= F_3 \\
+    \cT (f_4(f_1(g_1(a),b),b)) &= F_4 \\
+    \cT (g_1(a)) &= G_1\\
+    \cT (g_2(f_1(g_1(a),b)) &= G_2 \\
+    \cT (g_3(f_3(a,y)) &= G_3  \\ 
+  \end{align*}
 
+After we defined $\cT$ we can write the $flat^E$.
+
+$ flat^E:= F_3 = F_1 \rightarrow  (F_2 = G_2) \land G_3 = d $. 
+In the next step we construct the functional consistency constraints $FC^E$ as follows:
+ 
+ \begin{align*}
+  FC^E := \\
+    ((a = F_1) \rightarrow & G_1 = G_2) \land \\
+     ((a = F_2) \rightarrow & G_1 = G_3) \land \\
+      ((F_1 = F_2) \rightarrow & G_2 = G_3) \land \\
+      ((G_1 = x \land b=y) \rightarrow & F_1 = F_2) \land \\
+      ((G_1 = a \land b=y ) \rightarrow & F_1 = F_3) \land \\
+      ((G_1 = F_1 \land b=a) \rightarrow & F_1 = F_2) \land \\
+      ((x = a \land y=y) \rightarrow & F_2 = F_3) \land \\
+      ((x= F_1 \land y=a) \rightarrow & F_2 = F_4) \land \\
+      ((a = F_1 \land y=a) \rightarrow & F_3 = F_4))
+ \end{align*}
+
+
+Finally, the we generate the equality formula : $\varphi^E := FC^E \rightarrow flat^E$
 
 }
 
