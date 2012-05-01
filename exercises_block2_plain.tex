@@ -125,7 +125,7 @@ positioning,fit,calc,decorations.text,shadows%
   \begin{figure}[h]
     \centering
     \begin{tikzpicture}
-      \coordinate (A) at (-4,2);
+      \coordinate (A) at (0,2);
       \coordinate (B) at (-2,1);
       \coordinate (C) at (2,-3);
       \coordinate (D) at (0,0);
@@ -185,6 +185,63 @@ positioning,fit,calc,decorations.text,shadows%
   prove that there is exactly one node in the graph which is a first UIP.
 
   \solution{
+  
+  There is always at least one UIP. The decision node is always a unique implication point. 
+  If there is only one UIP, the decision node, then it is also the first UIP.
+  If there are more UIP's in the implication graph, only one of them can be the first UIP.\\
+  The first UIP is the UIP closest (shortest path) to the conflict node.\\
+  The proof: We assume that there are two first UIP's. By definition the first UIP is a node 
+  in the implication graph, that all paths from the decision node to the conflict node go through it
+  and it has the shortest path.\\
+  \begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+      \coordinate (A) at (0,0);
+      \coordinate (B) at (2,1);
+      \coordinate (C) at (2,-1);
+      \coordinate (D) at (4,0);
+      \coordinate (E) at (6,1);
+      \coordinate (F) at (6,-1);
+      \coordinate (G) at (8,0);
+      \coordinate (H) at (10,1);
+      \coordinate (I) at (10,-1);
+      \coordinate (J) at (12,0);
+      
+      \node[fill,circle,label=left:{$d$}] (aa) at (A) {};
+      \node[fill,circle] (bb) at (B) {};
+      \node[fill,circle] (cc) at (C) {};
+      \node[fill,circle,label=above:{$u_1$}] (dd) at (D) {};
+      \node[fill,circle] (ee) at (E) {};
+      \node[fill,circle] (ff) at (F) {};
+      \node[fill,circle,label=above:{$u_2$}] (gg) at (G) {};
+      \node[fill,circle] (hh) at (H) {};
+      \node[fill,circle] (ii) at (I) {};
+      \node[fill,circle,label=right:{$k$}] (jj) at (J) {};
+      
+      \draw[->,thick] (aa) --node {} (bb);
+      \draw[->,thick] (aa) --node {} (cc);
+      \draw[->,thick] (cc) --node {} (dd);
+      \draw[->,thick] (bb) --node {} (dd);
+      \draw[->,thick] (dd) --node {} (ee);
+      \draw[->,thick] (dd) --node {} (ff);
+      \draw[->,thick] (ee) --node {} (gg);
+      \draw[->,thick] (ff) --node {} (gg);
+      \draw[->,thick] (gg) --node {} (hh);
+      \draw[->,thick] (gg) --node {} (ii);
+      \draw[->,thick] (hh) --node {} (jj);
+      \draw[->,thick] (ii) --node {} (jj);
+          
+    \end{tikzpicture}
+    \caption{first UIP counter example}
+    \label{fig:uip}
+  \end{figure}
+  
+  This path in the figure above is a subset of the implication graph. We assume we split this path p into three subset paths. The first path $p_1$ goes from the
+  decision node d to the first of the two first UIP's, called $u_1$. The second path $p_2$ goes from $u_1$ to the second first UIP, $u_2$. The third path $p_3$
+  goes from $u_2$ to the conflict node k.\\
+  The length of the path from the first assumed first UIP $u_1$ to $k$ is $p_2 + p_3$. The length of the path from $u_2$ to k is only $p_3$ and therefore shorter.
+  This means there can only be one first UIP, because there cannot be two UIP's with the same shortest length.
+  
   }
 
 \item Let $\mathcal{C}$ be a set of clauses and $G$ a conflict graph with
