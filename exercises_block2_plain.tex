@@ -12,7 +12,7 @@
 \usepackage{amsfonts}
 \usepackage[nounderscore]{syntax}
 \usepackage{enumitem}
-\usepackage{paralist
+%\usepackage{paralist}
 \newcommand{\comment}[1]{\marginpar{\small{\bf Comment:} #1}}
 
 
@@ -135,6 +135,7 @@ positioning,fit,calc,decorations.text,shadows%
       \coordinate (H) at (4,0);
       \coordinate (J) at (4,-2);
       \coordinate (K) at (6,-1);
+      %\coordinate (L) at (2,-1);
       
       \node[fill,circle,label=left:{$A=0@1$}] (ab) at (A) {};
       \node[fill,circle,label=left:{$B=1@1$}] (bd) at (B) {};
@@ -146,12 +147,14 @@ positioning,fit,calc,decorations.text,shadows%
       \node[fill,circle,label=above:{$H=1@3$}] (hk) at (H) {};
       \node[fill,circle,label=right:{$J=1@3$}] (jk) at (J) {};
       \node[fill,circle,label=right:{$k$},red] (kk) at (K) {};
+      %\node[red,label=above:{$first UIP$}] (ll) at (L) {};
+      \node [above, red] at (2,-0.5) {first UIP};
       
-      \draw[->,thick] (ab) --node[label=above:$c_1$] {} (bd);
+      \draw[->,thick] (ab) --node[label=below:$c_1$] {} (bd);
       \draw[->,thick] (bd) --node[label=above:$c_3$] {} (dg);
-      \draw[->,thick] (ed) --node[label=above:$c_3$] {} (dg);
+      \draw[->,thick] (ed) --node[label=below:$c_3$] {} (dg);
       \draw[->,thick] (ed) --node[label=above:$c_4$] {} (fg);
-      \draw[->,thick] (dg) --node[label=above:$c_5$] {} (gh);
+      \draw[->,thick] (dg) --node[label=below:$c_5$] {} (gh);
       \draw[->,thick] (fg) --node[label=above:$c_5$] {} (gh);
       \draw[->,thick] (gh) --node[label=above:$c_2$] {} (hk);
       \draw[->,thick] (gh) --node[label=above:$c_6$] {} (jk);
@@ -160,13 +163,22 @@ positioning,fit,calc,decorations.text,shadows%
       \draw[->,thick] (hk) --node[label=above:$c_7$] {} (kk);
       \draw[->,thick] (ab) --node[label=above:$c_2$] {} (hk);
       
-      \draw [red](2.5,2.5) -- (2.5,-3.5);
+      \draw [red](2.8,2.5) -- (2.8,-3.5);
       
 
     \end{tikzpicture}
     \caption{Implication Graph}
     \label{fig:ig}
   \end{figure}
+  
+  We have two UIP's in this implication graph. The decision node (in this case E) is always an UIP, but the first UIP is in this case the node G, because every path leads to a conflict and the path is shorter then from the node E.\\
+  \\
+  calculating the conflict clause:\\
+  $r_1 = res(c_7, c_2, H) = A \vee G \vee \neg J$\\
+  $r_2 = fac(res(r_1, c_6, A)) = A \vee \neg C \vee G$\\
+  \\
+  The conflict clause is: $A \vee \neg C \vee G$
+  
   }
 
 \item Prove that in a conflict graph the first UIP is uniquely defined, i.e.,
