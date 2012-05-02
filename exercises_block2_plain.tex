@@ -58,26 +58,174 @@ positioning,fit,calc,decorations.text,shadows%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\newcommand{\lr}{\leftrightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\xor}{\oplus}
+\newcommand{\li}{l_{i}}
+\newcommand{\lia}{l_{i_1}}
+\newcommand{\lib}{l_{i_2}}
+\newcommand{\lk}{l_{k}}
+\newcommand{\lka}{l_{k_1}}
+\newcommand{\lkb}{l_{k_2}}
+
 \Aufgabe[Tseitin Transformation \hfill \bf (0.5 + 1 + 1.5 points)]
 
 \begin{enumerate}
 \item Extend Tseitin's transformation for the connectives $\leftrightarrow$
   (equivalence) and $\oplus$ (XOR). Find the necessary clauses for the new schemes
-  $l_i \leftrightarrow (l_{i'} \leftrightarrow l_{i''})$ and $l_k
-  \leftrightarrow (l_{k'} \oplus l_{k''})$.
+  $l_i \leftrightarrow (l_{i_1} \leftrightarrow l_{i_2})$ and $l_k
+  \leftrightarrow (l_{k_1} \oplus l_{k_2})$.
   
-  \solution{
-  
-  
-  
+  \solution{    \begin{itemize}
+    \item $\li \lr (\lia \lr \lib)$
+      
+      First we have to use some simple simplification we obtain clauses $(1)$ and $(2)$:
+      \begin{align*}
+        \li \lr& (\lia \lr \lib) \\
+        \equiv \li \lr& (\lia \ra \lib \land \lib \ra \lia)\\
+        \equiv \li \ra& (\lia \ra \lib \land \lib \ra \lia)\; \land\\
+        & (\lia \ra \lib \land \lib \ra \lia) \ra \li
+      \end{align*}
+      To ensure that we don´t lose the overview about the formulas we split the formula into two subcases:
+        \begin{align*}
+      \tag{1} \li \ra  (\lia \ra \lib \land \lib \ra \lia) \\
+      \tag{2}  (\lia \ra \lib \land \lib \ra \lia) \ra \li
+        \end{align*}
+
+    %We derive the first two clauses $C_{1}=(\neg\li\lor\neg\lia \lor
+     %\lib)$ and $C_{2}=(\neg\li\lor\neg\lib \lor \lia)$ from $(*)$ as follows:
+     For the first formula
+      \begin{align*}
+        \tag{1}&\li \ra (\lia \ra \lib \land \lib \ra \lia)\\
+        \equiv & \li \ra (\neg\lia \lor \lib) \land \li\ra (\neg\lib \lor \lia) \\
+        \equiv &(\neg\li\lor\neg\lia \lor \lib) \land (\neg\li\lor\neg\lib \lor \lia)
+      \end{align*}
+    So we can derive the first two clauses $C_{1}=(\neg\li\lor\neg\lia \lor
+    \lib)$ and $C_{2}=(\neg\li\lor\neg\lib \lor \lia)$ 
+
+     For the second formula we can calculate the following clauses:
+      \begin{align*}
+        \tag{2}& (\lia \ra \lib \land \lib \ra \lia) \ra \li\\
+        \equiv &\neg((\neg\lia\lor\lib) \land (\neg\lib \lor \lia))
+        \lor \li\\
+        \tag {rule 2}\equiv &((\lia\land\neg\lib)\lor(\lib\land\neg\lia))\lor\li \\
+        \tag {rule 2}\equiv &((\lia \lor(\lib \land
+        \neg\lia)\land(\neg\lib\lor(\lib\lor\neg\lia)))\lor\li  \\
+        \tag {rule 1}\equiv & ((\lia \lor \lib) \land (\lia \lor \neg\lia) \land
+        (\neg\lib \lor \lib) \land (\neg\lib \lor \neg\lia)) \lor
+        \li  \\
+        \equiv & (\li \lor \lia \lor \lib) \land (\li \lor \neg\lib \lor \neg\lia)
+      \end{align*}
+      So we derive the next two clauses $C_{3}=(\li \lor \lia \lor \lib)$
+      and $C_{4}=(\li \lor \neg\lib \lor \neg\lia)$ and the we are finished for the equivalence.
+ \bigskip 
+    
+    \item $\lk \lr \lka \xor \lkb$
+      
+     Once again we use the subformulas $(1)$ and $(2)$ to abtain the clauses after the first simplifications:
+      \begin{align*}
+        \lk \lr& (\lka \xor \lkb) \\
+        \equiv \lk \lr& (\lka \lor \lkb) \land (\neg\lka \lor \neg\lkb)\\
+        \tag{1}\equiv \lk \ra& ((\lka \lor \lkb) \land (\neg\lka \lor \neg\lkb))\; \land\\
+        \tag{2}& \neg((\lka \lor \lkb) \land (\neg\lka \lor \neg\lkb)) \ra \lk
+      \end{align*}
+      We derive the first two clauses from $(1)$ in with the following steps: (same steps as above)
+     
+      \begin{align*}
+        \tag{1}&\lk \ra ((\lka \lor \lkb) \land (\neg\lka \lor \neg\lkb))\\
+        \equiv &(\neg\lk\lor\lka\lor\lkb) \land (\neg\lk\lor\neg\lka\lor\neg\lkb)    
+      \end{align*}
+      $C_{1}=(\neg\lk\lor\lka\lor\lkb)$ and
+      $C_{2}=(\neg\lk\lor\neg\lka\lor\neg\lkb)$ 
+     
+     For the second formula we can calculate the following clauses:
+      follows:
+      \begin{align*}
+        \tag{2}& \neg((\lka \lor \lkb) \land (\neg\lka \lor
+        \neg\lkb)) \ra \lk\\
+        \equiv & ((\neg\lka \land \neg\lkb) \lor (\lka \land
+        \lkb))\lor \lk\\
+        \equiv & (((\lka \lor (\neg\lka\land\neg\lkb)) \land (\lkb
+        \lor (\neg\lka\land\neg\lkb)))\lor \lk\\
+        \equiv & ((\lka \lor\neg\lkb) \land (\neg\lka\lor\lkb)) \lor
+        \lk\\
+        \equiv & (\lk \lor \lka \lor\neg\lkb) \land (\lk \lor \neg\lka\lor\lkb)
+      \end{align*}
+      Finally we derive the clauses 
+      $C_{3}=(\lk \lor \lka \lor\neg\lkb)$
+      and $C_{4}=(\lk \lor \neg\lka\lor\lkb)$ from $(2)$ and we are finished.
+    \end{itemize} 
   }
 
 \item Apply Tseitin's transformation to the following formula $\psi$: $a \rightarrow
   \big( b \lor \neg (a \leftrightarrow c)\big)$.
+
   
   Hint: You do not need to introduce labels for propositions $a,b,$ and $c$.
   \solution{
+For the first step we have to generate a formula tree as follows (see Fig 1 ):
+We don´t need to introduce labels for the propositional formulas so we can define the following equivalences from the formula tree:
+    \begin{align*}
+      l_1 &\lr (a \lr c)\\
+      l_2 &\lr (\neg l_{1})\\
+      l_3 &\lr (b \lor l_{2})\\
+      l_4 &\lr (a \ra l_{3})\\
+    \end{align*}
+
+In the next step we create a Table and to Translate the “labeling formulas” to clauses:
+
+    \begin{table}[ht]
+      \centering
+      \begin{tabular}{l|cccc}
+        & $C_{1}$ & $C_{2}$ & $C_{3}$ & $C_{4}$ \\
+        \hline
+        $l_1 \lr (a \lr c)$ & $\neg l_{1},\neg a,c$ & $\neg l_{1}, a,
+        \neg c$ & $l_{1}, a, c$ & $l_{1},\neg a, \neg c$\\
+        $l_{2}\lr (\neg l_{1})$& $l_{1},l_{2}$ & $\neg l_{1}, \neg
+        l_{2}$ & $TRUE$ & $TRUE$\\
+        $l_3 \lr (b \lor l_{2})$ & $\neg l_{3},b,l_{2}$ & $\neg b,
+        l_{3}$ & $\neg l_{2},l_{3}$ &$TRUE$\\
+        $l_4 \lr (a \ra l_{3})$ & $\neg l_{4}, \neg a, l_{3}$ &
+        $l_{4},a$ & $l_{4}, \neg l_{3}$&$TRUE$
+      \end{tabular}
+      \caption{Clause set resulting from the Tseitin transformation to $\psi$}
+      \label{tab:tseitin}
+    \end{table}
+
+    \begin{figure}[ht]
+      \centering
+      \begin{tikzpicture}
+        \node[label={[red]above:$l_4$}] {$\ra$}
+        child {
+          node {$a$}
+        }
+        child {
+          node[label={[red]right:$l_3$}] {$\lor$}
+          child {
+            node {$b$}
+          }
+          child {
+            node[label={[red]right:$l_2$}] {$\neg$}
+            child {
+              node[label={[red]right:$l_1$}] {$\lr$}
+              child {
+                node {$a$}
+              }
+              child {
+                node {$c$}
+              }
+            }
+          }
+        }
+        ;
+      \end{tikzpicture}
+      \caption{Formula tree for the corresponding formula (the need labels are colored red)}
+      \label{fig1}
+    \end{figure}
+
   }
+
 
 \item Let $\psi$ be a propositional formula and $D^\psi$ the set of clauses
   resulting from Tseitin's transformation on $\psi$. Prove that the following
