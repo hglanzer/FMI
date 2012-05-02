@@ -180,18 +180,25 @@ In the next step we create a Table and to Translate the “labeling formulas” 
       \begin{tabular}{l|cccc}
         & $C_{1}$ & $C_{2}$ & $C_{3}$ & $C_{4}$ \\
         \hline
-        $l_1 \lr (a \lr c)$ & $\neg l_{1},\neg a,c$ & $\neg l_{1}, a,
-        \neg c$ & $l_{1}, a, c$ & $l_{1},\neg a, \neg c$\\
-        $l_{2}\lr (\neg l_{1})$& $l_{1},l_{2}$ & $\neg l_{1}, \neg
+        $l_1 \lr (a \lr c)$ & $\neg l_{1}\lor\neg a \lor c$ & $\neg l_{1} \lor  a \lor
+        \neg c$ & $l_{1}\lor a\lor c$ & $l_{1}\lor\neg a\lor \neg c$\\
+        $l_{2}\lr (\neg l_{1})$& $l_{1} \lor l_{2}$ & $\neg l_{1}\lor \neg
         l_{2}$ & $TRUE$ & $TRUE$\\
-        $l_3 \lr (b \lor l_{2})$ & $\neg l_{3},b,l_{2}$ & $\neg b,
-        l_{3}$ & $\neg l_{2},l_{3}$ &$TRUE$\\
-        $l_4 \lr (a \ra l_{3})$ & $\neg l_{4}, \neg a, l_{3}$ &
-        $l_{4},a$ & $l_{4}, \neg l_{3}$&$TRUE$
+        $l_3 \lr (b \lor l_{2})$ & $\neg l_{3} \lor b \lor l_{2}$ & $\neg b \lor
+        l_{3}$ & $\neg l_{2} \lor l_{3}$ &$TRUE$\\
+        $l_4 \lr (a \ra l_{3})$ & $\neg l_{4} \lor \neg a \lor  l_{3}$ &
+        $l_{4} \lor a$ & $l_{4} \lor \neg l_{3}$&$TRUE$
       \end{tabular}
-      \caption{Clause set resulting from the Tseitin transformation to $\psi$}
+      \caption{Corresponding Tseitin table to the given formula}
       \label{tab:tseitin}
     \end{table}
+
+Translating the formula   into a definitional form, where each logical gate is
+assinged with a label$ l_i$, we have to conjunct all the clauses from the table (1), such that:
+  \begin{align*}
+      \delta (\psi) = l_4 \land (\neg l_{1}\lor\neg a \lor c) \land \dots \land  (l_{4} \lor \neg l_{3})
+    \end{align*}
+Now we have generated a sat-equivalent to the original formula $\psi$.
 
     \begin{figure}[ht]
       \centering
