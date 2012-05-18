@@ -32,49 +32,77 @@
   Show that the given\TPL\ program 
   is syntactically correct:
 \newline
-
-  \begin{ALG}
-    1    \ASS x{x+y};\\
-    2    \IF\ $x<0$ \THEN\\
-    3    \>\ABORT\\
-    4    \ELSE\\
-    5    \>\WHILE\ $x\neq y$ \DO\\
-    6    \>\>\ASS x{x+1};\\
-    7    \>\>\ASS y{y+2}\\
-    8    \>\OD\\
-    9    \FI
-  \end{ALG}
-
-
-To prove the progam for correct syntax, every line of the given code must be examined to show that every statement is part of our programming language. The TPL
-syntax was introduced in the first lecture, see the corresping pdf, pages 12 and 13.
+$ x:=x+y;if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi $
 
 \begin{itemize}
- \item Line 1: \begin{ALG} \ASS x{x+y}; \end{ALG} \newline
-Assignment: $\nu::= \epsilon, \nu::= variable | integer | binary$ $expression | unary$ $expression$
+\item $\mathcal{P}$
+\item $\Rightarrow \mathcal{V}:=\mathcal{E}$
+\item $\Rightarrow x:=(\mathcal{E} \mathcal{B} \mathcal{E})$
+\item $\Rightarrow x:=(\mathcal{V} + \mathcal{V})$
+\item $\Rightarrow$ x:=x + y;
+\item $\Rightarrow$ x:=x + y; if $\mathcal{E}$ then $\mathcal{P}$ else $ \mathcal{P}$ fi
+\item $\Rightarrow$ x:=x + y; if $(\mathcal{E} \mathcal{B} \mathcal{E})$ then $\mathcal{P}$ else $ \mathcal{Q}$ if
+\item $\Rightarrow$ x:=x + y; if $\mathcal{V} < \mathcal{N}$ then $\mathcal{P}$ else $ \mathcal{Q}$ if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then $\mathcal{P}$ else $ \mathcal{Q}$ if
+\item $\Rightarrow$ x:=x + y; if x $< $ 0 then abort; else $ \mathcal{Q}$ if
+\item $\Rightarrow$ x:=x + y; if x $< $ 0 then abort; else while $\mathcal{E}$ do $ \mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $ < $ 0 then abort; else while $(\mathcal{E} \mathcal{B} \mathcal{E})$ do $ \mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while $(\mathcal{E} \neq \mathcal{E})$ do $ \mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while $(\mathcal{V} \neq \mathcal{E})$ do $ \mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $ < $ 0 then abort; else while $(\mathcal{V} \neq \mathcal{V})$ do $ \mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do $ \mathcal{P};\mathcal{P}$ od if
 
-Left side of an assignment must be a variable, which must not be a keyword, which is not the case, $x$ is not reserved, as well as $y$. Right 
-side must be an expression $\epsilon$, which can itself be another variable, an integer or one or two expressions, connected with an uniary or binary operator.
+\item $\Rightarrow$ x:=x + y; if x $ <$ 0 then abort; else while x$ \neq $y do $ \mathcal{E};\mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do $ (\mathcal{E} \mathcal{B} \mathcal{E});\mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do $ (\mathcal{V} + \mathcal{N});\mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x + 1;$\mathcal{P}$; od if
 
- \item Line 2, 4, 9: \begin{ALG} \IF\ $x<0$ \THEN \end{ALG} ... \begin{ALG} else \end{ALG} ... \begin{ALG} fi \end{ALG} \newline
-If-Then-Else - Statement: must start with the keyword $IF$, followed by an expression $\epsilon$. In this case, the expression consists
-of 2 variables with a binary operator, as defined recursevly in the lecture notes. After this expression another keyword, $THEN$, must occur, which is the case. A programstatement must follow afterwards(will be examined in the next steps), until another keyword, $ELSE$, occurs. Afterwards, another programstatement follows, until the construct is closed by the final keyword $FI$.
-
- \item Line 3: \begin{ALG} abort \end{ALG} \newline
-valid keyword, which terminates the actual program and signals an error condition
- \item Line 5,8: \begin{ALG} \>\WHILE\ $x\neq y$ \DO \end{ALG} ...   \begin{ALG} od \end{ALG} \newline
-keyword $WHILE$, followed by a valid binary expression, followd by keyword $DO$, followed by a program statement, terminated by keyword $OD$
- \item Line 6: \begin{ALG}  \>\>\ASS x{x+1}; \end{ALG} \newline
-valid assignment, left side is a variable(no keyword allowed), right side consists of a binary expression, in this case a variable, an integer and the defined operator $+$, which
-is a valid expression as defined in a recursive manner on page 12 in the lecture notes 
-
- \item Line 7: \begin{ALG}  \>\>\ASS y{y+2};\end{ALG}\newline
-same as Line 6
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x + 1;$\mathcal{E}$; od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x + 1;$(\mathcal{E} \mathcal{B} \mathcal{E})$; od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x + 1;$(\mathcal{V} $+$ \mathcal{N})$; od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x + 1; y + 2; od if
 
 \end{itemize}
 
-
-Because the program only contains valid expressions that are all well-defined, it belongs to the family of TPL - programs. 
+%  \begin{ALG}
+%    1    \ASS x{x+y};\\
+%    2    \IF\ $x<0$ \THEN\\
+%    3    \>\ABORT\\
+%    4    \ELSE\\
+%    5    \>\WHILE\ $x\neq y$ \DO\\
+%    6    \>\>\ASS x{x+1};\\
+%    7    \>\>\ASS y{y+2}\\
+%    8    \>\OD\\
+%    9    \FI
+%  \end{ALG}
+%
+%
+%To prove the progam for correct syntax, every line of the given code must be examined to show that every statement is part of our programming language. The TPL
+%syntax was introduced in the first lecture, see the corresping pdf, pages 12 and 13.
+%
+%\begin{itemize}
+% \item Line 1: \begin{ALG} \ASS x{x+y}; \end{ALG} \newline
+%Assignment: $\nu::= \epsilon, \nu::= variable | integer | binary$ $expression | unary$ $expression$
+%
+%Left side of an assignment must be a variable, which must not be a keyword, which is not the case, $x$ is not reserved, as well as $y$. Right 
+%side must be an expression $\epsilon$, which can itself be another variable, an integer or one or two expressions, connected with an uniary or binary operator.
+%
+% \item Line 2, 4, 9: \begin{ALG} \IF\ $x<0$ \THEN \end{ALG} ... \begin{ALG} else \end{ALG} ... \begin{ALG} fi \end{ALG} \newline
+%If-Then-Else - Statement: must start with the keyword $IF$, followed by an expression $\epsilon$. In this case, the expression consists
+%of 2 variables with a binary operator, as defined recursevly in the lecture notes. After this expression another keyword, $THEN$, must occur, which is the case. A programstatement must follow afterwards(will be examined in the next steps), until another keyword, $ELSE$, occurs. Afterwards, another programstatement follows, until the construct is closed by the final keyword $FI$.
+%
+% \item Line 3: \begin{ALG} abort \end{ALG} \newline
+%valid keyword, which terminates the actual program and signals an error condition
+% \item Line 5,8: \begin{ALG} \>\WHILE\ $x\neq y$ \DO \end{ALG} ...   \begin{ALG} od \end{ALG} \newline
+%keyword $WHILE$, followed by a valid binary expression, followd by keyword $DO$, followed by a program statement, terminated by keyword $OD$
+% \item Line 6: \begin{ALG}  \>\>\ASS x{x+1}; \end{ALG} \newline
+%valid assignment, left side is a variable(no keyword allowed), right side consists of a binary expression, in this case a variable, an integer and the defined operator $+$, which
+%is a valid expression as defined in a recursive manner on page 12 in the lecture notes 
+%
+% \item Line 7: \begin{ALG}  \>\>\ASS y{y+2};\end{ALG}\newline
+%same as Line 6
+%
+%\end{itemize}
 
 \end{exercise}
 
