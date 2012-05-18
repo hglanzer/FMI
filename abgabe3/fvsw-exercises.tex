@@ -53,22 +53,19 @@ syntax was introduced in the first lecture, see the corresping pdf, pages 12 and
  \item Line 1: \begin{ALG} \ASS x{x+y}; \end{ALG} \newline
 Assignment: $\nu::= \epsilon, \nu::= variable | integer | binary$ $expression | unary$ $expression$
 
-Left side of an assignment must be a variable, which must NOT be a keyword, which is not the case, $x$ is not reserved, as well as $y$. Left 
-side must be an expression $\epsilon$, which can itself be another variable, an integer or one or two expressions, connected with an uniary or
-binary operator -> syntactically correct
+Left side of an assignment must be a variable, which must not be a keyword, which is not the case, $x$ is not reserved, as well as $y$. Right 
+side must be an expression $\epsilon$, which can itself be another variable, an integer or one or two expressions, connected with an uniary or binary operator.
 
  \item Line 2, 4, 9: \begin{ALG} \IF\ $x<0$ \THEN \end{ALG} ... \begin{ALG} else \end{ALG} ... \begin{ALG} fi \end{ALG} \newline
 If-Then-Else - Statement: must start with the keyword $IF$, followed by an expression $\epsilon$. In this case, the expression consists
-of 2 variables, connected with a binary operator, as defined recursevly in the lecture notes. After this expression another keyword, $THEN$, must occur,
-which is the case. A program - statement must follow afterwards(will be examined in the next steps), until another keyword, $ELSE$, occurs. Afterwards, another
-program statement follows, until the construct is closed by the final keyword $FI$.
+of 2 variables with a binary operator, as defined recursevly in the lecture notes. After this expression another keyword, $THEN$, must occur, which is the case. A programstatement must follow afterwards(will be examined in the next steps), until another keyword, $ELSE$, occurs. Afterwards, another programstatement follows, until the construct is closed by the final keyword $FI$.
 
  \item Line 3: \begin{ALG} abort \end{ALG} \newline
 valid keyword, which terminates the actual program and signals an error condition
  \item Line 5,8: \begin{ALG} \>\WHILE\ $x\neq y$ \DO \end{ALG} ...   \begin{ALG} od \end{ALG} \newline
 keyword $WHILE$, followed by a valid binary expression, followd by keyword $DO$, followed by a program statement, terminated by keyword $OD$
  \item Line 6: \begin{ALG}  \>\>\ASS x{x+1}; \end{ALG} \newline
-valid assignment, left side is a variable(no keyword allowed), right side consists of a binary expression, in this case a variable and an integer, which
+valid assignment, left side is a variable(no keyword allowed), right side consists of a binary expression, in this case a variable, an integer and the defined operator $+$, which
 is a valid expression as defined in a recursive manner on page 12 in the lecture notes 
 
  \item Line 7: \begin{ALG}  \>\>\ASS y{y+2};\end{ALG}\newline
@@ -76,6 +73,8 @@ same as Line 6
 
 \end{itemize}
 
+
+Because the program only contains valid expressions that are all well-defined, it belongs to the family of TPL - programs. 
 
 \end{exercise}
 
@@ -86,6 +85,48 @@ same as Line 6
   \begin{subexercises}
     \item the structural operational semantics
     \item the natural semantics
+
+\begin{itemize}
+
+\item $=[ x:=x+y;if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi ] \sigma $
+
+Regel: $ [p;q]\sigma = [q][p]\sigma$    
+    
+$[x:=x+y; if...]\sigma$ = $[if...][x:=x+y]\sigma$
+
+$\sigma: x \mapsto 1, y \mapsto 1$
+   
+
+    \item $=[if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi ] \sigma_1$
+    
+   Regel:  $[ if $ $e $ $then $ $ p $ $ else$ $ q $ $ fi]\sigma$ 
+       
+    $\sigma_1: x \mapsto 2, y \mapsto 1$
+        
+    \item $ = [while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od]\sigma_2$
+    
+    Regel: $[while $ $e$ $ do $ $p $ $od]\sigma = $
+
+	$\sigma_2: x \mapsto 2, y \mapsto 1$
+	
+	$=[while $ $ x \neq y...][y:=y+2;x:=x+1]\sigma_2$     
+	
+	$\sigma_3: x \mapsto [x+1]\sigma_2=3, y \mapsto 1$ 
+ 
+	\item $=[while $ $ x \neq y...][y:=y+2]\sigma_3$     
+
+ 	$\sigma_4: x \mapsto 3, y \mapsto [y+2]\sigma_3 = 3$ 
+ 
+	\item $ = [while $ $ x \neq y$ $ do ... od]\sigma_4$ 
+ 
+ $\sigma_4: x \mapsto 3, y \mapsto = 3$
+ 
+ \item $=\sigma_4$
+     
+\end{itemize}      
+
+
+    
   \end{subexercises}
   of \TPL.
 \end{exercise}
