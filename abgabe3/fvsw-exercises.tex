@@ -112,11 +112,14 @@ $ x:=x+y;if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1
   Compute $\M p\sigma$, using
   \begin{subexercises}
     \item the structural operational semantics
+    
+FIXME!!!! TODO    
+    
     \item the natural semantics
 
 \begin{itemize}
 
-\item $=[ x:=x+y;if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi ] \sigma $
+\item $p[\sigma]=[ x:=x+y;if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi ] \sigma $
 
 Regel: $ [p;q]\sigma = [q][p]\sigma$    
     
@@ -127,15 +130,30 @@ $\sigma: x \mapsto 1, y \mapsto 1$
 
     \item $=[if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi ] \sigma_1$
     
-   Regel:  $[ if $ $e $ $then $ $ p $ $ else$ $ q $ $ fi]\sigma$ 
+   Regel:  $[ if $ $e $ $then $ $ p $ $ else$ $ q $ $ fi]\sigma = $ 
+      $ 
+          \begin{cases}
+  [p]\sigma, & if[e] \sigma \neq 0 \\
+   [q]\sigma,& if[e]\sigma = 0
+    \end{cases}
+    $       
        
     $\sigma_1: x \mapsto 2, y \mapsto 1$
-        
-    \item $ = [while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od]\sigma_2$
     
-    Regel: $[while $ $e$ $ do $ $p $ $od]\sigma = $
+    $[x<0]\sigma_1 = 0(false)$
+        
+    \item $ = [while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od]\sigma_2 = $
+    
+    Regel: $[while $ $e$ $ do $ $p $ $od]\sigma = $  $ 
+    \begin{cases}
+  [while $ $e$ $ do $ $p $ $od][p]\sigma, & if[e] \sigma \neq 0 \\
+   \sigma,& if[e]\sigma = 0
+    \end{cases}
+    $
 
 	$\sigma_2: x \mapsto 2, y \mapsto 1$
+	
+	$[x \neq y] = 1(true)$
 	
 	$=[while $ $ x \neq y...][y:=y+2;x:=x+1]\sigma_2$     
 	
@@ -148,6 +166,9 @@ $\sigma: x \mapsto 1, y \mapsto 1$
 	\item $ = [while $ $ x \neq y$ $ do ... od]\sigma_4$ 
  
  $\sigma_4: x \mapsto 3, y \mapsto = 3$
+ 
+ 	$[x \neq y] = 0(false)$
+
  
  \item $=\sigma_4$
      
