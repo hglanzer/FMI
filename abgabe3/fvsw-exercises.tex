@@ -1,5 +1,5 @@
 \documentclass[a4paper]{scrartcl}
-\usepackage{amsmath,amssymb,fvsw}
+\usepackage{amsmath,amssymb,fvsw,fullpage,rotating}
 \newtheorem{ex}{Exercise}
 \newenvironment{exercise}[1]%
    {\def\tmp{}%
@@ -16,6 +16,8 @@
    }
 
 \usepackage{enumerate}
+\usepackage{fvsw}
+
 \newenvironment{subexercises}%
    {\begin{enumerate}[(a)]}%
    {\end{enumerate}}
@@ -241,7 +243,42 @@ $ \rightarrow wp(while...)= \exists i ((i \geq 0) \land x =y+i)$ $= ((i \geq 0) 
   Use the Hoare calculus to show that
   \[\CA{x=2y\land y>2}p{x=y}\]
   is totally correct.
+\\
+\\
+Solution:
+\\
+\begin{center}
+\begin{sideways}
+\small\infertrue
+$
+\infer[(sc)]{unten}{oben}
+\infer[(sc)]{\{x=2y \land y> 2\} p \{x=y\}}{\{1\} x:= x+y \{2\}}
+
+%\SC{\CA{ x=2y \land y> 2} {p} {x=y} }%
+ %  {\AS{\CA{1} {x:=x+y } {2}\hspace{-5em}} }
+
+%   {\{\CA {2} {\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI} {3}%
+ %      }%
+%       {\SC{\CA{\INV\land e}{\IF\ e'\ \THEN\ \ABORT\ \ELSE\ \WHILE\ \FI;\ \ASS x{x+1}}\INV}%
+ %          {\Ia{\CA{\INV\land e}%
+ %                  {\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI}%
+  %                 {\INV\sub{x<-x+1}}%
+  %             }%
+ %             {\Lb{\CA{\INV\land e\land e'}\SKIP{\INV\sub{x<-x+1}}}%
+  %                 {\FRM{2}{\INV\land e\land e'\lfi\INV\sub{x<-x+1}}}%
+  %                 {\SK{\CA{\INV\sub{x<-x+1}}\SKIP{\INV\sub{x<-x+1}}}}%
+   %            }%
+   %            {\AB{\CA{\INV\land e\land \lnot e'}\ABORT{\INV\sub{x<-x+1}}}}%
+   %        }%
+   %        {\Aa{\CA{\INV\sub{x<-x+1}}{\ASS x{x+1}}\INV}}%
+ %      }%
+ %  }%
+$
+\end{sideways}
+\end{center}
+
 \end{exercise}
+
 
 \begin{exercise}{1}
   Extend our toy language by statements of the form ``$\kw{assert}\
