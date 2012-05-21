@@ -66,6 +66,8 @@ $ x:=x+y;if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1
 
 \end{itemize}
 
+Here the idea is to construct the wanted(given) program by starting with with an 'empty' program and extending this program by substitution until we get the final program.
+
 %  \begin{ALG}
 %    1    \ASS x{x+y};\\
 %    2    \IF\ $x<0$ \THEN\\
@@ -309,6 +311,95 @@ $
     \OD
   \end{ALG}
 \end{center}    
+
+To prove total correctness we must show that the program is partitial correct and that it terminates.
+
+After using some testvalues for $x$ it is expected that the program terminates and seems to give the correct result only for inputvalues greater than 0, so the precondition is 
+\begin{center}
+ $x>0$
+\end{center}
+
+We want to prove that the program takes the input value of $x$ and doubles this value, which is greater than zero(see precondition), so the postcondition is
+\begin{center}
+ $x=2*x_0 \bigwedge x > 0 \bigwedge x > x_0$
+\end{center}
+
+The invariant is assumed to be 
+\begin{center}
+$INV=2*x_0+x \bigwedge x_0 > 0$
+\end{center}
+
+\[
+\begin{array}{c}
+  {\CA{F}{y:=3*x\WHILE\ e\ do\ x:=x+1;y:=y+1\ od}{G}}
+\end{array}
+\]
+
+\[
+\begin{array}{c}
+ \WH{\CA{F}{y:=3*x\ \WHILE\ e\ do\ x:=x+1;y:=y+1\ od}{G}}
+   {\CA{F}{y:=3*x}{\INV}\ \ \ \CA{\INV}{\WHILE\ e\ do...od}{G}}
+\end{array}
+\]
+
+\begin{center}
+\small\infertrue
+
+$
+\La
+{\CA F{\WHILE\ e\ \DO\ \IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}\ \OD}G}%
+   {\FRM{1}{F\lfi\INV}\hspace{-5em}}%
+   {\WH{\CA\INV
+           {\WHILE\ e\ \DO\ \IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}\ \OD}%
+           {\INV\land\lnot e}%
+   }%
+       {\SC{\CA{\INV\land e}{\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}}\INV}%
+           {\Ia{\CA{\INV\land e}%
+                   {\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI}%
+                   {\INV\sub{x<-x+1}}%
+               }%
+               {\Lb{\CA{\INV\land e\land e'}\SKIP{\INV\sub{x<-x+1}}}%
+                   {\FRM{2}{\INV\land e\land e'\lfi\INV\sub{x<-x+1}}}%
+                   {\SK{\CA{\INV\sub{x<-x+1}}\SKIP{\INV\sub{x<-x+1}}}}%
+               }%
+               {\AB{\CA{\INV\land e\land \lnot e'}\ABORT{\INV\sub{x<-x+1}}}}%
+           }%
+           {\Aa{\CA{\INV\sub{x<-x+1}}{\ASS x{x+1}}\INV}}%
+       }%
+   }%
+   {\hspace{-8.8em}\FRM{3}{\INV\land\lnot e\lfi G}}
+$
+
+\end{center}
+
+\begin{center}
+\small\infertrue
+$
+\La
+{\CA F{\WHILE\ e\ \DO\ \IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}\ \OD}G}%
+   {\FRM{1}{F\lfi\INV}\hspace{-5em}}%
+   {\WH{\CA\INV
+           {\WHILE\ e\ \DO\ \IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}\ \OD}%
+           {\INV\land\lnot e}%
+   }%
+       {\SC{\CA{\INV\land e}{\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}}\INV}%
+           {\Ia{\CA{\INV\land e}%
+                   {\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI}%
+                   {\INV\sub{x<-x+1}}%
+               }%
+               {\Lb{\CA{\INV\land e\land e'}\SKIP{\INV\sub{x<-x+1}}}%
+                   {\FRM{2}{\INV\land e\land e'\lfi\INV\sub{x<-x+1}}}%
+                   {\SK{\CA{\INV\sub{x<-x+1}}\SKIP{\INV\sub{x<-x+1}}}}%
+               }%
+               {\AB{\CA{\INV\land e\land \lnot e'}\ABORT{\INV\sub{x<-x+1}}}}%
+           }%
+           {\Aa{\CA{\INV\sub{x<-x+1}}{\ASS x{x+1}}\INV}}%
+       }%
+   }%
+   {\hspace{-8.8em}\FRM{3}{\INV\land\lnot e\lfi G}}
+$
+\end{center}
+
 \end{exercise}
 
 \begin{exercise}{1}
