@@ -423,6 +423,33 @@ $
 \end{center}    
 \end{exercise}
 
+\newpage
+Solution:\\
+\\
+
+\begin{center}
+  \begin{ALG}
+    \ASSERTN1{a\geq0}\\
+    \ASSERTN{11}{\INV[c/0][b/1]}\\
+    \ASS b1;\\
+    \ASSERTN{10}{\INV[c/0]}\\
+    \ASS c0;\\
+    \ASSERTN\INV{b=(c+1)^3\land 0\leq c^3\leq a}\\
+    \WHILE\ $b\leq a$\ \DO\\
+    \>\ASSERTN4{\INV \wedge b\leq a \wedge t = t_0 }\\
+    \>\ASSERTN{9}{(\INV \wedge 0 \leq t \leq t_0)[b/b+c*d+1][c/c+1][d/3*c+6] }\\
+    \>\ASS d{3*c+6};\\
+    \>\ASSERTN{8}{(\INV \wedge 0 \leq t \leq t_0)[b/b+c*d+1][c/c+1] }\\
+    \>\ASS c{c+1};\\
+    \>\ASSERTN{7}{(\INV \wedge 0 \leq t \leq t_0)[b/b+c*d+1] }\\
+    \>\ASS b{b+c*d+1}\\
+    \>\ASSERTN{5}{\INV \wedge 0 \leq t \leq t_0 }\\
+    \OD\\
+    \ASSERTN{6}{(\INV \wedge b \textrptr a)[b/b+c*d+1] }\\
+    \ASSERTN2{c^3\leq a<(c+1)^3}
+  \end{ALG}
+\end{center} 
+
 \begin{exercise}{1}
   Prove that the rule
 \[
