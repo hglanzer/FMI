@@ -431,96 +431,93 @@ $\\
     \OD
   \end{ALG}
 \end{center}    
-
-To prove total correctness we must show that the program is partitial correct and that it terminates.
-
-After using some testvalues for $x$ it is expected that the program terminates and seems to give the correct result only for inputvalues greater than 0, so the precondition is 
-\begin{center}
- $x>0$
-\end{center}
-
-We want to prove that the program takes the input value of $x$ and doubles this value, which is greater than zero(see precondition), so the postcondition is
-\begin{center}
- $x=2*x_0 \bigwedge x > 0 \bigwedge x > x_0$
-\end{center}
-
-The invariant is assumed to be 
-\begin{center}
-$INV=2*x_0+x \bigwedge x_0 > 0$
-\end{center}
-
-\[
-\begin{array}{c}
-  {\CA{F}{y:=3*x\WHILE\ e\ do\ x:=x+1;y:=y+1\ od}{G}}
-\end{array}
-\]
-
-\[
-\begin{array}{c}
- \WH{\CA{F}{y:=3*x\ \WHILE\ e\ do\ x:=x+1;y:=y+1\ od}{G}}
-   {\CA{F}{y:=3*x}{\INV}\ \ \ \CA{\INV}{\WHILE\ e\ do...od}{G}}
-\end{array}
-\]
-
-\begin{center}
-\small\infertrue
-
-$
-\La
-{\CA F{\WHILE\ e\ \DO\ \IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}\ \OD}G}%
-   {\FRM{1}{F\lfi\INV}\hspace{-5em}}%
-   {\WH{\CA\INV
-           {\WHILE\ e\ \DO\ \IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}\ \OD}%
-           {\INV\land\lnot e}%
-   }%
-       {\SC{\CA{\INV\land e}{\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}}\INV}%
-           {\Ia{\CA{\INV\land e}%
-                   {\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI}%
-                   {\INV\sub{x<-x+1}}%
-               }%
-               {\Lb{\CA{\INV\land e\land e'}\SKIP{\INV\sub{x<-x+1}}}%
-                   {\FRM{2}{\INV\land e\land e'\lfi\INV\sub{x<-x+1}}}%
-                   {\SK{\CA{\INV\sub{x<-x+1}}\SKIP{\INV\sub{x<-x+1}}}}%
-               }%
-               {\AB{\CA{\INV\land e\land \lnot e'}\ABORT{\INV\sub{x<-x+1}}}}%
-           }%
-           {\Aa{\CA{\INV\sub{x<-x+1}}{\ASS x{x+1}}\INV}}%
-       }%
-   }%
-   {\hspace{-8.8em}\FRM{3}{\INV\land\lnot e\lfi G}}
-$
-
-\end{center}
-
-\begin{center}
-\small\infertrue
-$
-\La
-{\CA F{\WHILE\ e\ \DO\ \IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}\ \OD}G}%
-   {\FRM{1}{F\lfi\INV}\hspace{-5em}}%
-   {\WH{\CA\INV
-           {\WHILE\ e\ \DO\ \IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}\ \OD}%
-           {\INV\land\lnot e}%
-   }%
-       {\SC{\CA{\INV\land e}{\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}}\INV}%
-           {\Ia{\CA{\INV\land e}%
-                   {\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI}%
-                   {\INV\sub{x<-x+1}}%
-               }%
-               {\Lb{\CA{\INV\land e\land e'}\SKIP{\INV\sub{x<-x+1}}}%
-                   {\FRM{2}{\INV\land e\land e'\lfi\INV\sub{x<-x+1}}}%
-                   {\SK{\CA{\INV\sub{x<-x+1}}\SKIP{\INV\sub{x<-x+1}}}}%
-               }%
-               {\AB{\CA{\INV\land e\land \lnot e'}\ABORT{\INV\sub{x<-x+1}}}}%
-           }%
-           {\Aa{\CA{\INV\sub{x<-x+1}}{\ASS x{x+1}}\INV}}%
-       }%
-   }%
-   {\hspace{-8.8em}\FRM{3}{\INV\land\lnot e\lfi G}}
-$
-\end{center}
-
 \end{exercise}
+
+Solution:\\
+\begin{center}
+  \begin{ALG}
+    \ASSERTN1{a\geq0}\\
+    \ASSERTN9{\INV[y/3x]}\\
+    \ASS y{3x};\\
+    \ASSERTN3{\INV: y = 2x_0 + x}\\
+    \WHILE\ $2x\neq y$\ \DO\\
+    \>\ASSERTN4{\INV \land 2x \neq y \land t = t_0}\\
+    \>\ASSERTN{8}{\INV \wedge 0 \leq t \leq t_0[y/y+1][x/x+1]}\\
+    \>\ASS x{x+1};\\
+    \>\ASSERTN{7}{\INV \wedge 0 \leq t \leq t_0[y/y+1]}\\
+    \>\ASS y{y+1};\\
+    \>\ASSERTN{5}{\INV \wedge 0 \leq t \leq t_0 }\\
+    \OD\\
+    \ASSERTN6{\INV \land 2x = y}\\
+    \ASSERTN2{2*x_0 = x}\\
+  \end{ALG}
+\end{center}
+prove $4 \Rightarrow 8$:\\
+first step is prooving partial correctness:\\
+\begin{center}
+$\INV \land 2x \neq y \Rightarrow \INV [y/y+1][x/x+1]$\\
+$y = 2x_0 + x \land 2x \neq y \Rightarrow y = 2x_0 + x [y/y+1][x/x+1]$\\
+$2x \neq 2x_0 + x \Rightarrow (2x_0 + x + 1) = 2x_0 + (x+1)$\\
+$x \neq 2x_0 \Rightarrow 2x_0 + x + 1 = 2x_0 + x+1$\\
+The right side is always valid and therefore the assertion is \textcolor{red}{valid}
+\end{center} 
+\\
+second step is prooving termination:\\
+The bound function t is set to $t = y - 2x + 1$.\\
+\begin{center}
+$\INV \land 2x \neq y \land t = t_0 \Rightarrow 0 \leq t[y/y+1][x/x+1] < t_0$\\
+$y = 2x_0 + x \land 2x \neq y \land t = t_0 \Rightarrow 0 \leq y - 2x + 1[y/y+1][x/x+1] < t_0$\\
+$2x \neq 2x_0 + x \land t = t_0 \Rightarrow 0 \leq (y + 1) - 2(x + 1) + 1 < t_0$\\
+$x \neq 2x_0 \Rightarrow 0 \leq (y + 1) - 2(x + 1) + 1 < y - 2x + 1$\\
+$x \neq 2x_0 \Rightarrow 0 \leq 2x_0 + x - 2x < 2x_0 + x - 2x + 1$\\
+$x \neq 2x_0 \Rightarrow 0 \leq 2x_0 - x < 2x_0 - x + 1$\\
+\end{center} 
+\textcolor{red}{not valid} because $2x_0 - x$ can be smaller then 0. There we need to extend the
+invariant with $x \leq 2x_0$.\\
+\\
+Our new invariant is: $y = 2x_0 + x \land x \leq 2x_0$. Now we need to start the calculation again with the new invariant.\\
+\\
+prove $4 \Rightarrow 8$:\\
+first step is prooving partial correctness:\\
+\begin{center}
+$\INV \land 2x \neq y \Rightarrow \INV [y/y+1][x/x+1]$\\
+$y = 2x_0 + x \land x \leq 2x_0 \land 2x \neq y \Rightarrow y = 2x_0 + x [y/y+1][x/x+1]$\\
+$2x \neq 2x_0 + x \land x \leq 2x_0 \Rightarrow (2x_0 + x + 1) = 2x_0 + (x+1)$\\
+$x \neq 2x_0 \land x \leq 2x_0 \Rightarrow 2x_0 + x + 1 = 2x_0 + x+1$\\
+The right side is always valid and therefore the assertion is \textcolor{red}{valid}
+\end{center} 
+\\
+second step is prooving termination:\\
+The bound function t is set to $t = y - 2x + 1$.\\
+\begin{center}
+$\INV \land 2x \neq y \land t = t_0 \Rightarrow 0 \leq t[y/y+1][x/x+1] < t_0$\\
+$y = 2x_0 + x \land x \leq 2x_0 \land 2x \neq y \land t = t_0 \Rightarrow 0 \leq y - 2x + 1[y/y+1][x/x+1] < t_0$\\
+$2x \neq 2x_0 + x \land x \leq 2x_0 \land t = t_0 \Rightarrow 0 \leq (y + 1) - 2(x + 1) + 1 < t_0$\\
+$x \neq 2x_0 \land x \leq 2x_0 \Rightarrow 0 \leq (y + 1) - 2(x + 1) + 1 < y - 2x + 1$\\
+$x \neq 2x_0 \land x \leq 2x_0 \Rightarrow 0 \leq 2x_0 + x - 2x < 2x_0 + x - 2x + 1$\\
+$x \neq 2x_0 \land x \leq 2x_0 \Rightarrow 0 \leq 2x_0 - x < 2x_0 - x + 1$\\
+$x < 2x_0 \Rightarrow 0 \leq 2x_0 - x < 2x_0 - x + 1$\\
+\end{center} 
+\textcolor{red}{valid} because $2x_0 - x < 2x_0 - x + 1$ is always valid and if the left side is true, then $0 \leq 2x_0 - x$ is also valid.\\
+\\
+prove $1 \Rightarrow 9$:\\
+\begin{center}
+$a\geq0 \Rightarrow \INV[y/3x]$\\
+$a\geq0 \Rightarrow y = 2x_0 + x \land x \leq 2x_0[y/3x]$\\
+$a\geq0 \Rightarrow 3x = 2x_0 + x \land x \leq 2x_0$\\
+$a\geq0 \Rightarrow 2x = 2x_0 \land x \leq 2x_0$\\
+\end{center} 
+\textcolor{red}{valid} because at this point, the beginning of the program, $x = x_0$ and therefore $2x = 2x_0$ and $x \leq 2x_0$ is valid.
+Because the whole right side is always valid, no matter what stands on the left side the implications is valid.\\
+\\
+prove $6 \Rightarrow 2$:\\
+\begin{center}
+$\INV \land 2x = y \Rightarrow 2*x_0 = x$\\
+$y = 2x_0 + x \land x \leq 2x_0 \land 2x = y \Rightarrow 2*x_0 = x$\\
+$2x = 2x_0 + x \land x \leq 2x_0 \Rightarrow 2*x_0 = x$\\
+$x = 2x_0 \land x \leq 2x_0 \Rightarrow 2*x_0 = x$\\
+\textcolor{red}{valid} because when the left side is true, then the right side is also true, because the have the same property $$x = 2x_0$.
+\end{center} 
 
 \begin{exercise}{1}
     Show that the following correctness assertion is totally correct.
@@ -541,11 +538,7 @@ $
   \end{ALG}
 \end{center}    
 \end{exercise}
-
-\newpage
 Solution:\\
-\\
-
 \begin{center}
   \begin{ALG}
     \ASSERTN1{a\geq0}\\
