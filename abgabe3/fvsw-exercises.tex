@@ -295,6 +295,124 @@ $
   not refer to other program statements in the final result.  However,
   you may use other statements as intermediate steps when deriving the
   rules.
+\\
+\\
+Solution:
+\\
+\textbf{Syntax:}\\
+\\
+For the syntax we have to replace P from TLP with :
+
+P::= skip $|$ ... $|$ while$ $ e $ $do$ $ P  $ $od $|$ $\kw{assert e}$
+\\
+\textbf{Semantics:}\\
+\\
+Transition Relation for TPL:
+
+Since we have to treat assert e like an first class citizen we are not allows to use statements like skip and abort. \\
+
+ [ $\kw{assert e}$]$\sigma$ = $  $
+ $ 
+          \begin{cases}
+  \sigma, & if[e] \sigma \neq 0 \\
+   undefined ,& if[e]\sigma = 0
+    \end{cases}
+    $    
+\\
+\newpage
+\textbf{Hoare calculus:}\\
+\textbf{Partial correctness}\\
+First we show partial correctness. Therefor we use the wlp as follows:\\
+$wpl( \kw{assert e,G}) = e \Rightarrow G$\\
+We use the Hoare calculus and replace the assert rule with an if statement.\\
+
+%\infer[(sc)]{unten}{oben}
+
+
+$
+\infer[(rp)]{\{F\} \kw{assert e}  \{G\}}
+	{\infer[(if)]{\{F\} \IF\ e\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI  \{G\}}
+		{\infer[()]{\infer[(lc)]{\{F \land e\} \SKIP  \; G }
+				{\{F \land e\}  \Rightarrow F^a \;\{F^a\} \SKIP \{F^a\}\; F^a \Rightarrow G }
+				\infer[(lc)]{\{F \land \neg e\}  \, \ABORT  \, G}
+					{\infer[()]{\{F \land \neg e\}  \Rightarrow F^a \; \{F^a\}  \, \ABORT  \; G  }{---}}}
+				{---}}}
+$
+ 
+
+We see that we have a problem with the assert false statement since we can not reach the postcondition G. Those the rule assert false is not semantically equivalent to the "while true do skip od" which we now is semantically equivalent to the abort statement. \\
+Now we have to show that we can reach the postcondition {G} from the states  $\{F \land e\} \;\{F \land \neg e\}$. \\
+
+ We show that:\\
+
+$
+\begin{cases}
+\{F \land e\} \\ \{F \land \neg e\}
+\end{cases}
+\Rightarrow F^{a}\\
+\equiv ((F \land e) \lor (F \land \neg e)) \Rightarrow F^{a}  \\
+\equiv \neg((F \land e) \lor (F \land \neg e)) \lor  F^{a}  \\
+\equiv ((\neg F \lor \neg e) \land (\neg F \lor  e)) \lor F^{a}  \\
+\equiv ((\neg F \lor \neg e \lor F^{a}) \land (\neg F \lor  e \lor F^{a} ))  \\
+\equiv ( F \Rightarrow (\neg e \lor F^{a}) ) \land ( F \Rightarrow( e \lor F^{a} ))  \\
+$
+Since $ ( F \Rightarrow( e \lor  F^{a} )$ is ture because e is true and $F^{a}$ is not defined: \\
+$
+\equiv ( F \Rightarrow (\neg e \lor  F^{a}) )  \land \; \TRUE \\
+\equiv ( F \Rightarrow (\neg e \Rightarrow  F^{a}) )  \\
+$
+now we use the fact that $F^{a} = G$ \\
+$
+\equiv ( F \Rightarrow (\neg e \Rightarrow  G) )  \\
+$
+Now we can see that :
+$
+\infer[]{\{F\} \kw{assert e}  \{G\}}{F \Rightarrow (e \Rightarrow G)}
+$\\
+\\
+
+and we can see that the statement is partial correct. 
+
+\newpage
+\textbf{Total correctness:} \\
+
+$
+\infer[(rp)]{\{F\} \kw{assert e}  \{G\}}
+	{\infer[(if)]{\{F\} \IF\ e\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI  \{G\}}
+		{\infer[]{\infer[(lc)]{\{F \land e\} \SKIP  \; G }
+				{\{F \land e\}  \Rightarrow F^a \;\{F^a\} \SKIP \{F^a\}\; F^a \Rightarrow G }
+				\infer[(lc)]{\{F \land \neg e\}  \, \ABORT  \, G}
+					{\infer[(lc)]{\{F \land \neg e\}  \Rightarrow F^a \; \{F^a\}  \, \ABORT  \; G  }
+						{\infer[]{\{F^a\}  \Rightarrow  \FALSE  \; \{\FALSE\} abort  \{G\}}{---}}}}
+				{---}}}
+$
+ 
+For the total correctness we use a different abort rule. So we show that: \\
+
+$
+\begin{cases}
+\{F \land e\} \\ \{F \land \neg e\}
+\end{cases}
+\Rightarrow F^{a}\\
+\equiv ((F \land e) \lor (F \land \neg e)) \Rightarrow F^{a}  \\
+\equiv \neg((F \land e) \lor (F \land \neg e)) \lor  F^{a}  \\
+\equiv ((\neg F \lor \neg e) \land (\neg F \lor  e)) \lor F^{a}  \\
+\equiv ((\neg F \lor \neg e \lor F^{a}) \land (\neg F \lor  e \lor F^{a} ))  \\
+\equiv ((\neg F \lor \neg e \lor G) \land (\neg F \lor  e \lor \FALSE ))  \\
+\equiv \neg F \lor (( \neg e \lor G) \land ( e \lor \FALSE ))  \\
+\equiv \neg F \lor (( \neg e \lor G) \land  e )  \\
+\equiv \neg F \lor (( \neg e \land e) \lor  ( G \lor e)  )  \\
+\equiv \neg F \lor ( G \lor e)   \\
+\equiv F \Rightarrow  ( G \land e)  \\
+$
+
+Therefor we can compute : 
+$
+\infer[]{\{F\} \kw{assert e}  \{G\}}{F \Rightarrow (e \land G)}
+$\\
+\\
+
+
 \end{exercise}
 
 \begin{exercise}{1}
@@ -427,28 +545,28 @@ $
 Solution:\\
 \\
 
-\begin{center}
-  \begin{ALG}
-    \ASSERTN1{a\geq0}\\
-    \ASSERTN{11}{\INV[c/0][b/1]}\\
-    \ASS b1;\\
-    \ASSERTN{10}{\INV[c/0]}\\
-    \ASS c0;\\
-    \ASSERTN\INV{b=(c+1)^3\land 0\leq c^3\leq a}\\
-    \WHILE\ $b\leq a$\ \DO\\
-    \>\ASSERTN4{\INV \wedge b\leq a \wedge t = t_0 }\\
-    \>\ASSERTN{9}{(\INV \wedge 0 \leq t \leq t_0)[b/b+c*d+1][c/c+1][d/3*c+6] }\\
-    \>\ASS d{3*c+6};\\
-    \>\ASSERTN{8}{(\INV \wedge 0 \leq t \leq t_0)[b/b+c*d+1][c/c+1] }\\
-    \>\ASS c{c+1};\\
-    \>\ASSERTN{7}{(\INV \wedge 0 \leq t \leq t_0)[b/b+c*d+1] }\\
-    \>\ASS b{b+c*d+1}\\
-    \>\ASSERTN{5}{\INV \wedge 0 \leq t \leq t_0 }\\
-    \OD\\
-    \ASSERTN{6}{(\INV \wedge b \textrptr a)[b/b+c*d+1] }\\
-    \ASSERTN2{c^3\leq a<(c+1)^3}
-  \end{ALG}
-\end{center} 
+%\begin{center}
+%  \begin{ALG}
+%    \ASSERTN1{a\geq0}\\
+%    \ASSERTN{11}{\INV[c/0][b/1]}\\
+%    \ASS b1;\\
+%    \ASSERTN{10}{\INV[c/0]}\\
+%    \ASS c0;\\
+%    \ASSERTN\INV{b=(c+1)^3\land 0\leq c^3\leq a}\\
+%    \WHILE\ $b\leq a$\ \DO\\
+%    \>\ASSERTN4{\INV \wedge b\leq a \wedge t = t_0 }\\
+%    \>\ASSERTN{9}{(\INV \wedge 0 \leq t \leq t_0)[b/b+c*d+1][c/c+1][d/3*c+6] }\\
+%    \>\ASS d{3*c+6};\\
+%    \>\ASSERTN{8}{(\INV \wedge 0 \leq t \leq t_0)[b/b+c*d+1][c/c+1] }\\
+ %   \>\ASS c{c+1};\\
+ %   \>\ASSERTN{7}{(\INV \wedge 0 \leq t \leq t_0)[b/b+c*d+1] }\\
+%    \>\ASS b{b+c*d+1}\\
+%    \>\ASSERTN{5}{\INV \wedge 0 \leq t \leq t_0 }\\
+ %   \OD\\
+%    \ASSERTN{6}{(\INV \wedge b \textrptr a)[b/b+c*d+1] }\\
+%    \ASSERTN2{c^3\leq a<(c+1)^3}
+%  \end{ALG}
+%\end{center} 
 
 \begin{exercise}{1}
   Prove that the rule
