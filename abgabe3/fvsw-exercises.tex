@@ -117,8 +117,47 @@ Here the idea is to construct the wanted(given) program by starting with with an
   Compute $\M p\sigma$, using
   \begin{subexercises}
     \item the structural operational semantics
-    
-FIXME!!!! TODO    
+
+\begin{itemize}
+\item$ (p,\sigma) = (x:=x+y;if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi , \sigma) $ \\
+
+Regel: $ (p;q)]\sigma = (q)(p)\sigma$   
+
+$(x:=x+y, \sigma) \Rightarrow  \sigma (x \rightarrow[x+y]\sigma )= \sigma_1$\\
+
+\item $\Rightarrow $  ($ if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi, \sigma_1) $
+ 
+Regel:  $[ if $ $e $ $then $ $ p $ $ else$ $ q $ $ fi]\sigma = $ 
+      $ 
+          \begin{cases}
+  (p.\sigma) \Rightarrow ^*  \sigma^a  & if[e] \sigma \neq 0 \\
+   (p.\sigma) \Rightarrow ^*  \sigma^a & if[e]\sigma = 0
+    \end{cases}
+$
+
+\item $\Rightarrow $  ($ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi, \sigma_1) $\\
+$\Rightarrow ( x:=x+1; y:=y+2,while ..., \sigma_1)$\\
+$ (x:=x+1; y:=y+2, \sigma_1)$\\
+$( x:=x+1,\sigma_1) \Rightarrow \sigma_1 (x\rightarrow [x+1]\sigma_1)=\sigma_2$
+$\Rightarrow (  y:=y+2,while ..., \sigma_2)$\\
+$( y:=y+2,\sigma_1) \Rightarrow \sigma_2 (y\rightarrow [y+2]\sigma_2)=\sigma_3$
+
+\item  $\Rightarrow $  ($ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi, \sigma_3) $\\
+\item  $\Rightarrow $ $\sigma_3$\\
+
+The States in detail:
+\item $\sigma: x\rightarrow 1 , y \rightarrow 1$
+\item $\sigma_1: x\rightarrow [x+y] \sigma =2$\\
+$x \rightarrow 2, y \rightarrow 1$
+\item $\sigma_2: x\rightarrow [x+1] \sigma_1 =3$\\
+$x \rightarrow 3, y \rightarrow 1$
+\item $\sigma_3: y\rightarrow [y+2] \sigma_2 =3$\\
+$x \rightarrow 3, y \rightarrow 3$\\
+$[x \neq y] \sigma_3 = 0 (false)$
+
+\end{itemize}    
+
+
     
     \item the natural semantics
 
@@ -598,6 +637,50 @@ whenever $\CA{\INV\land e}{p}{\INV}$ is partially correct.
   with respect to the postcondition $z=x*y_0$. Compare the result
   to the weakest precondition computed in the course and explain
   the differences.
+
+\textbf{Solution}
+
+For the $\WLP(\WHILE\ e\ \DO\ p\ \OD, G)$ is the weakest precondition defined as follows: 
+
+All states such that loop terminates after a
+finite number of iterations in a G-state.\\
+$\{ F_i \}$ . . . set of states such that$ p$ executes $ i$ times and leads to G-state
+\begin{itemize}
+\item 0 iterations: $F_0 = \neg e \lor  G$
+\item 1 iteration: $F_1 = e ^ wp(p, F_0)$
+\item 2 iterations:$ F_2 = e ^ wp(p, F_1)$
+\item ...
+\item ...
+\item i iterations:$ \; Fi = e ^ wp(p, F_{i-1}) (for \;  i > 0)$
+\end{itemize}
+${ F_i } = { e ^ wp(p, F_{i−1}) }$ . . . set of states such that
+\begin{itemize}
+\item p is executed once (because e is true), resulting in a state where
+\item i − 1 further iterations will lead to a G-state. 
+\end{itemize}
+
+For the WLP we some adjustments have to be made. For the 0 iterations we have to modify the Wp.
+In detail we have to change the first iteration step. 
+\begin{itemize}
+\item 0 iterations: $(F_0 = \neg e \lor  G) \lor e $
+\item 1 iteration: $F_1 = e ^ wp(p, F_0)$
+\item 2 iterations:$ F_2 = e ^ wp(p, F_1)$
+\item ...
+\item ...
+\item i iterations:$ \; Fi = e ^ wp(p, F_{ i-1 }) (for\; i > 0)$
+\end{itemize}
+%
+%Now we can start with the computation like for the wp:\\
+%$
+%F_0 = (y=0  \land z=xy_0) \lor y\neq 0 \\
+%F_1 = (y \neq 0 \land wlp(z:= z+x ; y:=y-1,F_0)) \\
+%\begin{itemize}
+%\item  (y \neq 0 \land wlp(z:= z+x ; y:=y-1,y=0  \land z=xy_0))
+%\item 
+%\end{itemize}	
+%$
+
+
 \end{exercise}
 
 
