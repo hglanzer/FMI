@@ -1,5 +1,5 @@
 \documentclass[a4paper]{scrartcl}
-%\usepackage{amsmath,amssymb,fvsw,fullpage,rotating}
+\usepackage{amsmath,amssymb,fvsw,fullpage,rotating}
 \newtheorem{ex}{Exercise}
 \newenvironment{exercise}[1]%
    {\def\tmp{}%
@@ -17,12 +17,14 @@
 
 \usepackage{enumerate}
 \usepackage{fvsw}
+\usepackage{lscape}
 
 \newenvironment{subexercises}%
    {\begin{enumerate}[(a)]}%
    {\end{enumerate}}
 
 \renewcommand\paragraph[1]{\medskip\par\noindent\textit{#1}}
+\newcommand\ASa[2]{\infer[\text{\tiny(as)}]{#1}{#2}}
 
 \begin{document}
 \title{Formal Verification of Software~-- Exercises}
@@ -248,33 +250,100 @@ $ \rightarrow wp(while...)= \exists i ((i \geq 0) \land x =y+i)$ $= ((i \geq 0) 
 Solution:
 \\
 \begin{center}
-%\begin{sideways}
+\begin{landscape}
 \small\infertrue
-%$
-%\infer[(sc)]{unten}{oben}
-%\infer[(sc)]{\{x=2y \land y> 2\} p \{x=y\}}{\{1\} x:= x+y \{2\}\        \{2\} }
+$
+\SC
+{
+    \CA
+    {x=2y \wedge y > 2}{p}{x=y}
+}
+{
+     \ASa
+    {
+      \CA
+      {x=2y\wedge y>2}{x:=x+y}{F}
+    }
+    {\CA{x=2y\wedge y>2[x|x+y]}{x:=x+y}{\overbrace{x+y=2y\wedge y>2}^{\overbrace{x=y\wedge y>2}^{F}}}
+    }
+}
+{
+    \Ia
+    {
+      \CA{F}{if\ x<0...}{G}
+    }
+    {
+      \Lb
+      {
+	\CA{F \wedge x<0 }{abort}{G}
+      }
+      {\{F \wedge x<0\}\Rightarrow false}
+      {\CA{false}{ABORT}{G}}
+    }
+    {
+      \Lb
+      {{\CA{F \wedge \neg(x<0)}{while\ x \neq y\ do\ S\ od}{G}}
+      }
+      {CONTINUE}
+      {...}
+    }
+}
+$
+\newline
+\newline
+\newline
+CONTINUE:
+\newline
+\newline
+\newline
+$
+\Lb
+      {
+	{\CA{F \wedge (x\leq 0)}{while\ x \neq y\ do\ S\ od}{G}}
+      }
+      {
+	\{F\wedge x\leq 0\}\Rightarrow Inv
+      }
+      {
+	\WH
+	{
+	  \CA{Inv}{while\ do\ x:=x+1;y:=y+2\ od}{Inv \wedge x=y}
+	}
+	{
+	  \SC
+	  {
+	    \CA{Inv\wedge x\neq y\wedge t=t_0}{x:=x+1;y:=y+2}{Inv\wedge 0\leq t<t_0}
+	  }
+	  {
+	    \ASa
+	    {\CA{Inv\wedge x\neq y\wedge t=t_0}{x:=x+1}{SC2}}
+	    {\CA{Inv\wedge x\neq y\wedge t=t_0[x|x+1]}{x:=x+1}{Inv\wedge x+1\neq y\wedge t=t_0}}
+	      %{}
+	      %{\CA{}{x:=x+1}{}}
+	      %{}
+	  }
+	  {
+	    \ASa
+	    {
+	      \CA{SC2}{y:=y+2}{Inv\wedge 0\leq t<t_0}
+	    }
+	    {\CA{SC2}{y:=y+2}{Inv\wedge 0\leq t<t_0}}
+	  }
+	}
+      }
+$
+\end{landscape}
 
-%\SC{\CA{ x=2y \land y> 2} {p} {x=y} }%
- %  {\AS{\CA{1} {x:=x+y } {2}\hspace{-5em}} }
+\end{center}
 
-%   {\{\CA {2} {\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI} {3}%
- %      }%
-%       {\SC{\CA{\INV\land e}{\IF\ e'\ \THEN\ \ABORT\ \ELSE\ \WHILE\ \FI;\ \ASS x{x+1}}\INV}%
- %          {\Ia{\CA{\INV\land e}%
- %                  {\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI}%
-  %                 {\INV\sub{x<-x+1}}%
-  %             }%
- %             {\Lb{\CA{\INV\land e\land e'}\SKIP{\INV\sub{x<-x+1}}}%
-  %                 {\FRM{2}{\INV\land e\land e'\lfi\INV\sub{x<-x+1}}}%
-  %                 {\SK{\CA{\INV\sub{x<-x+1}}\SKIP{\INV\sub{x<-x+1}}}}%
-   %            }%
-   %            {\AB{\CA{\INV\land e\land \lnot e'}\ABORT{\INV\sub{x<-x+1}}}}%
-   %        }%
-   %        {\Aa{\CA{\INV\sub{x<-x+1}}{\ASS x{x+1}}\INV}}%
- %      }%
- %  }%
-%$
-%\end{sideways}
+\begin{center}
+\small\infertrue
+$
+ \Ia
+    {\CA{F}{if\ x<0...}{G}}
+    {\CA{x=2y\wedge y > 2}{abort}{G}}
+    {\CA{F \wedge \neg(x<0)}{while\ x \neq 0 ...}{G}}
+$
 \end{center}
 
 \end{exercise}
@@ -461,63 +530,8 @@ $INV=2*x_0+x \bigwedge x_0 > 0$
 \end{array}
 \]
 
-\begin{center}
-\small\infertrue
 
-$
-\La
-{\CA F{\WHILE\ e\ \DO\ \IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}\ \OD}G}%
-   {\FRM{1}{F\lfi\INV}\hspace{-5em}}%
-   {\WH{\CA\INV
-           {\WHILE\ e\ \DO\ \IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}\ \OD}%
-           {\INV\land\lnot e}%
-   }%
-       {\SC{\CA{\INV\land e}{\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}}\INV}%
-           {\Ia{\CA{\INV\land e}%
-                   {\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI}%
-                   {\INV\sub{x<-x+1}}%
-               }%
-               {\Lb{\CA{\INV\land e\land e'}\SKIP{\INV\sub{x<-x+1}}}%
-                   {\FRM{2}{\INV\land e\land e'\lfi\INV\sub{x<-x+1}}}%
-                   {\SK{\CA{\INV\sub{x<-x+1}}\SKIP{\INV\sub{x<-x+1}}}}%
-               }%
-               {\AB{\CA{\INV\land e\land \lnot e'}\ABORT{\INV\sub{x<-x+1}}}}%
-           }%
-           {\Aa{\CA{\INV\sub{x<-x+1}}{\ASS x{x+1}}\INV}}%
-       }%
-   }%
-   {\hspace{-8.8em}\FRM{3}{\INV\land\lnot e\lfi G}}
-$
-
-\end{center}
-
-\begin{center}
-\small\infertrue
-$
-\La
-{\CA F{\WHILE\ e\ \DO\ \IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}\ \OD}G}%
-   {\FRM{1}{F\lfi\INV}\hspace{-5em}}%
-   {\WH{\CA\INV
-           {\WHILE\ e\ \DO\ \IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}\ \OD}%
-           {\INV\land\lnot e}%
-   }%
-       {\SC{\CA{\INV\land e}{\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI;\ \ASS x{x+1}}\INV}%
-           {\Ia{\CA{\INV\land e}%
-                   {\IF\ e'\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI}%
-                   {\INV\sub{x<-x+1}}%
-               }%
-               {\Lb{\CA{\INV\land e\land e'}\SKIP{\INV\sub{x<-x+1}}}%
-                   {\FRM{2}{\INV\land e\land e'\lfi\INV\sub{x<-x+1}}}%
-                   {\SK{\CA{\INV\sub{x<-x+1}}\SKIP{\INV\sub{x<-x+1}}}}%
-               }%
-               {\AB{\CA{\INV\land e\land \lnot e'}\ABORT{\INV\sub{x<-x+1}}}}%
-           }%
-           {\Aa{\CA{\INV\sub{x<-x+1}}{\ASS x{x+1}}\INV}}%
-       }%
-   }%
-   {\hspace{-8.8em}\FRM{3}{\INV\land\lnot e\lfi G}}
-$
-\end{center}
+ 
 
 \end{exercise}
 
