@@ -59,12 +59,12 @@ $ x:=x+y;if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1
 \item $\Rightarrow$ x:=x + y; if x $ <$ 0 then abort; else while x$ \neq $y do $ \mathcal{E};\mathcal{P}$ od if
 \item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do $ (\mathcal{E} \mathcal{B} \mathcal{E});\mathcal{P}$ od if
 \item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do $ (\mathcal{V} + \mathcal{N});\mathcal{P}$ od if
-\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x + 1;$\mathcal{P}$; od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x:= x + 1;$\mathcal{P}$; od if
 
-\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x + 1;$\mathcal{E}$; od if
-\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x + 1;$(\mathcal{E} \mathcal{B} \mathcal{E})$; od if
-\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x + 1;$(\mathcal{V} $+$ \mathcal{N})$; od if
-\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x + 1; y + 2; od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x:= x + 1;$\mathcal{E}$; od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x:= x + 1;$(\mathcal{E} \mathcal{B} \mathcal{E})$; od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x:= x + 1;$(\mathcal{V} $+$ \mathcal{N})$; od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x:= x + 1; y:= y + 2; od if
 
 \end{itemize}
 
@@ -351,7 +351,19 @@ Transition Relation for TPL:
 
 Since we have to treat assert e like an first class citizen we are not allows to use statements like skip and abort. \\
 
+For NS:\\
+
  [ $\kw{assert e}$]$\sigma$ = $  $
+ $ 
+          \begin{cases}
+  \sigma, & if[e] \sigma \neq 0 \\
+   undefined ,& if[e]\sigma = 0
+    \end{cases}
+    $\\   
+
+For SOS\\
+
+  $\kw(assert e,\sigma)$ = $  $
  $ 
           \begin{cases}
   \sigma, & if[e] \sigma \neq 0 \\
@@ -381,7 +393,7 @@ $
  
 
 We see that we have a problem with the assert false statement since we can not reach the postcondition G. Those the rule assert false is not semantically equivalent to the "while true do skip od" which we now is semantically equivalent to the abort statement. \\
-Now we have to show that we can reach the postcondition {G} from the states  $\{F \land e\} \;\{F \land \neg e\}$. \\
+Now we have to show that we can reach the postcondition {G} from each of the Statements of the Hoare calculus  $\{F \land e\} \;\{F \land \neg e\}$. \\
 
  We show that:\\
 
@@ -395,19 +407,19 @@ $
 \equiv ((\neg F \lor \neg e) \land (\neg F \lor  e)) \lor F^{a}  \\
 \equiv ((\neg F \lor \neg e \lor F^{a}) \land (\neg F \lor  e \lor F^{a} ))  \\
 \equiv ( F \Rightarrow (\neg e \lor F^{a}) ) \land ( F \Rightarrow( e \lor F^{a} ))  \\
-$
+$\\
 Since $ ( F \Rightarrow( e \lor  F^{a} )$ is ture because e is true and $F^{a}$ is not defined: \\
-$
+$\\
 \equiv ( F \Rightarrow (\neg e \lor  F^{a}) )  \land \; \TRUE \\
 \equiv ( F \Rightarrow (\neg e \Rightarrow  F^{a}) )  \\
-$
+$\\
 now we use the fact that $F^{a} = G$ \\
-$
+$\\
 \equiv ( F \Rightarrow (\neg e \Rightarrow  G) )  \\
 $
 Now we can see that :
 $
-\infer[]{\{F\} \kw{assert e}  \{G\}}{F \Rightarrow (e \Rightarrow G)}
+\infer[(pc)]{\{F\} \kw{assert e}  \{G\}}{F \Rightarrow (e \Rightarrow G)}
 $\\
 \\
 
@@ -448,7 +460,7 @@ $
 
 Therefor we can compute : 
 $
-\infer[]{\{F\} \kw{assert e}  \{G\}}{F \Rightarrow (e \land G)}
+\infer[(tc)]{\{F\} \kw{assert e}  \{G\}}{F \Rightarrow (e \land G)}
 $\\
 \\
 
@@ -555,7 +567,7 @@ $\INV \land 2x = y \Rightarrow 2*x_0 = x$\\
 $y = 2x_0 + x \land x \leq 2x_0 \land 2x = y \Rightarrow 2*x_0 = x$\\
 $2x = 2x_0 + x \land x \leq 2x_0 \Rightarrow 2*x_0 = x$\\
 $x = 2x_0 \land x \leq 2x_0 \Rightarrow 2*x_0 = x$\\
-\textcolor{red}{valid} because when the left side is true, then the right side is also true, because the have the same property $$x = 2x_0$.
+\textcolor{red}{valid} because when the left side is true, then the right side is also true, because the have the same property $x = 2x_0$.
 \end{center} 
 
 \begin{exercise}{1}
@@ -686,11 +698,11 @@ finite number of iterations in a G-state.\\
 $\{ F_i \}$ . . . set of states such that$ p$ executes $ i$ times and leads to G-state
 \begin{itemize}
 \item 0 iterations: $F_0 = \neg e \lor  G$
-\item 1 iteration: $F_1 = e ^ wp(p, F_0)$
-\item 2 iterations:$ F_2 = e ^ wp(p, F_1)$
+\item 1 iteration: $F_1 = e \land wp(p, F_0)$
+\item 2 iterations:$ F_2 = e \land wp(p, F_1)$
 \item ...
 \item ...
-\item i iterations:$ \; Fi = e ^ wp(p, F_{i-1}) (for \;  i > 0)$
+\item i iterations:$ \; Fi = e \land wp(p, F_{i-1}) (for \;  i > 0)$
 \end{itemize}
 ${ F_i } = { e ^ wp(p, F_{i−1}) }$ . . . set of states such that
 \begin{itemize}
@@ -701,23 +713,16 @@ ${ F_i } = { e ^ wp(p, F_{i−1}) }$ . . . set of states such that
 For the WLP we some adjustments have to be made. For the 0 iterations we have to modify the Wp.
 In detail we have to change the first iteration step. 
 \begin{itemize}
-\item 0 iterations: $(F_0 = \neg e \lor  G) \lor e $
-\item 1 iteration: $F_1 = e ^ wp(p, F_0)$
-\item 2 iterations:$ F_2 = e ^ wp(p, F_1)$
+\item 0 iterations: $F_0 = (\neg e \Rightarrow G) $
+\item 1 iteration: $F_1 = e \land wp(p, F_0)$
+\item 2 iterations:$ F_2 = e \land wp(p, F_1)$
 \item ...
 \item ...
-\item i iterations:$ \; Fi = e ^ wp(p, F_{ i-1 }) (for\; i > 0)$
+\item i iterations:$ \; Fi = e \land wp(p, F_{ i-1 }) (for\; i > 0)$
 \end{itemize}
-%
-%Now we can start with the computation like for the wp:\\
-%$
-%F_0 = (y=0  \land z=xy_0) \lor y\neq 0 \\
-%F_1 = (y \neq 0 \land wlp(z:= z+x ; y:=y-1,F_0)) \\
-%\begin{itemize}
-%\item  (y \neq 0 \land wlp(z:= z+x ; y:=y-1,y=0  \land z=xy_0))
-%\item 
-%\end{itemize}	
-%$
+The computation of the wp is similar to the program witch was presented in the lecture. Since we only need to change the termination step we can use the wp from the lecture and compute the wlp from the program. 
+
+The weakest precondition from the lecture was defined as $(y \geq 0 \land (x=0 \lor y_0 = y ))$. From this wp the wlp is defined as $(x=0 \lor y_0 = y ) \lor y < 0)$.
 
 
 \end{exercise}
