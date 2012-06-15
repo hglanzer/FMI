@@ -77,6 +77,36 @@ l6: port_o = 0; locked_dev = 0;
     goto l0;
 \end{verbatim}
 
+\begin{center}
+	\begin{tikzpicture}[->,scale=1,label distance=0mm]
+		\tikzstyle{every node}=[draw,shape=circle,minimum size=7mm,font=\footnotesize];
+    \tikzstyle{every path}=[draw,thick];
+    \node at (0, 0)   (s0) {$s_0$};
+    \node at (0, -1)  (s1) [label=right:${ \{p_0=1\} }$] {$s_1$};
+    \node at (0, -2)  (s2) [label=right:${ \{p_0=1\} }$] {$s_2$};
+    \node at (0, -3) (s3) [label=right:${ \{p_0=1\} }$] {$s_3$};
+    \node at (0, -4)  (s4) [label=left:${\{ p_0=1\} }$] {$s_4$};
+    \node at (2, -4)  (s5) [label=right:${\{p_0 = 2 \} }$] {$s_5$};
+    \node at (4, -5)  (s6) [label=right:${\{ p_0 = 1 \} }$] {$s_6$};
+    \node at (4, -3)  (s7) [label=right:${\{ p_0 = 3\} }$] {$s_7$};
+    \node at (6, -4)  (s8) [label=right:${\{ p_0= 0 \} }$] {$s_8$};
+
+    \draw (0, 1) to (s0);
+    \draw (s0) to (s1);
+    \draw (s1) to (s2);
+    \draw (s2) to (s3);
+    \draw (s3) to (s4) ;
+	\draw (s5) .. controls +(left:10mm) and +(down:20mm) ..(s5);
+    \draw (s5) to (s6);
+    \draw (s5) to (s7);
+    \draw (s6) to (s8);
+    \draw (s7) to (s8);
+    \draw (s4) .. controls +(120:18mm) and +(left:20mm) .. (s1);
+    \draw (s3) to (s5);
+    \draw (s8) .. controls +(30:20mm) and +(30:30mm) .. (s1);
+	\end{tikzpicture}
+\end{center}
+
 
 \paragraph{b)}
 Give simulation relations between $K$ and the following Kripke structures
@@ -127,4 +157,40 @@ Give simulation relations between $K$ and the following Kripke structures
     \draw (s3) .. controls +(300:16mm) and +(330:16mm) .. (s3);
     \draw (s4) .. controls +(30:8mm) and +(right:24mm) .. (s0);
     	\end{tikzpicture}
+
+\begin{center}
+	\begin{tikzpicture}[->,scale=1,label distance=0mm]
+		\tikzstyle{every node}=[draw,shape=circle,minimum size=7mm,font=\footnotesize];
+    \tikzstyle{every path}=[draw,thick];
+    \node at (0, 0)   (s0) {$s_0$};
+    \node at (0, -1)  (s1) [label=right:${ \{p_0=1\} }$] {$s_1$};
+    \node at (0, -2)  (s2) [label=right:${ \{p_0=1\} }$] {$s_2$};
+    \node at (0, -3) (s3) [label=right:${ \{p_0=1\} }$] {$s_3$};
+    \node at (-1, -4)  (s4) [label=left:${\{ p_0=1\} }$] {$s_4$};
+    \node at (1, -4)  (s5) [label=right:${\{p_0 = 2 \} }$] {$s_5$};
+    \node at (0, -5)  (s6) [label=left:${\{ p_0 = 1 \} }$] {$s_6$};
+    \node at (2, -5)  (s7) [label=right:${\{ p_0 = 3\} }$] {$s_7$};
+    \node at (1, -6)  (s8) [label=right:${\{ p_0= 0 \} }$] {$s_8$};
+
+    \draw (0, 1) to (s0);
+    \draw (s0) to (s1);
+    \draw (s1) to (s2);
+    \draw (s2) to (s3);
+    \draw (s3) to (s4) ;
+	\draw (s5) .. controls +(up:10mm) and +(right:20mm) ..(s5);
+    \draw (s5) to (s6);
+    \draw (s5) to (s7);
+    \draw (s6) to (s8);
+    \draw (s7) to (s8);
+    \draw (s4) .. controls +(120:18mm) and +(left:20mm) .. (s1);
+    \draw (s3) to (s5);
+    \draw (s8) .. controls +(30:60mm) and +(30:30mm) .. (s1);
+	\end{tikzpicture}
+\end{center}
+
+$$H'=\{(s_0,t_0),(s_1,t_1), (s_2,t_1), (s_3,t_1),(s_4,t_1), (s_5,t_2),(s_6,t_3),(s_2,t_0),(s_3,t_1),(s_7,t_4)\}$$
+
+$$H''=\{(s_0,u_0),(s_1,u_3), (s_2,u_3), (s_3,u_1),(s_4,u_3), (s_5,u_2),(s_6,u_3),(s_6,u_1),(s_7,u_4),(s_8,t_0)\}$$
+
+
 \end{center}
