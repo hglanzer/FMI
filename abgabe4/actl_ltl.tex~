@@ -51,7 +51,7 @@ $M,s\not\models true$ & $\Rightarrow$ & iff for every path $\pi$ starting from s
 $M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A\ a$ \\
 $M,s\models a $ & $ \Rightarrow $ & $ M,s\models A\ a$ \\
 $M,s\models a$ & $\Rightarrow$ & iff for every path $\pi$ starting from s: $M,\pi \models\ a$ \\
- & & iff s is first state of $\pi$ and $M,s\models a$
+ & & iff s is first state of $\pi$ and $M,s\modelsa$
 \end{tabular}
 
 

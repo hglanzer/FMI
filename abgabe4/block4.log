@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.5.31)  8 JUN 2012 14:32
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.6.11)  14 JUN 2012 21:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -171,19 +171,19 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 Package color Info: Driver file: pdftex.def on input line 130.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/typearea.sty
-Package: typearea 2012/03/08 v3.10a KOMA-Script package (type area)
+Package: typearea 2012/05/15 v3.11 KOMA-Script package (type area)
 
-Package typearea, 2012/03/08 v3.10a KOMA-Script package (type area)
+Package typearea, 2012/05/15 v3.11 KOMA-Script package (type area)
                   Copyright (C) Frank Neukam, 1992-1994
                   Copyright (C) Markus Kohm, 1994-
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrkbase.sty
-Package: scrkbase 2012/03/08 v3.10a KOMA-Script package (KOMA-Script-dependent 
-basics and keyval usage)
+Package: scrkbase 2012/05/15 v3.11 KOMA-Script package (KOMA-Script-dependent b
+asics and keyval usage)
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrbase.sty
-Package: scrbase 2012/03/08 v3.10a KOMA-Script package (KOMA-Script-independent
- basics and keyval usage)
+Package: scrbase 2012/05/15 v3.11 KOMA-Script package (KOMA-Script-independent 
+basics and keyval usage)
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlfile.sty
 Package: scrlfile 2011/03/09 v3.09 KOMA-Script package (loading files)
@@ -219,7 +219,7 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \topskip        = 12.0pt
 (typearea)              \footskip       = 50.75pt
 (typearea)              \baselineskip   = 14.5pt
-(typearea)              on input line 1177.
+(typearea)              on input line 1211.
 ) (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \c@tracingmulticols=\count105
@@ -813,10 +813,10 @@ ABD: EveryShipout initializing macros
 \c@lstlisting=\count150
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) (./actl_ltl.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) (./actl_ltl.tex
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./LTL.tex
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]) [2] (./LTL.tex
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 21.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
@@ -824,20 +824,20 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 21.
-) [2] (./simulation.tex
+) [3] (./simulation.tex
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-) [3] (./prog_simulation.tex
+) [4] (./prog_simulation.tex
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [4]
+ [5]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-) [5] (./predicate_abstraction.tex) [6]
+) [6] (./predicate_abstraction.tex) [7]
 (./cbmc.tex (./main.c
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
@@ -847,12 +847,12 @@ File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 16.
-)) [7] (./bisim.tex) [8] (./block4.aux) ) 
+)) [8] (./bisim.tex) [9] (./block4.aux) ) 
 Here is how much of TeX's memory you used:
- 16323 strings out of 495059
- 315486 string characters out of 3182030
- 413241 words of memory out of 3000000
- 19081 multiletter control sequences out of 15000+200000
+ 16332 strings out of 495059
+ 315674 string characters out of 3182030
+ 413389 words of memory out of 3000000
+ 19090 multiletter control sequences out of 15000+200000
  16187 words of font info for 61 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  65i,10n,71p,452b,1124s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -870,10 +870,10 @@ dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmtt12.pfb>
-Output written on block4.pdf (8 pages, 193813 bytes).
+Output written on block4.pdf (9 pages, 195709 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 65 compressed objects within 1 object stream
+ 93 PDF objects out of 1000 (max. 8388607)
+ 67 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
