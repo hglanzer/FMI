@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.3.27)  17 JUN 2012 19:06
 entering extended mode
 **C:/Users/Schrabauke/Desktop/UNI/repo/FMI/abgabe4/block4.tex
 (C:/Users/Schrabauke/Desktop/UNI/repo/FMI/abgabe4/block4.tex
+=======
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.4.30)  17 JUN 2012 21:44
+entering extended mode
+**C:/Users/Lukas/Dropbox/Uni/FMI/git/FMI/abgabe4/block4.tex
+(C:/Users/Lukas/Dropbox/Uni/FMI/git/FMI/abgabe4/block4.tex
+>>>>>>> Beispiel 2b fertig
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,10 +20,17 @@ an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese,
 romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
 sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
 senglishmax, welsh, loaded.
+<<<<<<< HEAD
 (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\uebung.cls
 (C:\Schrab\Progs\MIKTex\tex\latex\base\article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (C:\Schrab\Progs\MIKTex\tex\latex\base\size12.clo
+=======
+(C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\uebung.cls
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
+>>>>>>> Beispiel 2b fertig
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -31,6 +45,7 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\a4wide\a4wide.sty
 Package: a4wide 1994/08/30
 
@@ -38,6 +53,15 @@ Package: a4wide 1994/08/30
 Package: a4 2004/04/15 v1.2g A4 based page layout
 ))
 (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\german.sty v2.5e 1998-07-08
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\a4wide\a4wide.sty
+Package: a4wide 1994/08/30
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\ntgclass\a4.sty
+Package: a4 2004/04/15 v1.2g A4 based page layout
+))
+(C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\german.sty v2.5e 1998-07-08
+>>>>>>> Beispiel 2b fertig
 Package: german 1998/07/08 v2.5e Support for writing german texts (br)
 \grmnU@D=\dimen103
 german -- \language number for Austrian undefined, default 22 used.
@@ -47,12 +71,18 @@ german -- \language number for Austrian undefined, default 22 used.
 \c@TAufgabennr=\count87
 \c@PAufgabennr=\count88
 \c@Aufgabennr=\count89
+<<<<<<< HEAD
 ) (C:\Schrab\Progs\MIKTex\tex\generic\babel\babel.sty
+=======
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
+>>>>>>> Beispiel 2b fertig
 Package: babel 2008/07/08 v3.8m The Babel package
 
 *************************************
 * Local config file bblopts.cfg used
 *
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\00miktex\bblopts.cfg
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
@@ -60,6 +90,15 @@ File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 Language: english 2005/03/30 v3.3o English support from the babel system
 
 (C:\Schrab\Progs\MIKTex\tex\generic\babel\babel.def
+=======
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\english.ldf"
+Language: english 2005/03/30 v3.3o English support from the babel system
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
+>>>>>>> Beispiel 2b fertig
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count90
 \U@D=\dimen104
@@ -68,6 +107,7 @@ File: babel.def 2008/07/08 v3.8m Babel common definitions
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\graphics\epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 
@@ -85,10 +125,30 @@ Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
 (C:\Schrab\Progs\MIKTex\tex\latex\00miktex\graphics.cfg
+=======
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\epsfig.sty"
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+>>>>>>> Beispiel 2b fertig
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\pdftex-def\pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
@@ -96,6 +156,15 @@ File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
 )
 (C:\Schrab\Progs\MIKTex\tex\generic\oberdiek\ltxcmds.sty
+=======
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+>>>>>>> Beispiel 2b fertig
 Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count91
@@ -106,27 +175,49 @@ Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
 \epsfxsize=\dimen107
 \epsfysize=\dimen108
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\dvips\rotate.sty
 \rotdimen=\dimen109
 )
 (C:\Schrab\Progs\MIKTex\tex\latex\ams\math\amsmath.sty
+=======
+("C:\Program Files\MiKTeX 2.9\tex\generic\dvips\rotate.sty"
+\rotdimen=\dimen109
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+>>>>>>> Beispiel 2b fertig
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip45
 
 For additional information on amsmath, use the `?' option.
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\ams\math\amstext.sty
 Package: amstext 2000/06/29 v2.01
 
 (C:\Schrab\Progs\MIKTex\tex\latex\ams\math\amsgen.sty
+=======
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+>>>>>>> Beispiel 2b fertig
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks15
 \ex@=\dimen110
 ))
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\ams\math\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen111
 )
 (C:\Schrab\Progs\MIKTex\tex\latex\ams\math\amsopn.sty
+=======
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen111
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+>>>>>>> Beispiel 2b fertig
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count92
@@ -167,21 +258,43 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\graphics\color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
 (C:\Schrab\Progs\MIKTex\tex\latex\00miktex\color.cfg
+=======
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2009/06/22 v3.00
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+>>>>>>> Beispiel 2b fertig
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\koma-script\typearea.sty
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\typearea.sty
+>>>>>>> Beispiel 2b fertig
 Package: typearea 2012/03/08 v3.10a KOMA-Script package (type area)
 
 Package typearea, 2012/03/08 v3.10a KOMA-Script package (type area)
                   Copyright (C) Frank Neukam, 1992-1994
                   Copyright (C) Markus Kohm, 1994-
 
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\koma-script\scrkbase.sty
 Package: scrkbase 2012/03/08 v3.10a KOMA-Script package (KOMA-Script-dependent 
 basics and keyval usage)
@@ -191,6 +304,17 @@ Package: scrbase 2012/03/08 v3.10a KOMA-Script package (KOMA-Script-independent
  basics and keyval usage)
 
 (C:\Schrab\Progs\MIKTex\tex\latex\koma-script\scrlfile.sty
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrkbase.sty
+Package: scrkbase 2012/03/08 v3.10a KOMA-Script package (KOMA-Script-dependent 
+basics and keyval usage)
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrbase.sty
+Package: scrbase 2012/03/08 v3.10a KOMA-Script package (KOMA-Script-independent
+ basics and keyval usage)
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrlfile.sty
+>>>>>>> Beispiel 2b fertig
 Package: scrlfile 2011/03/09 v3.09 KOMA-Script package (loading files)
 
 Package scrlfile, 2011/03/09 v3.09 KOMA-Script package (loading files)
@@ -225,7 +349,11 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \footskip       = 50.75pt
 (typearea)              \baselineskip   = 14.5pt
 (typearea)              on input line 1177.
+<<<<<<< HEAD
 ) (C:\Schrab\Progs\MIKTex\tex\latex\tools\multicol.sty
+=======
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\multicol.sty"
+>>>>>>> Beispiel 2b fertig
 Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \c@tracingmulticols=\count105
 \mult@box=\box28
@@ -273,6 +401,7 @@ Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \colbreak@box=\box53
 \multicol@sort@counter=\count113
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\amsfonts\amsfonts.sty
 Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 \symAMSa=\mathgroup4
@@ -281,6 +410,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 )
 (C:\Schrab\Progs\MIKTex\tex\latex\mdwtools\syntax.sty
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\mdwtools\syntax.sty
+>>>>>>> Beispiel 2b fertig
 Package: syntax 1996/05/17 1.07 Syntax typesetting (MDW)
 \grammarparsep=\skip54
 \grammarindent=\dimen127
@@ -293,7 +425,11 @@ Package: syntax 1996/05/17 1.07 Syntax typesetting (MDW)
 \sdcirclediam=\dimen129
 \sdindent=\dimen130
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\paralist\paralist.sty
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\paralist\paralist.sty
+>>>>>>> Beispiel 2b fertig
 Package: paralist 2002/03/18 v2.3b Extended list environments (BS)
 \pltopsep=\skip60
 \plpartopsep=\skip61
@@ -301,6 +437,7 @@ Package: paralist 2002/03/18 v2.3b Extended list environments (BS)
 \plparsep=\skip63
 \pl@lab=\toks20
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\pgf\frontendlayer\tikz.sty
 (C:\Schrab\Progs\MIKTex\tex\latex\pgf\basiclayer\pgf.sty
 (C:\Schrab\Progs\MIKTex\tex\latex\pgf\utilities\pgfrcs.sty
@@ -314,10 +451,28 @@ Package: paralist 2002/03/18 v2.3b Extended list environments (BS)
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\utilities\pgfrcs.code.tex
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\frontendlayer\tikz.sty
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\basiclayer\pgf.sty
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfrcs.sty
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-co
+mmon.tex
+\pgfutil@everybye=\toks21
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-la
+tex.def
+\pgfutil@abb=\box54
+ (C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\ms\everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfrcs.cod
+e.tex
+>>>>>>> Beispiel 2b fertig
 Package: pgfrcs 2010/10/25 v2.10 (rcs-revision 1.24)
 ))
 Package: pgf 2008/01/15 v2.10 (rcs-revision 1.12)
 
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\pgf\basiclayer\pgfcore.sty
 (C:\Schrab\Progs\MIKTex\tex\latex\pgf\systemlayer\pgfsys.sty
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\systemlayer\pgfsys.code.tex
@@ -328,6 +483,23 @@ Package: pgfsys 2010/06/30 v2.10 (rcs-revision 1.37)
 \pgfkeys@temptoks=\toks23
 
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\utilities\pgfkeysfiltered.code.tex
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\basiclayer\pgfcore.sty
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\systemlayer\pgfsys.sty
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsys.c
+ode.tex
+Package: pgfsys 2010/06/30 v2.10 (rcs-revision 1.37)
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeys.co
+de.tex
+\pgfkeys@pathtoks=\toks22
+\pgfkeys@temptoks=\toks23
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeysfil
+tered.code.tex
+>>>>>>> Beispiel 2b fertig
 \pgfkeys@tmptoks=\toks24
 ))
 \pgf@x=\dimen131
@@ -345,11 +517,16 @@ Package: pgfsys 2010/06/30 v2.10 (rcs-revision 1.37)
 \c@pgf@countc=\count116
 \c@pgf@countd=\count117
 
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\systemlayer\pgf.cfg
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgf.cfg
+>>>>>>> Beispiel 2b fertig
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
 )
 Package pgfsys Info: Driver file for pgf: pgfsys-pdftex.def on input line 900.
 
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\systemlayer\pgfsys-pdftex.def
 File: pgfsys-pdftex.def 2009/05/22  (rcs-revision 1.26)
 
@@ -357,10 +534,23 @@ File: pgfsys-pdftex.def 2009/05/22  (rcs-revision 1.26)
 File: pgfsys-common-pdf.def 2008/05/19  (rcs-revision 1.10)
 )))
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.tex
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsys-p
+dftex.def
+File: pgfsys-pdftex.def 2009/05/22  (rcs-revision 1.26)
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsys-c
+ommon-pdf.def
+File: pgfsys-common-pdf.def 2008/05/19  (rcs-revision 1.10)
+)))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsysso
+ftpath.code.tex
+>>>>>>> Beispiel 2b fertig
 File: pgfsyssoftpath.code.tex 2008/07/18  (rcs-revision 1.7)
 \pgfsyssoftpath@smallbuffer@items=\count118
 \pgfsyssoftpath@bigbuffer@items=\count119
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
 ))
@@ -368,6 +558,16 @@ File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
 (C:\Schrab\Progs\MIKTex\tex\latex\00miktex\color.cfg
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsyspr
+otocol.code.tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\xcolor\xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+>>>>>>> Beispiel 2b fertig
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -382,6 +582,7 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\basiclayer\pgfcore.code.tex
 Package: pgfcore 2010/04/11 v2.10 (rcs-revision 1.7)
 
@@ -389,6 +590,20 @@ Package: pgfcore 2010/04/11 v2.10 (rcs-revision 1.7)
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\math\pgfmathcalc.code.tex
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\math\pgfmathutil.code.tex)
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\math\pgfmathparser.code.tex
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcore.c
+ode.tex
+Package: pgfcore 2010/04/11 v2.10 (rcs-revision 1.7)
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmath.code.te
+x
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathcalc.cod
+e.tex
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathutil.cod
+e.tex)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathparser.c
+ode.tex
+>>>>>>> Beispiel 2b fertig
 \pgfmath@dimen=\dimen139
 \pgfmath@count=\count120
 \pgfmath@box=\box55
@@ -396,6 +611,7 @@ Package: pgfcore 2010/04/11 v2.10 (rcs-revision 1.7)
 \pgfmath@stack@operand=\toks26
 \pgfmath@stack@operation=\toks27
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\math\pgfmathfunctions.code.tex
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\math\pgfmathfunctions.basic.code.tex)
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\math\pgfmathfunctions.trigonometric.cod
@@ -409,6 +625,30 @@ ex) (C:\Schrab\Progs\MIKTex\tex\generic\pgf\math\pgfmathfunctions.base.code.tex
 \c@pgfmathroundto@lastzeros=\count121
 ))
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
+s.code.tex
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
+s.basic.code.tex)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
+s.trigonometric.code.tex)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
+s.random.code.tex)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
+s.comparison.code.tex)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
+s.base.code.tex)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
+s.round.code.tex)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
+s.misc.code.tex)))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfloat.co
+de.tex
+\c@pgfmathroundto@lastzeros=\count121
+))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepo
+ints.code.tex
+>>>>>>> Beispiel 2b fertig
 File: pgfcorepoints.code.tex 2010/04/09  (rcs-revision 1.20)
 \pgf@picminx=\dimen140
 \pgf@picmaxx=\dimen141
@@ -425,6 +665,7 @@ File: pgfcorepoints.code.tex 2010/04/09  (rcs-revision 1.20)
 \pgf@zx=\dimen152
 \pgf@zy=\dimen153
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\basiclayer\pgfcorepathconstruct.code.te
 x
 File: pgfcorepathconstruct.code.tex 2010/08/03  (rcs-revision 1.24)
@@ -435,22 +676,49 @@ File: pgfcorepathusage.code.tex 2008/04/22  (rcs-revision 1.12)
 \pgf@shorten@end@additional=\dimen156
 \pgf@shorten@start@additional=\dimen157
 ) (C:\Schrab\Progs\MIKTex\tex\generic\pgf\basiclayer\pgfcorescopes.code.tex
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepa
+thconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2010/08/03  (rcs-revision 1.24)
+\pgf@path@lastx=\dimen154
+\pgf@path@lasty=\dimen155
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepa
+thusage.code.tex
+File: pgfcorepathusage.code.tex 2008/04/22  (rcs-revision 1.12)
+\pgf@shorten@end@additional=\dimen156
+\pgf@shorten@start@additional=\dimen157
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoresc
+opes.code.tex
+>>>>>>> Beispiel 2b fertig
 File: pgfcorescopes.code.tex 2010/09/08  (rcs-revision 1.34)
 \pgfpic=\box56
 \pgf@hbox=\box57
 \pgf@layerbox@main=\box58
 \pgf@picture@serial@count=\count122
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\basiclayer\pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2008/04/22  (rcs-revision 1.9)
 \pgflinewidth=\dimen158
 )
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\basiclayer\pgfcoretransformations.code.
 tex
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoregr
+aphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2008/04/22  (rcs-revision 1.9)
+\pgflinewidth=\dimen158
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoretr
+ansformations.code.tex
+>>>>>>> Beispiel 2b fertig
 File: pgfcoretransformations.code.tex 2009/06/10  (rcs-revision 1.11)
 \pgf@pt@x=\dimen159
 \pgf@pt@y=\dimen160
 \pgf@pt@temp=\dimen161
+<<<<<<< HEAD
 ) (C:\Schrab\Progs\MIKTex\tex\generic\pgf\basiclayer\pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
 )
@@ -464,10 +732,32 @@ File: pgfcorepathprocessing.code.tex 2008/10/09  (rcs-revision 1.8)
 File: pgfcorearrows.code.tex 2008/04/23  (rcs-revision 1.11)
 )
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex
+=======
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorequ
+ick.code.tex
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoreob
+jects.code.tex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepa
+thprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2008/10/09  (rcs-revision 1.8)
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorear
+rows.code.tex
+File: pgfcorearrows.code.tex 2008/04/23  (rcs-revision 1.11)
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoresh
+ade.code.tex
+>>>>>>> Beispiel 2b fertig
 File: pgfcoreshade.code.tex 2008/11/23  (rcs-revision 1.13)
 \pgf@max=\dimen162
 \pgf@sys@shading@range@num=\count123
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\basiclayer\pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2010/03/25  (rcs-revision 1.16)
 
@@ -490,10 +780,45 @@ File: pgfmoduleshapes.code.tex 2010/09/09  (rcs-revision 1.13)
 File: pgfmoduleplot.code.tex 2010/10/22  (rcs-revision 1.8)
 )
 (C:\Schrab\Progs\MIKTex\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoreim
+age.code.tex
+File: pgfcoreimage.code.tex 2010/03/25  (rcs-revision 1.16)
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoreex
+ternal.code.tex
+File: pgfcoreexternal.code.tex 2010/09/01  (rcs-revision 1.17)
+\pgfexternal@startupbox=\box59
+))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorela
+yers.code.tex
+File: pgfcorelayers.code.tex 2010/08/27  (rcs-revision 1.2)
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoretr
+ansparency.code.tex
+File: pgfcoretransparency.code.tex 2008/01/17  (rcs-revision 1.2)
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepa
+tterns.code.tex
+File: pgfcorepatterns.code.tex 2009/07/02  (rcs-revision 1.3)
+)))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmodulesha
+pes.code.tex
+File: pgfmoduleshapes.code.tex 2010/09/09  (rcs-revision 1.13)
+\pgfnodeparttextbox=\box60
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmoduleplo
+t.code.tex
+File: pgfmoduleplot.code.tex 2010/10/22  (rcs-revision 1.8)
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\compatibility\pgfcomp-
+version-0-65.sty
+>>>>>>> Beispiel 2b fertig
 Package: pgfcomp-version-0-65 2007/07/03 v2.10 (rcs-revision 1.7)
 \pgf@nodesepstart=\dimen163
 \pgf@nodesepend=\dimen164
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2007/07/23 v2.10 (rcs-revision 1.1)
 ))
@@ -501,17 +826,38 @@ Package: pgfcomp-version-1-18 2007/07/23 v2.10 (rcs-revision 1.1)
 (C:\Schrab\Progs\MIKTex\tex\latex\pgf\utilities\pgfkeys.sty
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\utilities\pgfkeys.code.tex))
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\utilities\pgffor.code.tex
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\compatibility\pgfcomp-
+version-1-18.sty
+Package: pgfcomp-version-1-18 2007/07/23 v2.10 (rcs-revision 1.1)
+))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgffor.sty
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfkeys.sty
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeys.co
+de.tex))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgffor.cod
+e.tex
+>>>>>>> Beispiel 2b fertig
 Package: pgffor 2010/03/23 v2.10 (rcs-revision 1.18)
 \pgffor@iter=\dimen165
 \pgffor@skip=\dimen166
 \pgffor@stack=\toks28
 \pgffor@toks=\toks29
 ))
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex
 Package: tikz 2010/10/13 v2.10 (rcs-revision 1.76)
 
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\libraries\pgflibraryplothandlers.code.t
 ex
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\t
+ikz.code.tex
+Package: tikz 2010/10/13 v2.10 (rcs-revision 1.76)
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgflibrary
+plothandlers.code.tex
+>>>>>>> Beispiel 2b fertig
 File: pgflibraryplothandlers.code.tex 2010/05/31 v2.10 (rcs-revision 1.15)
 \pgf@plot@mark@count=\count124
 \pgfplotmarksize=\dimen167
@@ -528,7 +874,13 @@ File: pgflibraryplothandlers.code.tex 2010/05/31 v2.10 (rcs-revision 1.15)
 \tikznumberofchildren=\count126
 \tikznumberofcurrentchild=\count127
 \tikz@fig@count=\count128
+<<<<<<< HEAD
  (C:\Schrab\Progs\MIKTex\tex\generic\pgf\modules\pgfmodulematrix.code.tex
+=======
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmodulemat
+rix.code.tex
+>>>>>>> Beispiel 2b fertig
 File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
 \pgfmatrixcurrentrow=\count129
 \pgfmatrixcurrentcolumn=\count130
@@ -536,6 +888,7 @@ File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
 )
 \tikz@expandcount=\count132
 
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrar
 ytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v2.10 (rcs-revision 1.2)
@@ -586,6 +939,58 @@ File: tikzlibraryshapes.multipart.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
 
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\libraries\shapes\pgflibraryshapes.multi
 part.code.tex
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v2.10 (rcs-revision 1.2)
+)))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibraryshapes.code.tex
+File: tikzlibraryshapes.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\shapes\pgf
+libraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2008/06/26 v2.10 (rcs-revision 1.1)
+))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibraryshapes.misc.code.tex
+File: tikzlibraryshapes.misc.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\shapes\pgf
+libraryshapes.misc.code.tex
+File: pgflibraryshapes.misc.code.tex 2008/10/07 v2.10 (rcs-revision 1.3)
+))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibraryshapes.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\shapes\pgf
+libraryshapes.symbols.code.tex
+File: pgflibraryshapes.symbols.code.tex 2009/10/27 v2.10 (rcs-revision 1.3)
+))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibraryshapes.arrows.code.tex
+File: tikzlibraryshapes.arrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\shapes\pgf
+libraryshapes.arrows.code.tex
+File: pgflibraryshapes.arrows.code.tex 2008/06/26 v2.10 (rcs-revision 1.1)
+))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibraryshapes.callouts.code.tex
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\shapes\pgf
+libraryshapes.callouts.code.tex))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibraryshapes.multipart.code.tex
+File: tikzlibraryshapes.multipart.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\shapes\pgf
+libraryshapes.multipart.code.tex
+>>>>>>> Beispiel 2b fertig
 File: pgflibraryshapes.multipart.code.tex 2010/01/07 v2.10 (rcs-revision 1.2)
 \pgfnodepartlowerbox=\box63
 \pgfnodeparttwobox=\box64
@@ -608,8 +1013,13 @@ File: pgflibraryshapes.multipart.code.tex 2010/01/07 v2.10 (rcs-revision 1.2)
 \pgfnodepartsixbox=\box81
 \pgfnodepartfivebox=\box82
 )))
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrar
 ysnakes.code.tex
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibrarysnakes.code.tex
+>>>>>>> Beispiel 2b fertig
 File: tikzlibrarysnakes.code.tex 2008/02/05 v2.10 (rcs-revision 1.6)
 
 
@@ -617,11 +1027,20 @@ Package tikz Warning: Snakes have been superseded by decorations. Please use th
 e decoration libraries instead of the snakes library on input line 14.
 
 
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrar
 ydecorations.pathmorphing.code.tex
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrar
 ydecorations.code.tex
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\modules\pgfmoduledecorations.code.tex
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibrarydecorations.pathmorphing.code.tex
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibrarydecorations.code.tex
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmoduledec
+orations.code.tex
+>>>>>>> Beispiel 2b fertig
 \pgfdecoratedcompleteddistance=\dimen174
 \pgfdecoratedremainingdistance=\dimen175
 \pgfdecoratedinputsegmentcompleteddistance=\dimen176
@@ -633,6 +1052,7 @@ ydecorations.code.tex
 )
 \tikz@lib@dec@box=\box83
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\libraries\decorations\pgflibrarydecorat
 ions.pathmorphing.code.tex))
 (C:\Schrab\Progs\MIKTex\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrar
@@ -650,6 +1070,26 @@ Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
 )
 (C:\Schrab\Progs\MIKTex\tex\latex\listings\listings.sty
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\decoration
+s\pgflibrarydecorations.pathmorphing.code.tex))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibrarydecorations.pathreplacing.code.tex
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\decoration
+s\pgflibrarydecorations.pathreplacing.code.tex))
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibrarydecorations.shapes.code.tex
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\decoration
+s\pgflibrarydecorations.shapes.code.tex)))
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
+)
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.sty
+>>>>>>> Beispiel 2b fertig
 \lst@mode=\count134
 \lst@gtempboxa=\box84
 \lst@token=\toks30
@@ -663,24 +1103,41 @@ Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
 \lst@lineno=\count139
 \lst@maxwidth=\dimen184
 
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\listings\lstmisc.sty
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
+>>>>>>> Beispiel 2b fertig
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 \c@lstnumber=\count140
 \lst@skipnumbers=\count141
 \lst@framebox=\box85
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\listings\listings.cfg
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
+>>>>>>> Beispiel 2b fertig
 File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
 Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
+<<<<<<< HEAD
 (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\fvsw.sty
 (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\gslist.sty
+=======
+(C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\fvsw.sty
+(C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\gslist.sty
+>>>>>>> Beispiel 2b fertig
 Package: gslist 2000/05/24
 \g@ta=\toks31
 \g@tb=\toks32
 )
+<<<<<<< HEAD
 (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\ulem.sty
+=======
+(C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\ulem.sty
+>>>>>>> Beispiel 2b fertig
 \UL@box=\box86
 \UL@hyphenbox=\box87
 \UL@skip=\skip64
@@ -692,7 +1149,11 @@ Package: gslist 2000/05/24
 Package: ulem 2011/03/18
 \ULdepth=\dimen187
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\lkproof\proof.sty
+=======
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\latex\lkproof\proof.sty
+>>>>>>> Beispiel 2b fertig
 \inferLineSkip=\dimen188
 \inferLabelSkip=\dimen189
 \@LeftOffset=\dimen190
@@ -719,10 +1180,17 @@ Package: ulem 2011/03/18
 )
 \ALGwidth=\skip65
 )
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\tools\tabularx.sty
 Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
 
 (C:\Schrab\Progs\MIKTex\tex\latex\tools\array.sty
+=======
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\tabularx.sty"
+Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
+>>>>>>> Beispiel 2b fertig
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen207
 \extrarowheight=\dimen208
@@ -738,6 +1206,7 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \TX@cols=\count143
 \TX@ftn=\toks35
 )
+<<<<<<< HEAD
 (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\block4.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
 LaTeX Font Info:    ... okay on input line 29.
@@ -753,6 +1222,23 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
 LaTeX Font Info:    ... okay on input line 29.
 
 (C:\Schrab\Progs\MIKTex\tex\context\base\supp-pdf.mkii
+=======
+(C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\block4.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+
+(C:\Users\Lukas\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+>>>>>>> Beispiel 2b fertig
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count144
 \scratchdimen=\dimen214
@@ -768,15 +1254,22 @@ LaTeX Font Info:    ... okay on input line 29.
 ) ABD: EveryShipout initializing macros
 \c@lstlisting=\count150
 
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\amsfonts\umsa.fd)
 (C:\Schrab\Progs\MIKTex\tex\latex\amsfonts\umsb.fd)
 (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\actl_ltl.tex
+=======
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd")
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd")
+(C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\actl_ltl.tex
+>>>>>>> Beispiel 2b fertig
 Underfull \hbox (badness 10000) in paragraph at lines 39--70
 
  []
 
 [1
 
+<<<<<<< HEAD
 {C:/Users/Schrabauke/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 [2] [3]) [4] (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\LTL.tex
 Missing character: There is no ; in font nullfont!
@@ -790,12 +1283,62 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 64.
 ) [5]
 (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\simulation.tex
+=======
+{C:/Users/Lukas/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+[3]) [4] (C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\LTL.tex
+Underfull \hbox (badness 10000) in paragraph at lines 18--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--36
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 42.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 42.
+) [5]
+(C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\simulation.tex
+>>>>>>> Beispiel 2b fertig
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 ) [6]
+<<<<<<< HEAD
 (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\prog_simulation.tex
+=======
+(C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\prog_simulation.tex
+>>>>>>> Beispiel 2b fertig
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
  [7]
@@ -824,6 +1367,7 @@ t/12 s[]; u[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (\OML/cmm/m/it
 12 s[]; t[]\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g
  []
 
+<<<<<<< HEAD
 ) [9]
 (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\predicate_abstraction.tex
 Missing character: There is no ; in font nullfont!
@@ -840,15 +1384,30 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
  [11]) [12] (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\cbmc.tex
 (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\main.c
+=======
+) [9] (C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\predicate_abstraction.tex
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+[10]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+) [11] (C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\cbmc.tex
+(C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\main.c
+>>>>>>> Beispiel 2b fertig
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 16.
 
+<<<<<<< HEAD
 (C:\Schrab\Progs\MIKTex\tex\latex\base\omlcmr.fd
+=======
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
+>>>>>>> Beispiel 2b fertig
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 16.
+<<<<<<< HEAD
 )) [13]
 (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\bisim.tex) [14]
 (C:\Users\Schrabauke\Desktop\UNI\repo\FMI\abgabe4\block4.aux) ) 
@@ -876,6 +1435,38 @@ x/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Schrab/Progs/MIKTex/fonts/type1
 Output written on block4.pdf (14 pages, 230926 bytes).
 PDF statistics:
  107 PDF objects out of 1000 (max. 8388607)
+=======
+)) [12]
+(C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\bisim.tex) [13]
+(C:\Users\Lukas\Dropbox\Uni\FMI\git\FMI\abgabe4\block4.aux) ) 
+Here is how much of TeX's memory you used:
+ 16366 strings out of 494045
+ 319784 string characters out of 3148387
+ 413210 words of memory out of 3000000
+ 19260 multiletter control sequences out of 15000+200000
+ 16187 words of font info for 61 fonts, out of 3000000 for 9000
+ 715 hyphenation exceptions out of 8191
+ 65i,10n,71p,499b,1124s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmtt12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sy
+mbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbo
+ls/msbm10.pfb>
+Output written on block4.pdf (13 pages, 236520 bytes).
+PDF statistics:
+ 112 PDF objects out of 1000 (max. 8388607)
+>>>>>>> Beispiel 2b fertig
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
