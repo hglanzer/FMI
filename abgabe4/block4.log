@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.6.11)  15 JUN 2012 16:07
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.6.11)  17 JUN 2012 15:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -814,32 +814,38 @@ ABD: EveryShipout initializing macros
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) (./actl_ltl.tex
+Underfull \hbox (badness 10000) in paragraph at lines 39--70
+
+ []
+
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]) [2] (./LTL.tex
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 21.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]) [4] (./LTL.tex
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 64.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 21.
-) [3] (./simulation.tex
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 64.
+) [5] (./simulation.tex
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-) [4] (./prog_simulation.tex
+) [6] (./prog_simulation.tex
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [5]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
+ [7]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [6]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+ [8]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
@@ -857,13 +863,13 @@ t/12 s[]; u[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 (\OML/cmm/m/it
 12 s[]; t[]\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g
  []
 
-) [7] (./predicate_abstraction.tex
+) [9] (./predicate_abstraction.tex
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [8]
+ [10]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-) [9] (./cbmc.tex (./main.c
+) [11] (./cbmc.tex (./main.c
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 16.
@@ -873,13 +879,13 @@ File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 16.
-)) [10] (./bisim.tex)
-[11] (./block4.aux) ) 
+)) [12] (./bisim.tex)
+[13] (./block4.aux) ) 
 Here is how much of TeX's memory you used:
- 16588 strings out of 495059
- 319484 string characters out of 3182030
- 418031 words of memory out of 3000000
- 19346 multiletter control sequences out of 15000+200000
+ 16624 strings out of 495059
+ 320024 string characters out of 3182030
+ 421700 words of memory out of 3000000
+ 19382 multiletter control sequences out of 15000+200000
  16187 words of font info for 61 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  65i,10n,71p,452b,1124s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -897,10 +903,10 @@ lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 t12.pfb>
-Output written on block4.pdf (11 pages, 208976 bytes).
+Output written on block4.pdf (13 pages, 214336 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 71 compressed objects within 1 object stream
+ 106 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

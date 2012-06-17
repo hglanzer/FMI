@@ -35,25 +35,93 @@ formula $\trans(\varphi) \Rightarrow \mathbf{A}\varphi$ is a tautology.
 $M, s \models \mathbf{A}\varphi$ for all $\LTL$ formulas $\varphi$ in negation normal form, all Kripke 
 structures $M$ and all states $s$ in $M$.
 Use induction over the structure of~$\varphi$.}\hfill\textbf{(1 Point)}
-
+ 
 \begin{tabular}{l l l}
 \hline
+\hline
+(1) & & \\
 $M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A\ true$ \\
 $M,s\models true $ & $ \Rightarrow $ & $ M,s\models A\ true$ \\
  & $\Rightarrow$ & iff for every path $\pi$ starting from s: $M,\pi \models\ true$ \\
  & & iff s is first state of $\pi$ and $M,s\models true$ \\
 \hline
+\hline
+(2) & & \\
 $M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A\ false$ \\
 $M,s\models false $ & $ \Rightarrow $ & $ M,s\models A\ false$ \\
 $M,s\not\models true$ & $\Rightarrow$ & iff for every path $\pi$ starting from s: $M,\pi \not\models\ true$ \\
  & & iff s is first state of $\pi$ and $M,s\not\models true$ \\
 \hline
+\hline
+(3) & & \\
 $M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A\ a$ \\
 $M,s\models a $ & $ \Rightarrow $ & $ M,s\models A\ a$ \\
 $M,s\models a$ & $\Rightarrow$ & iff for every path $\pi$ starting from s: $M,\pi \models\ a$ \\
- & & iff s is first state of $\pi$ and $M,s\modelsa$
+ & & iff s is first state of $\pi$ and $M,s\models a$ \\
+\hline
+\hline
+% NOT a
+(4) & & \\
+$M,s\models trans(\neg a)$ & $ \Rightarrow $ & $ M,s\models A\neg a$ \\
+$M,s\models \neg a $ & $ \Rightarrow $ & $ M,s\models A\neg a$ \\
+$M,s\not\models a$ & $\Rightarrow$ & $M,s\ A\ \not\models\ a$ \\
 \end{tabular}
+\\
 
+\begin{tabular}{l l l}
+\hline
+\hline
+% OR operator
+(5) & & \\
+$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(true)\ OR\ M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true\vee true)$ \\
+$M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true)$ \\
+... see (1) & & \\
+\hline
+$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(true)\ OR\ M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(true\vee false)$ \\
+$M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true)$ \\
+... see (1) & & \\
+\hline
+$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(false)\ OR\ M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(false\vee true)$ \\
+$M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true)$ \\
+... see (1) & & \\
+\hline
+$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(false)\ OR\ M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(false\vee false)$ \\
+$M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(false)$ \\
+... see (2) & & \\
+\hline \\
+$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(a)\ OR\ M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a\vee a)$ \\
+$M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a)$ \\
+... see (3) & & \\
+\hline \\
+$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(a)\ OR\ M,s\models trans(\neg a)$ & $ \Rightarrow $ & $ M,s\models A(a\vee\neg a)$ \\
+$M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a)$ \\
+... see (3) & & \\
+\hline \\
+$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(\neg a)\ OR\ M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(\neg a\vee a)$ \\
+$M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a)$ \\
+... see (3) & & \\
+
+\hline \\
+$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+$M,s\models trans(\neg a)\ OR\ M,s\models trans(\neg a)$ & $ \Rightarrow $ & $ M,s\models A(\neg a\vee\neg a)$ \\
+$M,s\models trans(\neg a)$ & $ \Rightarrow $ & $ M,s\models A(a)$ \\
+... see (4) & & \\
+\end{tabular}
 
 \paragraph{b)} Show that, in general, $M, s \models \varphi$ does not imply $M, s \models \trans(\varphi)$.
 \emph{Hint: Give a Kripke structure $M$ and an $\LTL$ formula $\varphi$ such that $M, s \models \varphi$ and $M, s \not\models \trans(\varphi)$. Discuss why $M, s \models \varphi$ and $M, s \not\models \trans(\varphi)$ holds on $M$ and the given state $s$ in $M$.}\\{\color{white} whitespace}\hfill\textbf{(1 Point)}
