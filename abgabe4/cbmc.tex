@@ -9,6 +9,9 @@ The Matrix $G$ models a graph with $N$ nodes, i.e, $G[i][j]$ is true iff there i
 
 \begin{enumerate}
 	\item Use CBMC to find the lowest value for $K$ such that the assertion at the end of the program can be violated. What does it mean that the error state is or is not reachable for a given graph $G$ and a given value $K$?
+	  
+	$K=2$ is the smallest number for which the assertion is violated. Because the assertion is reversed this means that there is always a path with length=1.
+
 	\item Perform an unwinding of the loop for $K = 3$.
 	\item Transform the unwinded program into the SSA form.
 	\item Build an SMT formula from the SSA form which is satisfiable if and only if the assertion at the end of the program may be violated. {\em Note:} A call to $\mathit{nondet}$ can be modeled by introducing a new integer variable.

@@ -6,6 +6,7 @@
 \newcommand{\true}{\mathbf{true}}
 \newcommand{\false}{\mathbf{false}}
 \newcommand{\trans}{\mathsf{trans}}
+\newcommand{\ltlA}{\textsf{\textbf{A}}\,}
 Given an LTL formula $\varphi$ in Negation Normal Form, the following function 
 $\mathsf{trans} : \LTL \rightarrow \ACTL$ translates $\varphi$ into an ACTL 
 formula $\trans(\varphi)$ as follows:
@@ -65,66 +66,221 @@ $M,s\models a$ & $\Rightarrow$ & iff for every path $\pi$ starting from s: $M,\p
 $M,s\models trans(\neg a)$ & $ \Rightarrow $ & $ M,s\models A\neg a$ \\
 $M,s\models \neg a $ & $ \Rightarrow $ & $ M,s\models A\neg a$ \\
 $M,s\not\models a$ & $\Rightarrow$ & $M,s\not\models A\ \ a$ \\
+& & iff for every path $\pi$ starting from s: $M,\pi \not\models\ a$ \\
+ & & iff s is first state of $\pi$ and $M,s\not\models a$ \\
 \end{tabular}
 \\
+% \begin{tabular}{l l l}
+% \hline
+% \hline
+% % OR operator
+% (5) OR & & \\
+% $M,s\models trans(\varphi_1 \vee\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% \hline
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(true)\ OR\ M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true\vee true)$ \\
+% $M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true)$ \\
+% ... see (1) & & \\
+% \hline
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(true)\ OR\ M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(true\vee false)$ \\
+% $M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true)$ \\
+% ... see (1) & & \\
+% \hline
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(false)\ OR\ M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(false\vee true)$ \\
+% $M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true)$ \\
+% ... see (1) & & \\
+% \hline
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(false)\ OR\ M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(false\vee false)$ \\
+% $M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(false)$ \\
+% ... see (2) & & \\
+% \hline \\
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(a)\ OR\ M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a\vee a)$ \\
+% $M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a)$ \\
+% ... see (3) & & \\
+% \end{tabular}
+% \\
+% \begin{tabular}{l l l}
+% \hline \\
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(a)\ OR\ M,s\models trans(\neg a)$ & $ \Rightarrow $ & $ M,s\models A(a\vee\neg a)$ \\
+% $M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a)$ \\
+% ... see (3) & & \\
+% \hline \\
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\neg a)\ OR\ M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(\neg a\vee a)$ \\
+% $M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a)$ \\
+% ... see (3) & & \\
+% 
+% \hline \\
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\neg a)\ OR\ M,s\models trans(\neg a)$ & $ \Rightarrow $ & $ M,s\models A(\neg a\vee\neg a)$ \\
+% $M,s\models trans(\neg a)$ & $ \Rightarrow $ & $ M,s\models A\neg a$ \\
+% ... see (4) & & \\
+%  \hline \\
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(a)\ OR\ M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(a\vee\ true)$ \\
+% $M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A\ true$ \\
+% ... see (1) & & \\
+%  \hline \\
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(true)\ OR\ M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(true\vee\ a)$ \\
+% $M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A\ true$ \\
+% $M,s\models true$ & $ \Rightarrow $ & $ M,s\models A\ true$ \\
+% ... see (1) & & \\
+%  \hline \\
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(a)\ OR\ M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(a\vee\ false)$ \\
+% $M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A\ a$ \\
+% $M,s\models a$ & $ \Rightarrow $ & $ M,s\models A\ a$ \\
+% ... see (3) & & \\
+%  \hline \\
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(false)\ OR\ M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(false\vee\ a)$ \\
+% $M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A\ a$ \\
+% $M,s\models a$ & $ \Rightarrow $ & $ M,s\models A\ a$ \\
+% ... see (3) & & \\
+% 
+% % NOT a v true
+% \hline \\
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\neg a)\ OR\ M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(\neg a\vee\ true)$ \\
+% $M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A\ a$ \\
+% $M,s\models true$ & $ \Rightarrow $ & $ M,s\models A\ true$ \\
+% ... see (1) & & \\
+% \end{tabular}
+% \\
+% \begin{tabular}{l l l}
+% \hline \\
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(true)\ OR\ M,s\models trans(\neg a)$ & $ \Rightarrow $ & $ M,s\models A(true\vee\ \neg a)$ \\
+% $M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A\ true$ \\
+% $M,s\models true$ & $ \Rightarrow $ & $ M,s\models A\ true$ \\
+% ... see (1) & & \\
+% % NOT a v FALSE
+% \hline \\
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\neg a)\ OR\ M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(\neg a\vee\ false)$ \\
+% $M,s\models trans(\neg a)$ & $ \Rightarrow $ & $ M,s\models A\neg a$ \\
+% $M,s\models \neg a$ & $ \Rightarrow $ & $ M,s\models A\neg a$ \\
+% ... see (2) & & \\
+% \hline \\
+% $M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(\neg a)\ OR\ M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(\neg a\vee\ false)$ \\
+% $M,s\models trans(\neg)$ & $ \Rightarrow $ & $ M,s\models A\neg a$ \\
+% $M,s\models \neg a$ & $ \Rightarrow $ & $ M,s\models A\neg a$ \\
+% ... see (2) & & \\
+% \end{tabular}
+% 
+% % AND - operator
+% \begin{tabular}{l l l}
+%  \hline \\
+%  \hline \\
+% (5) AND & & \\
+% analouge to (4), the distributivity of $\wedge$ holds here too,\\
+% so this cases are not shown any more \\
+% $M,s\models trans(\varphi_1 \wedge\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \wedge \varphi_2)$ \\
+% \hline
+% $M,s\models trans(\varphi_1) \wedge trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \wedge \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ AND\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \wedge \varphi_2)$ \\
+% $M,s\models trans(true)\ AND\ M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true\wedge true)$ \\
+% $M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true)$ \\
+% ... see (1) & & \\
+% \hline
+% $M,s\models trans(\varphi_1) \wedge trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \wedge \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(true)\ AND\ M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(true \wedge false)$ \\
+% $M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(false)$ \\
+% ... see (2) & & \\
+% \hline
+% $M,s\models trans(\varphi_1) \wedge trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \wedge \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(false)\ OR\ M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(false\vee false)$ \\
+% $M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(false)$ \\
+% ... see (2) & & \\
+% \hline
+% $M,s\models trans(\varphi_1) \wedge trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \wedge \varphi_2)$ \\
+% $M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
+% $M,s\models trans(a)\ OR\ M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a\vee a)$ \\
+% $M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a)$ \\
+% ... see (3) & & \\
+% \end{tabular}
 
+
+% X - operator
 \begin{tabular}{l l l}
-\hline
-\hline
-% OR operator
-(5) & & \\
-$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(true)\ OR\ M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true\vee true)$ \\
-$M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true)$ \\
-... see (1) & & \\
-\hline
-$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(true)\ OR\ M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(true\vee false)$ \\
-$M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true)$ \\
-... see (1) & & \\
-\hline
-$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(false)\ OR\ M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(false\vee true)$ \\
-$M,s\models trans(true)$ & $ \Rightarrow $ & $ M,s\models A(true)$ \\
-... see (1) & & \\
-\hline
-$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(false)\ OR\ M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(false\vee false)$ \\
-$M,s\models trans(false)$ & $ \Rightarrow $ & $ M,s\models A(false)$ \\
-... see (2) & & \\
-\hline \\
-$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(a)\ OR\ M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a\vee a)$ \\
-$M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a)$ \\
-... see (3) & & \\
-\hline \\
-$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(a)\ OR\ M,s\models trans(\neg a)$ & $ \Rightarrow $ & $ M,s\models A(a\vee\neg a)$ \\
-$M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a)$ \\
-... see (3) & & \\
-\hline \\
-$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(\neg a)\ OR\ M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(\neg a\vee a)$ \\
-$M,s\models trans(a)$ & $ \Rightarrow $ & $ M,s\models A(a)$ \\
-... see (3) & & \\
+ \hline \\
+ \hline \\
 
+$M,s\models AX\ trans(\varphi)$ & $ \Rightarrow $ & $ M,s\models AX \varphi$ \\
+$ \Leftrightarrow \forall$ paths starting at $s_0.M, \pi \models X\trans(\varphi)$ & &  $\Leftrightarrow \forall$ paths starting at $s_0.M, \pi \models X(\varphi)$ \\
+$ \Leftrightarrow \forall$ paths starting at $s_0.M, \pi^1 \models \trans(\varphi)$ & & $ \Leftrightarrow \forall$ paths starting at $s_0.M, \pi^1 \models \varphi$\\
+$ \Leftrightarrow \forall$ paths starting at $s_0.M, s_1 \models \trans(\varphi)$ & & $ \Leftrightarrow \forall$ paths starting at $s_0.M, s_1 \models \varphi$ \\
 \hline \\
-$M,s\models trans(\varphi_1) \vee trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(\varphi_1)\ OR\ M,s\models trans(\varphi_2)$ & $ \Rightarrow $ & $ M,s\models A(\varphi_1 \vee \varphi_2)$ \\
-$M,s\models trans(\neg a)\ OR\ M,s\models trans(\neg a)$ & $ \Rightarrow $ & $ M,s\models A(\neg a\vee\neg a)$ \\
-$M,s\models trans(\neg a)$ & $ \Rightarrow $ & $ M,s\models A(a)$ \\
-... see (4) & & \\
+ \hline \\
 \end{tabular}
+
+$M,s\models AF\ trans(\varphi)  \Rightarrow  M,s\models FX \varphi$ \\
+this can be shown analog to $X$, but here the index $1$ for state $s$ must be replaced with an arbitrary and fixed $k$
+
 
 \paragraph{b)} Show that, in general, $M, s \models \varphi$ does not imply $M, s \models \trans(\varphi)$.
 \emph{Hint: Give a Kripke structure $M$ and an $\LTL$ formula $\varphi$ such that $M, s \models \varphi$ and $M, s \not\models \trans(\varphi)$. Discuss why $M, s \models \varphi$ and $M, s \not\models \trans(\varphi)$ holds on $M$ and the given state $s$ in $M$.}\\{\color{white} whitespace}\hfill\textbf{(1 Point)}
 
+$\LTL$: $\phi=\ltlF\ltlG a$ \\
+
+$\ACTL: \trans(\phi)=\trans(FGa)$ \\
+$ = \trans(F(Ga))$ \\
+$ = \trans(F(AGa))$ \\
+$ = AF(AGa)$ \\
+$ = \ltlA\ltlF\ltlA\ltlG a$ \\
+
+Kripke structure $M$:
+  \begin{center}
+\begin{minipage}{0.48\textwidth}
+	\scalebox{0.8}{
+ % \begin{tikzpicture}[->,scale=1,label distance=-3mm,>= latex, node distance = 2cm]
+   % \tikzstyle{every node}=[shape=circle,minimum size=10mm,font=\footnotesize];
+    %\tikzstyle{every path} = [draw,thick];
+\begin{tikzpicture}[->,scale=1,label distance=0mm]
+ \tikzstyle{every node}=[draw,shape=circle,minimum size=7mm,font=\footnotesize];
+    \tikzstyle{every path}=[draw,thick];
+    \node at (0, 2) (s) [label=right:$$] {$$};
+    \node at (0, 0) (n0) [label=right:$s_0$] {$a$};
+    \node at (0, -2) (n1) [label=right:$s_1$] {$$};
+    \node at (0, -4) (n2) [label=right:$s_2$] {$a$};    
+        \draw[->] (s) -- (n0);
+    \draw[->] (n0) -- (n1);
+    \draw[->] (n1) -- (n2);
+		    
+   \path[loop left] (n0) to (n0);
+   \path[loop left] (n2) to (n2);
+\end{tikzpicture}
+
+
+}
+\end{minipage}
+\end{center}
+
+The Kripke structure models the correct behaviour for the LTL formulae, but not for the corresponding ACTL formulae.
 
 

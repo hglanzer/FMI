@@ -23,6 +23,7 @@
 \def\NN{{\ensuremath{\mathbbm{N}_0\xspace}}}
 \usepackage{fvsw}
 \usepackage{tabularx}
+\usepackage{amsmath}
 
 \setlength{\textheight}{25cm}
 
