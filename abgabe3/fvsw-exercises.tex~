@@ -1,0 +1,798 @@
+\documentclass[a4paper]{scrartcl}
+\usepackage{amsmath,amssymb,fvsw,fullpage,rotating}
+\usepackage{color}
+\newtheorem{ex}{Exercise}
+\newenvironment{exercise}[1]%
+   {\def\tmp{}%
+    \def\points{#1}%
+    \ifx\points\tmp
+      \begin{ex}
+    \else
+      \def\tmp{1}%
+    \begin{ex}[#1 point\ifx\points\tmp\else s\fi]
+    \fi
+    \normalfont
+   }%
+   {\end{ex}%
+   }
+
+\usepackage{enumerate}
+\usepackage{fvsw}
+\usepackage{lscape}
+
+\newenvironment{subexercises}%
+   {\begin{enumerate}[(a)]}%
+   {\end{enumerate}}
+
+\renewcommand\paragraph[1]{\medskip\par\noindent\textit{#1}}
+\newcommand\ASa[2]{\infer[\text{\tiny(as)}]{#1}{#2}}
+
+\begin{document}
+\title{Formal Verification of Software~-- Exercises}
+\date{May 2012}
+\author{Harald Glanzer\and Bernd-Peter Ivanschitz\and Lukas Petermann}
+\maketitle
+
+\begin{exercise}{1}\label{ex:syntax}
+  Show that the given\TPL\ program 
+  is syntactically correct:
+\newline
+$ x:=x+y;if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi $
+
+\begin{itemize}
+\item $\mathcal{P}\Rightarrow \mathcal{P};\mathcal{P}$
+
+\item $\Rightarrow \mathcal{V}:=\mathcal{E};\mathcal{P}$
+\item $\Rightarrow x:=(\mathcal{E} \mathcal{B} \mathcal{E});\mathcal{P}$
+\item $\Rightarrow x:=(\mathcal{V} + \mathcal{V});\mathcal{P}$
+\item $\Rightarrow$ x:=x + y;$\mathcal{P	}$
+\item $\Rightarrow$ x:=x + y; if $\mathcal{E}$ then $\mathcal{P}$ else $ \mathcal{P}$ fi
+\item $\Rightarrow$ x:=x + y; if $(\mathcal{E} \mathcal{B} \mathcal{E})$ then $\mathcal{P}$ else $ \mathcal{Q}$ if
+\item $\Rightarrow$ x:=x + y; if $\mathcal{V} < \mathcal{N}$ then $\mathcal{P}$ else $ \mathcal{Q}$ if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then $\mathcal{P}$ else $ \mathcal{Q}$ if
+\item $\Rightarrow$ x:=x + y; if x $< $ 0 then abort; else $ \mathcal{Q}$ if
+\item $\Rightarrow$ x:=x + y; if x $< $ 0 then abort; else while $\mathcal{E}$ do $ \mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $ < $ 0 then abort; else while $(\mathcal{E} \mathcal{B} \mathcal{E})$ do $ \mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while $(\mathcal{E} \neq \mathcal{E})$ do $ \mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while $(\mathcal{V} \neq \mathcal{E})$ do $ \mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $ < $ 0 then abort; else while $(\mathcal{V} \neq \mathcal{V})$ do $ \mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do $ \mathcal{P};\mathcal{P}$ od if
+
+\item $\Rightarrow$ x:=x + y; if x $ <$ 0 then abort; else while x$ \neq $y do $ \mathcal{E};\mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do $ (\mathcal{E} \mathcal{B} \mathcal{E});\mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do $ (\mathcal{V} + \mathcal{N});\mathcal{P}$ od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x:= x + 1;$\mathcal{P}$; od if
+
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x:= x + 1;$\mathcal{E}$; od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x:= x + 1;$(\mathcal{E} \mathcal{B} \mathcal{E})$; od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x:= x + 1;$(\mathcal{V} $+$ \mathcal{N})$; od if
+\item $\Rightarrow$ x:=x + y; if x $<$ 0 then abort; else while x$ \neq $y do x:= x + 1; y:= y + 2; od if
+
+\end{itemize}
+
+Here the idea is to construct the wanted(given) program by starting with with an 'empty' program and extending this program by substitution until we get the final program.
+
+%  \begin{ALG}
+%    1    \ASS x{x+y};\\
+%    2    \IF\ $x<0$ \THEN\\
+%    3    \>\ABORT\\
+%    4    \ELSE\\
+%    5    \>\WHILE\ $x\neq y$ \DO\\
+%    6    \>\>\ASS x{x+1};\\
+%    7    \>\>\ASS y{y+2}\\
+%    8    \>\OD\\
+%    9    \FI
+%  \end{ALG}
+%
+%
+%To prove the progam for correct syntax, every line of the given code must be examined to show that every statement is part of our programming language. The TPL
+%syntax was introduced in the first lecture, see the corresping pdf, pages 12 and 13.
+%
+%\begin{itemize}
+% \item Line 1: \begin{ALG} \ASS x{x+y}; \end{ALG} \newline
+%Assignment: $\nu::= \epsilon, \nu::= variable | integer | binary$ $expression | unary$ $expression$
+%
+%Left side of an assignment must be a variable, which must not be a keyword, which is not the case, $x$ is not reserved, as well as $y$. Right 
+%side must be an expression $\epsilon$, which can itself be another variable, an integer or one or two expressions, connected with an uniary or binary operator.
+%
+% \item Line 2, 4, 9: \begin{ALG} \IF\ $x<0$ \THEN \end{ALG} ... \begin{ALG} else \end{ALG} ... \begin{ALG} fi \end{ALG} \newline
+%If-Then-Else - Statement: must start with the keyword $IF$, followed by an expression $\epsilon$. In this case, the expression consists
+%of 2 variables with a binary operator, as defined recursevly in the lecture notes. After this expression another keyword, $THEN$, must occur, which is the case. A programstatement must follow afterwards(will be examined in the next steps), until another keyword, $ELSE$, occurs. Afterwards, another programstatement follows, until the construct is closed by the final keyword $FI$.
+%
+% \item Line 3: \begin{ALG} abort \end{ALG} \newline
+%valid keyword, which terminates the actual program and signals an error condition
+% \item Line 5,8: \begin{ALG} \>\WHILE\ $x\neq y$ \DO \end{ALG} ...   \begin{ALG} od \end{ALG} \newline
+%keyword $WHILE$, followed by a valid binary expression, followd by keyword $DO$, followed by a program statement, terminated by keyword $OD$
+% \item Line 6: \begin{ALG}  \>\>\ASS x{x+1}; \end{ALG} \newline
+%valid assignment, left side is a variable(no keyword allowed), right side consists of a binary expression, in this case a variable, an integer and the defined operator $+$, which
+%is a valid expression as defined in a recursive manner on page 12 in the lecture notes 
+%
+% \item Line 7: \begin{ALG}  \>\>\ASS y{y+2};\end{ALG}\newline
+%same as Line 6
+%
+%\end{itemize}
+
+\end{exercise}
+
+\begin{exercise}{1}
+  Let $\sigma$ be a state satisfying $\sigma(x)=\sigma(y)=1$, and let
+  $p$ be the program given in exercise~\ref{ex:ifabort}.
+  Compute $\M p\sigma$, using
+  \begin{subexercises}
+    \item the structural operational semantics
+
+\begin{itemize}
+\item$ (p,\sigma) = (x:=x+y;if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi , \sigma) $ \\
+
+Regel: $ (p;q)]\sigma = (q)(p)\sigma$   
+
+$(x:=x+y, \sigma) \Rightarrow  \sigma (x \rightarrow[x+y]\sigma )= \sigma_1$\\
+
+\item $\Rightarrow $  ($ if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi, \sigma_1) $
+ 
+Regel:  $[ if $ $e $ $then $ $ p $ $ else$ $ q $ $ fi]\sigma = $ 
+      $ 
+          \begin{cases}
+  (p.\sigma) \Rightarrow ^*  \sigma^a  & if[e] \sigma \neq 0 \\
+   (p.\sigma) \Rightarrow ^*  \sigma^a & if[e]\sigma = 0
+    \end{cases}
+$
+
+\item $\Rightarrow $  ($ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi, \sigma_1) $\\
+$\Rightarrow ( x:=x+1; y:=y+2,while ..., \sigma_1)$\\
+$ (x:=x+1; y:=y+2, \sigma_1)$\\
+$( x:=x+1,\sigma_1) \Rightarrow \sigma_1 (x\rightarrow [x+1]\sigma_1)=\sigma_2$
+$\Rightarrow (  y:=y+2,while ..., \sigma_2)$\\
+$( y:=y+2,\sigma_1) \Rightarrow \sigma_2 (y\rightarrow [y+2]\sigma_2)=\sigma_3$
+
+\item  $\Rightarrow $  ($ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi, \sigma_3) $\\
+\item  $\Rightarrow $ $\sigma_3$\\
+
+The States in detail:
+\item $\sigma: x\rightarrow 1 , y \rightarrow 1$
+\item $\sigma_1: x\rightarrow [x+y] \sigma =2$\\
+$x \rightarrow 2, y \rightarrow 1$
+\item $\sigma_2: x\rightarrow [x+1] \sigma_1 =3$\\
+$x \rightarrow 3, y \rightarrow 1$
+\item $\sigma_3: y\rightarrow [y+2] \sigma_2 =3$\\
+$x \rightarrow 3, y \rightarrow 3$\\
+$[x \neq y] \sigma_3 = 0 (false)$
+
+\end{itemize}    
+
+
+    
+    \item the natural semantics
+
+\begin{itemize}
+
+\item $p[\sigma]=[ x:=x+y;if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi ] \sigma $
+
+Regel: $ [p;q]\sigma = [q][p]\sigma$    
+    
+$[x:=x+y; if...]\sigma$ = $[if...][x:=x+y]\sigma$
+
+$\sigma: x \mapsto 1, y \mapsto 1$
+   
+
+    \item $=[if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi ] \sigma_1$
+    
+   Regel:  $[ if $ $e $ $then $ $ p $ $ else$ $ q $ $ fi]\sigma = $ 
+      $ 
+          \begin{cases}
+  [p]\sigma, & if[e] \sigma \neq 0 \\
+   [q]\sigma,& if[e]\sigma = 0
+    \end{cases}
+    $       
+       
+    $\sigma_1: x \mapsto 2, y \mapsto 1$
+    
+    $[x<0]\sigma_1 = 0(false)$
+        
+    \item $ = [while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od]\sigma_2 = $
+    
+    Regel: $[while $ $e$ $ do $ $p $ $od]\sigma = $  $ 
+    \begin{cases}
+  [while $ $e$ $ do $ $p $ $od][p]\sigma, & if[e] \sigma \neq 0 \\
+   \sigma,& if[e]\sigma = 0
+    \end{cases}
+    $
+
+	$\sigma_2: x \mapsto 2, y \mapsto 1$
+	
+	$[x \neq y] = 1(true)$
+	
+	$=[while $ $ x \neq y...][y:=y+2;x:=x+1]\sigma_2$     
+	
+	$\sigma_3: x \mapsto [x+1]\sigma_2=3, y \mapsto 1$ 
+ 
+	\item $=[while $ $ x \neq y...][y:=y+2]\sigma_3$     
+
+ 	$\sigma_4: x \mapsto 3, y \mapsto [y+2]\sigma_3 = 3$ 
+ 
+	\item $ = [while $ $ x \neq y$ $ do ... od]\sigma_4$ 
+ 
+ $\sigma_4: x \mapsto 3, y \mapsto = 3$
+ 
+ 	$[x \neq y] = 0(false)$
+
+ 
+ \item $=\sigma_4$
+     
+\end{itemize}      
+
+
+    
+  \end{subexercises}
+  of \TPL.
+\end{exercise}
+
+\begin{exercise}{1}\label{ex:ifabort}
+  Let $p$ be the following program:
+  \begin{center}
+  \begin{ALG}
+    \ASS x{x+y};\\
+    \IF\ $x<0$ \THEN\\
+    \>\ABORT\\
+    \ELSE\\
+    \>\WHILE\ $x\neq y$ \DO\\
+    \>\>\ASS x{x+1};\\
+    \>\>\ASS y{y+2}\\
+    \>\OD\\
+    \FI
+  \end{ALG}
+  \end{center}
+  Show that $\CA{x=2y\land y>2}p{x=y}$ is totally correct by computing the
+  weakest precondition of the program.
+\\
+We search for the weakest precondition witch satisfies:
+\\
+$Wp(p,S_{out})p(S_{out})$
+\\
+\begin{itemize}
+
+\item $wp( x:=x+y;if$ $ x < 0$ $then$ $ abort; else $ $ while$ $ x \neq y$ $ do$ $ x:=x+1; y:=y+2; od $ $ fi  , $x=y$ ) $
+\item = $wp( x:=x+y; wp (if$ $ x < 0$ $then ... fi  , $x=y$ )) $
+\item = wp( $x:=x+y$; ($ x < 0 $ $ \land $ $wp(abort, x=y)$ )$\lor$ ($x \geq y $ $\land$ $wp(while...., x =y)$)$) $
+\item = wp( $x:=x+y$; ($ x < 0 $ $ \land $ $FALSE$)$\lor$ ($x \geq y $ $\land wp$(*) )$)$
+\\
+\item (*) = (while $ x \neq y$  do $ x:=x+1; y:=y+2;$ od , x=y ) 
+\item $\rightarrow F_0 = (x=y \land x=y)$
+\item $\rightarrow F_1 = (x \neq y \land wp(x:=x+1 ; y:=y+2 , F_0)$=$(x \neq y \land wp(x:=x+1; wp( y:=y+2 , F_0))$ \\
+=  $(x \neq y \land x= (y+2)-1 )$ =   $(x \neq y \land x = y+1 )$
+\\
+guess:
+\item $\rightarrow F_i = (x \neq y \land wp(x:=x+1 ; y:=y+2 ,  F_{i-1})$ =$(x \neq y \land wp(x:=x+1 $ $ wp( y:=y+2 , F_{i-1}))$ \\
+=  $(x \neq y \land x=(y+i) )$
+
+\item $\rightarrow F_{i+1} = (x \neq y \land wp(x:=x+1 ; y:=y+2 ,  F_{i})$ =$(x \neq y \land wp(x:=x+1 $ $ wp( y:=y+2 , F_{i}))$ \\
+=  $(x \neq y \land x+1=(y+i+2) )$ =  $(x \neq y \land x=(y+i+1) )$ \\
+$ \rightarrow wp(while...)= \exists i ((i \geq 0) \land x =y+i)$ $= ((i \geq 0) \land x-y = 1) = x-y \geq 0 $
+\\
+\item = wp( $x:=x+y$; ($ x < 0 $ $ \land $ $FALSE$,$x=y$ )$\lor$ ($x \geq y $ $\land$ (*)$wp(while...., x =y)$)$) $
+\item = wp( $x:=x+y$; wp(while...),$x=y)$
+\item = ($x:=x+y$ $\land (x+y)-y \geq 0)$
+\item = ($x:=x+y$ $\land x\geq 0)$ = Weakest Precondition
+
+
+
+
+\end{itemize}
+\end{exercise}
+
+\begin{exercise}{1}
+  Let $p$ be the program given in exercise~\ref{ex:ifabort}.
+  Use the Hoare calculus to show that
+  \[\CA{x=2y\land y>2}p{x=y}\]
+  is totally correct.
+\\
+\\
+Solution:
+\\
+\begin{center}
+\begin{landscape}
+\small\infertrue
+$
+\SC
+{
+    \CA
+    {x=2y \wedge y > 2}{p}{x=y}
+}
+{
+     \ASa
+    {
+      \CA
+      {x=2y\wedge y>2}{x:=x+y}{F}
+    }
+    {\CA{x=2y\wedge y>2[x|x+y]}{x:=x+y}{\overbrace{x+y=2y\wedge y>2}^{\overbrace{x=y\wedge y>2}^{F}}}
+    }
+}
+{
+    \Ia
+    {
+      \CA{F}{if\ x<0...}{G}
+    }
+    {
+      \Lb
+      {
+	\CA{F \wedge x<0 }{abort}{G}
+      }
+      {
+	(F \wedge x<0)\Rightarrow false}
+      {
+	\overbrace{\CA{false}{abort}{G}}^{ABT}
+      }
+    }
+    {
+      \Lb
+      {{\CA{F \wedge \neg(x<0)}{while\ x \neq y\ do\ S\ od}{G}}
+      }
+      {CONTINUE}
+      {...}
+    }
+}
+$
+\newline
+\newline
+\newline
+CONTINUE:
+\newline
+\newline
+\newline
+$
+\Lb
+      {
+	{\CA{F \wedge (x\leq 0)}{while\ x \neq y\ do\ x:=x+1;y:=y+2\ od}{G}}
+      }
+      {
+	(F\wedge x\leq 0)\Rightarrow Inv
+      }
+      {
+	\WH
+	{
+	  \CA{Inv}{while\ x\neq y\ do\ x:=x+1;y:=y+2\ od}{Inv \wedge x=y}
+	}
+	{
+	  \SC
+	  {
+	    \CA{Inv\wedge x\neq y\wedge t=t_0}{x:=x+1;y:=y+2}{Inv\wedge 0\leq t<t_0}
+	  }
+	  {
+	    \ASa
+	    {\CA{Inv\wedge x\neq y\wedge t=t_0}{x:=x+1}{SC2}}
+	    {\CA{Inv\wedge x\neq y\wedge t=t_0[x|x+1]}{x:=x+1}{Inv\wedge x+1\neq y\wedge t=t_0}}
+	  }
+	  {
+	    \La
+	    {
+	      \CA{SC2}{y:=y+2}{Inv\wedge 0\leq t<t_0}
+	    }
+	    {
+	      \CA{SC2}{y:=y+2}{Inv\wedge 0\leq t<t_0}
+	    }
+	
+	  }
+	}
+      }
+$
+\newline
+\newline
+\begin{itemize}
+ \item $F\wedge x<0\Rightarrow False$\\
+$x=y\wedge y>2\wedge x<0\Rightarrow False\checkmark$ 
+\end{itemize}
+
+
+\end{landscape}
+\end{center}
+
+\end{exercise}
+
+
+\begin{exercise}{1}
+  Extend our toy language by statements of the form ``$\kw{assert}\
+  e$''. When the condition~$e$ evaluates to true, the program
+  continues, otherwise the program aborts.
+
+  Specify the syntax and semantics of the extended language.
+  Determine the weakest precondition, the weakest liberal
+  precondition, the strongest postcondition, and Hoare rules
+  (partial and total correctness) for \kw{assert}-statements.
+  Show that they are correct.
+
+  Treat the \kw{assert}-statement as a first-class citizen, i.e., do
+  not refer to other program statements in the final result.  However,
+  you may use other statements as intermediate steps when deriving the
+  rules.
+\\
+\\
+Solution:
+\\
+\textbf{Syntax:}\\
+\\
+For the syntax we have to replace P from TLP with :
+
+P::= skip $|$ ... $|$ while$ $ e $ $do$ $ P  $ $od $|$ $\kw{assert e}$
+\\
+\textbf{Semantics:}\\
+\\
+Transition Relation for TPL:
+
+Since we have to treat assert e like an first class citizen we are not allows to use statements like skip and abort. \\
+
+For NS:\\
+
+ [ $\kw{assert e}$]$\sigma$ = $  $
+ $ 
+          \begin{cases}
+  \sigma, & if[e] \sigma \neq 0 \\
+   undefined ,& if[e]\sigma = 0
+    \end{cases}
+    $\\   
+
+For SOS\\
+
+  $\kw(assert e,\sigma)$ = $  $
+ $ 
+          \begin{cases}
+  \sigma, & if[e] \sigma \neq 0 \\
+   undefined ,& if[e]\sigma = 0
+    \end{cases}
+    $    
+\\
+\newpage
+\textbf{Hoare calculus:}\\
+\textbf{Partial correctness}\\
+First we show partial correctness. Therefor we use the wlp as follows:\\
+$wpl( \kw{assert e,G}) = e \Rightarrow G$\\
+We use the Hoare calculus and replace the assert rule with an if statement.\\
+
+%\infer[(sc)]{unten}{oben}
+
+
+$
+\infer[(rp)]{\{F\} \kw{assert e}  \{G\}}
+	{\infer[(if)]{\{F\} \IF\ e\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI  \{G\}}
+		{\infer[()]{\infer[(lc)]{\{F \land e\} \SKIP  \; G }
+				{\{F \land e\}  \Rightarrow F^a \;\{F^a\} \SKIP \{F^a\}\; F^a \Rightarrow G }
+				\infer[(lc)]{\{F \land \neg e\}  \, \ABORT  \, G}
+					{\infer[()]{\{F \land \neg e\}  \Rightarrow F^a \; \{F^a\}  \, \ABORT  \; G  }{---}}}
+				{---}}}
+$
+ 
+
+We see that we have a problem with the assert false statement since we can not reach the postcondition G. Those the rule assert false is not semantically equivalent to the "while true do skip od" which we now is semantically equivalent to the abort statement. \\
+Now we have to show that we can reach the postcondition {G} from each of the Statements of the Hoare calculus  $\{F \land e\} \;\{F \land \neg e\}$. \\
+
+ We show that:\\
+
+$
+\begin{cases}
+\{F \land e\} \\ \{F \land \neg e\}
+\end{cases}
+\Rightarrow F^{a}\\
+\equiv ((F \land e) \lor (F \land \neg e)) \Rightarrow F^{a}  \\
+\equiv \neg((F \land e) \lor (F \land \neg e)) \lor  F^{a}  \\
+\equiv ((\neg F \lor \neg e) \land (\neg F \lor  e)) \lor F^{a}  \\
+\equiv ((\neg F \lor \neg e \lor F^{a}) \land (\neg F \lor  e \lor F^{a} ))  \\
+\equiv ( F \Rightarrow (\neg e \lor F^{a}) ) \land ( F \Rightarrow( e \lor F^{a} ))  \\
+$\\
+Since $ ( F \Rightarrow( e \lor  F^{a} )$ is ture because e is true and $F^{a}$ is not defined: \\
+$\\
+\equiv ( F \Rightarrow (\neg e \lor  F^{a}) )  \land \; \TRUE \\
+\equiv ( F \Rightarrow (\neg e \Rightarrow  F^{a}) )  \\
+$\\
+now we use the fact that $F^{a} = G$ \\
+$\\
+\equiv ( F \Rightarrow (\neg e \Rightarrow  G) )  \\
+$
+Now we can see that :
+$
+\infer[(pc)]{\{F\} \kw{assert e}  \{G\}}{F \Rightarrow (e \Rightarrow G)}
+$\\
+\\
+
+and we can see that the statement is partial correct. 
+
+\newpage
+\textbf{Total correctness:} \\
+
+$
+\infer[(rp)]{\{F\} \kw{assert e}  \{G\}}
+	{\infer[(if)]{\{F\} \IF\ e\ \THEN\ \SKIP\ \ELSE\ \ABORT\ \FI  \{G\}}
+		{\infer[]{\infer[(lc)]{\{F \land e\} \SKIP  \; G }
+				{\{F \land e\}  \Rightarrow F^a \;\{F^a\} \SKIP \{F^a\}\; F^a \Rightarrow G }
+				\infer[(lc)]{\{F \land \neg e\}  \, \ABORT  \, G}
+					{\infer[(lc)]{\{F \land \neg e\}  \Rightarrow F^a \; \{F^a\}  \, \ABORT  \; G  }
+						{\infer[]{\{F^a\}  \Rightarrow  \FALSE  \; \{\FALSE\} abort  \{G\}}{---}}}}
+				{---}}}
+$
+ 
+For the total correctness we use a different abort rule. So we show that: \\
+
+$
+\begin{cases}
+\{F \land e\} \\ \{F \land \neg e\}
+\end{cases}
+\Rightarrow F^{a}\\
+\equiv ((F \land e) \lor (F \land \neg e)) \Rightarrow F^{a}  \\
+\equiv \neg((F \land e) \lor (F \land \neg e)) \lor  F^{a}  \\
+\equiv ((\neg F \lor \neg e) \land (\neg F \lor  e)) \lor F^{a}  \\
+\equiv ((\neg F \lor \neg e \lor F^{a}) \land (\neg F \lor  e \lor F^{a} ))  \\
+\equiv ((\neg F \lor \neg e \lor G) \land (\neg F \lor  e \lor \FALSE ))  \\
+\equiv \neg F \lor (( \neg e \lor G) \land ( e \lor \FALSE ))  \\
+\equiv \neg F \lor (( \neg e \lor G) \land  e )  \\
+\equiv \neg F \lor (( \neg e \land e) \lor  ( G \lor e)  )  \\
+\equiv \neg F \lor ( G \lor e)   \\
+\equiv F \Rightarrow  ( G \land e)  \\
+$
+
+Therefor we can compute : 
+$
+\infer[(tc)]{\{F\} \kw{assert e}  \{G\}}{F \Rightarrow (e \land G)}
+$\\
+\\
+
+
+\end{exercise}
+
+\begin{exercise}{1}
+  Verify that the following program doubles the value of~$x$.
+  For which inputs does it terminate? Choose appropriate pre-
+  and postconditions and show that the assertion is totally correct.
+  Use $y=2x_0+x$ as a starting point for the invariant,
+  where $x_0$ denotes the initial value of~$x$.
+\begin{center}
+  \begin{ALG}
+    \ASS y{3x};\\
+    \WHILE\ $2x\neq y$\ \DO\\
+    \>\ASS x{x+1};\\
+    \>\ASS y{y+1};\\
+    \OD
+  \end{ALG}
+\end{center}    
+\end{exercise}
+
+Solution:\\
+\begin{center}
+  \begin{ALG}
+    \ASSERTN1{a\geq0}\\
+    \ASSERTN9{\INV[y/3x]}\\
+    \ASS y{3x};\\
+    \ASSERTN3{\INV: y = 2x_0 + x}\\
+    \WHILE\ $2x\neq y$\ \DO\\
+    \>\ASSERTN4{\INV \land 2x \neq y \land t = t_0}\\
+    \>\ASSERTN{8}{\INV \wedge 0 \leq t \leq t_0[y/y+1][x/x+1]}\\
+    \>\ASS x{x+1};\\
+    \>\ASSERTN{7}{\INV \wedge 0 \leq t \leq t_0[y/y+1]}\\
+    \>\ASS y{y+1};\\
+    \>\ASSERTN{5}{\INV \wedge 0 \leq t \leq t_0 }\\
+    \OD\\
+    \ASSERTN6{\INV \land 2x = y}\\
+    \ASSERTN2{2*x_0 = x}\\
+  \end{ALG}
+\end{center}
+prove $4 \Rightarrow 8$:\\
+first step is prooving partial correctness:\\
+\begin{center}
+$\INV \land 2x \neq y \Rightarrow \INV [y/y+1][x/x+1]$\\
+$y = 2x_0 + x \land 2x \neq y \Rightarrow y = 2x_0 + x [y/y+1][x/x+1]$\\
+$2x \neq 2x_0 + x \Rightarrow (2x_0 + x + 1) = 2x_0 + (x+1)$\\
+$x \neq 2x_0 \Rightarrow 2x_0 + x + 1 = 2x_0 + x+1$\\
+The right side is always valid and therefore the assertion is \textcolor{red}{valid}
+\end{center} 
+%\\
+second step is prooving termination:\\
+The bound function t is set to $t = y - 2x + 1$.\\
+$\INV \land 2x \neq y \land t = t_0 \Rightarrow 0 \leq t[y/y+1][x/x+1] < t_0$\\
+$y = 2x_0 + x \land 2x \neq y \land t = t_0 \Rightarrow 0 \leq y - 2x + 1[y/y+1][x/x+1] < t_0$\\
+$2x \neq 2x_0 + x \land t = t_0 \Rightarrow 0 \leq (y + 1) - 2(x + 1) + 1 < t_0$\\
+$x \neq 2x_0 \Rightarrow 0 \leq (y + 1) - 2(x + 1) + 1 < y - 2x + 1$\\
+$x \neq 2x_0 \Rightarrow 0 \leq 2x_0 + x - 2x < 2x_0 + x - 2x + 1$\\
+$x \neq 2x_0 \Rightarrow 0 \leq 2x_0 - x < 2x_0 - x + 1$\\
+%\end{center} 
+\textcolor{red}{not valid} because $2x_0 - x$ can be smaller then 0. There we need to extend the
+invariant with $x \leq 2x_0$.\\
+\\
+Our new invariant is: $y = 2x_0 + x \land x \leq 2x_0$. Now we need to start the calculation again with the new invariant.\\
+\\
+prove $4 \Rightarrow 8$:\\
+first step is prooving partial correctness:\\
+\begin{center}
+$\INV \land 2x \neq y \Rightarrow \INV [y/y+1][x/x+1]$\\
+$y = 2x_0 + x \land x \leq 2x_0 \land 2x \neq y \Rightarrow y = 2x_0 + x [y/y+1][x/x+1]$\\
+$2x \neq 2x_0 + x \land x \leq 2x_0 \Rightarrow (2x_0 + x + 1) = 2x_0 + (x+1)$\\
+$x \neq 2x_0 \land x \leq 2x_0 \Rightarrow 2x_0 + x + 1 = 2x_0 + x+1$\\
+The right side is always valid and therefore the assertion is \textcolor{red}{valid}
+\end{center} 
+%\\
+second step is prooving termination:\\
+The bound function t is set to $t = y - 2x + 1$.\\
+\begin{center}
+$\INV \land 2x \neq y \land t = t_0 \Rightarrow 0 \leq t[y/y+1][x/x+1] < t_0$\\
+$y = 2x_0 + x \land x \leq 2x_0 \land 2x \neq y \land t = t_0 \Rightarrow 0 \leq y - 2x + 1[y/y+1][x/x+1] < t_0$\\
+$2x \neq 2x_0 + x \land x \leq 2x_0 \land t = t_0 \Rightarrow 0 \leq (y + 1) - 2(x + 1) + 1 < t_0$\\
+$x \neq 2x_0 \land x \leq 2x_0 \Rightarrow 0 \leq (y + 1) - 2(x + 1) + 1 < y - 2x + 1$\\
+$x \neq 2x_0 \land x \leq 2x_0 \Rightarrow 0 \leq 2x_0 + x - 2x < 2x_0 + x - 2x + 1$\\
+$x \neq 2x_0 \land x \leq 2x_0 \Rightarrow 0 \leq 2x_0 - x < 2x_0 - x + 1$\\
+$x < 2x_0 \Rightarrow 0 \leq 2x_0 - x < 2x_0 - x + 1$\\
+\end{center} 
+\textcolor{red}{valid} because $2x_0 - x < 2x_0 - x + 1$ is always valid and if the left side is true, then $0 \leq 2x_0 - x$ is also valid.\\
+\\
+prove $1 \Rightarrow 9$:\\
+\begin{center}
+$a\geq0 \Rightarrow \INV[y/3x]$\\
+$a\geq0 \Rightarrow y = 2x_0 + x \land x \leq 2x_0[y/3x]$\\
+$a\geq0 \Rightarrow 3x = 2x_0 + x \land x \leq 2x_0$\\
+$a\geq0 \Rightarrow 2x = 2x_0 \land x \leq 2x_0$\\
+\end{center} 
+\textcolor{red}{valid} because at this point, the beginning of the program, $x = x_0$ and therefore $2x = 2x_0$ and $x \leq 2x_0$ is valid.
+Because the whole right side is always valid, no matter what stands on the left side the implications is valid.\\
+\\
+prove $6 \Rightarrow 2$:\\
+\begin{center}
+$\INV \land 2x = y \Rightarrow 2*x_0 = x$\\
+$y = 2x_0 + x \land x \leq 2x_0 \land 2x = y \Rightarrow 2*x_0 = x$\\
+$2x = 2x_0 + x \land x \leq 2x_0 \Rightarrow 2*x_0 = x$\\
+$x = 2x_0 \land x \leq 2x_0 \Rightarrow 2*x_0 = x$\\
+\textcolor{red}{valid} because when the left side is true, then the right side is also true, because the have the same property $x = 2x_0$.
+\end{center} 
+%>>>>>>> f4d0f035feb2a958f6917eaa51615406d1082ef7
+
+\begin{exercise}{1}
+    Show that the following correctness assertion is totally correct.
+    Describe the function computed by the program if we consider $a$
+    as its input and $c$ as its output.
+\begin{center}
+  \begin{ALG}
+    \ASSERTN1{a\geq0}\\
+    \ASS b1;\\
+    \ASS c0;\\
+    \ASSERTN\INV{b=(c+1)^3\land 0\leq c^3\leq a}\\
+    \WHILE\ $b\leq a$\ \DO\\
+    \>\ASS d{3*c+6};\\
+    \>\ASS c{c+1};\\
+    \>\ASS b{b+c*d+1}\\
+    \OD\\
+    \ASSERTN2{c^3\leq a<(c+1)^3}
+  \end{ALG}
+\end{center}    
+\end{exercise}
+Solution:\\
+\begin{center}
+  \begin{ALG}
+    \ASSERTN1{a\geq0}\\
+    \ASSERTN{11}{\INV[c/0][b/1]}\\
+    \ASS b1;\\
+    \ASSERTN{10}{\INV[c/0]}\\
+    \ASS c0;\\
+    \ASSERTN\INV{b=(c+1)^3\land 0\leq c^3\leq a}\\
+    \WHILE\ $b\leq a$\ \DO\\
+    \>\ASSERTN4{\INV \wedge b\leq a \wedge t = t_0 }\\
+    \>\ASSERTN{9}{(\INV \wedge 0 \leq t \leq t_0)[b/b+c*d+1][c/c+1][d/3*c+6] }\\
+    \>\ASS d{3*c+6};\\
+    \>\ASSERTN{8}{(\INV \wedge 0 \leq t \leq t_0)[b/b+c*d+1][c/c+1] }\\
+    \>\ASS c{c+1};\\
+    \>\ASSERTN{7}{(\INV \wedge 0 \leq t \leq t_0)[b/b+c*d+1] }\\
+    \>\ASS b{b+c*d+1}\\
+    \>\ASSERTN{5}{\INV \wedge 0 \leq t \leq t_0 }\\
+    \OD\\
+    \ASSERTN{6}{\INV \wedge b > a }\\
+    \ASSERTN2{c^3\leq a<(c+1)^3}
+  \end{ALG}
+\end{center}
+
+prove $1 \Rightarrow 11$:\\
+\begin{center}
+$a \geq 0 \Rightarrow Inv[z/0][b/1]$\\
+$a \geq 0 \Rightarrow b=(c+1)^3\land 0\leq c^3\leq a[z/0][b/1] $\\
+$a \geq 0 \Rightarrow 1=(0+1)^3\land 0\leq 0^3\leq a$\\
+$a \geq 0 \Rightarrow 1=1 \land 0\leq 0 \leq a$\\
+$a \geq 0 \Rightarrow 0 \leq 0 \leq a$\\
+$a \geq 0 \Rightarrow 0 \leq a$\\
+\textcolor{red}{valid}\\
+\end{center} 
+%\\
+
+prove $4 \Rightarrow 9$:\\
+first step is prooving partial correctness:\\
+\begin{center}
+$\INV \wedge b\leq a \Rightarrow \INV[b/b+c*d+1][c/c+1][d/3*c+6]$\\
+$b=(c+1)^3\land 0\leq c^3\leq a \wedge b\leq a \Rightarrow b=(c+1)^3\land 0\leq c^3\leq a[b/b+c*d+1][c/c+1][d/3*c+6]$\\
+$0\leq c^3\leq a \wedge (c+1)^3\leq a \Rightarrow 0\leq c^3\leq a[b/b+c*d+1][c/c+1][d/3*c+6]$\\
+$0\leq (c+1)^3\leq a \Rightarrow 0\leq (c+1)^3\leq a$\\
+\textcolor{red}{valid}\\
+\end{center} 
+%\\
+second step is prooving termination:\\
+The bound function t is set to $t = a - c^3$.\\
+\begin{center}
+$\INV \wedge b\leq a \wedge t = t_0 \Rightarrow 0 \leq t[b/b+c*d+1][c/c+1][d/3*c+6] < t_0$\\
+$b=(c+1)^3\land 0\leq c^3\leq a \wedge b\leq a \wedge t = t_0 \Rightarrow 0 \leq a - c^3[b/b+c*d+1][c/c+1][d/3*c+6] < t_0$\\
+$0\leq c^3\leq a \wedge (c+1)^3 \leq a \wedge t = t_0 \Rightarrow 0 \leq a - (c+1)^3 < t_0$\\
+$0\leq c^3\leq a \wedge (c+1)^3 \leq a \Rightarrow 0 \leq a - (c+1)^3 < t$\\
+$0\leq (c+1)^3 \leq a \Rightarrow 0 \leq a - (c+1)^3 < a - c^3$\\
+\textcolor{red}{valid} because a is always bigger as $(c+1)^3$ and therefore $a - (c+1)^3$ is always $\geq 0$ and $a - (c+1)^3 < a - c^3$ is always valid.\\
+\end{center} 
+%\\
+prove $6 \Rightarrow 2$:\\
+\begin{center}
+$\INV \wedge b > a \Rightarrow c^3\leq a<(c+1)^3$\\
+$b=(c+1)^3\land 0\leq c^3\leq a \land a < b \Rightarrow c^3\leq a<(c+1)^3$\\
+$0\leq c^3\leq a \land a < (c+1)^3 \Rightarrow c^3\leq a<(c+1)^3$\\
+$0\leq c^3\leq a < (c+1)^3 \Rightarrow c^3\leq a<(c+1)^3$\\
+\textcolor{red}{valid}\\
+\end{center}%\\
+The function computed by the program is $\lfloor \sqrt[3]{a} \rfloor$.
+
+\begin{exercise}{1}
+  Prove that the rule
+\[
+\begin{array}{c}
+\WH{\CA{\INV}{\WHILE\ e\ \DO\ p\ \OD}{\INV\land\lnot e}}%
+   {\CA{\INV\land e}{p}{\INV}}
+\end{array}
+\]
+is correct regarding partial correctness, i.e., show that
+$\CA{\INV}{\WHILE\ e\ \DO\ p\ \OD}{\INV\land\lnot e}$ is partially correct
+whenever $\CA{\INV\land e}{p}{\INV}$ is partially correct.
+\end{exercise}
+
+\begin{exercise}{2}
+  Determine the weakest liberal precondition of \WHILE-loops, i.e.,
+  find a formula equivalent to $\WLP(\WHILE\ e\ \DO\ p\ \OD, G)$
+  similar to the weakest precondition in the course.
+
+  Use your formula to compute the weakest liberal precondition of
+  the program 
+  \begin{center}
+     \ASS z0;
+     \WHILE\ $y\neq0$ \DO
+       \ASS z{z+x};
+       \ASS y{y-1}
+     \OD
+  \end{center}
+  with respect to the postcondition $z=x*y_0$. Compare the result
+  to the weakest precondition computed in the course and explain
+  the differences.
+
+\textbf{Solution}
+
+For the $\WLP(\WHILE\ e\ \DO\ p\ \OD, G)$ is the weakest precondition defined as follows: 
+
+All states such that loop terminates after a
+finite number of iterations in a G-state.\\
+$\{ F_i \}$ . . . set of states such that$ p$ executes $ i$ times and leads to G-state
+\begin{itemize}
+\item 0 iterations: $F_0 = \neg e \lor  G$
+\item 1 iteration: $F_1 = e \land wp(p, F_0)$
+\item 2 iterations:$ F_2 = e \land wp(p, F_1)$
+\item ...
+\item ...
+\item i iterations:$ \; Fi = e \land wp(p, F_{i-1}) (for \;  i > 0)$
+\end{itemize}
+${ F_i } = { e ^ wp(p, F_{iâ1}) }$ . . . set of states such that
+\begin{itemize}
+\item p is executed once (because e is true), resulting in a state where
+\item i â 1 further iterations will lead to a G-state. 
+\end{itemize}
+
+For the WLP we some adjustments have to be made. For the 0 iterations we have to modify the Wp.
+In detail we have to change the first iteration step. 
+\begin{itemize}
+\item 0 iterations: $F_0 = (\neg e \Rightarrow G) $
+\item 1 iteration: $F_1 = e \land wp(p, F_0)$
+\item 2 iterations:$ F_2 = e \land wp(p, F_1)$
+\item ...
+\item ...
+\item i iterations:$ \; Fi = e \land wp(p, F_{ i-1 }) (for\; i > 0)$
+\end{itemize}
+The computation of the wp is similar to the program witch was presented in the lecture. Since we only need to change the termination step we can use the wp from the lecture and compute the wlp from the program. 
+
+The weakest precondition from the lecture was defined as $(y \geq 0 \land (x=0 \lor y_0 = y ))$. From this wp the wlp is defined as $(x=0 \lor y_0 = y ) \lor y < 0)$.
+
+
+\end{exercise}
+
+
+\end{document}

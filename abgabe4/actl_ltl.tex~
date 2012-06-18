@@ -242,7 +242,6 @@ $ \Leftrightarrow \forall$ paths starting at $s_0.M, s_1 \models \trans(\varphi)
 $M,s\models AF\ trans(\varphi)  \Rightarrow  M,s\models FX \varphi$ \\
 this can be shown analog to $X$, but here the index $1$ for state $s$ must be replaced with an arbitrary and fixed $k$
 
-\end{tabular}
 
 \paragraph{b)} Show that, in general, $M, s \models \varphi$ does not imply $M, s \models \trans(\varphi)$.
 \emph{Hint: Give a Kripke structure $M$ and an $\LTL$ formula $\varphi$ such that $M, s \models \varphi$ and $M, s \not\models \trans(\varphi)$. Discuss why $M, s \models \varphi$ and $M, s \not\models \trans(\varphi)$ holds on $M$ and the given state $s$ in $M$.}\\{\color{white} whitespace}\hfill\textbf{(1 Point)}
